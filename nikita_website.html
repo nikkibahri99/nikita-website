@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikita Bahri — Commercial Strategy & Growth</title>
+<meta name="description" content="Nikita Bahri — Commercial strategist with 5+ years in growth, market entry and D2C. MBA at University of Bath. Currently at UrbanChain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #1B2D5B;
+  --navy2:  #0F1A38;
+  --yellow: #F5C842;
+  --yellow2:#E8B820;
+  --cream:  #FAF8F3;
+  --sand:   #EDE8DE;
+  --green:  #2D6A4F;
+  --text:   #1C1917;
+  --muted:  #6B6B5A;
+  --border: #D8D2C2;
+  --white:  #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: 'Instrument Sans', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE ────────────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 999; opacity: 0.5;
+}
+
+/* ─── NAV ──────────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+nav.scrolled {
+  background: rgba(250,248,243,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 900;
+  color: var(--navy); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--yellow2); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: var(--yellow) !important;
+  padding: 8px 20px; border-radius: 4px;
+  font-weight: 500 !important;
+}
+.nav-cta:hover { background: var(--navy2) !important; color: var(--yellow) !important; }
+
+/* ─── HERO ─────────────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+/* big diagonal yellow accent */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -80px;
+  width: 520px; height: 520px;
+  background: var(--yellow);
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 160px 64px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; z-index: 1;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--yellow);
+}
+
+.hero-desc {
+  font-size: 16px; line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+  max-width: 440px;
+  margin-bottom: 40px;
+  opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+}
+
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 48px;
+  opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+}
+
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.6);
+}
+.tag-yellow {
+  background: var(--yellow); color: var(--navy);
+  border-color: var(--yellow); font-weight: 600;
+}
+
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.7s 0.7s forwards;
+}
+
+.btn-primary {
+  background: var(--yellow); color: var(--navy);
+  padding: 14px 28px; border-radius: 4px;
+  font-weight: 600; font-size: 14px;
+  text-decoration: none; display: inline-block;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-primary:hover { background: var(--yellow2); transform: translateY(-2px); }
+
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,0.7);
+  padding: 14px 28px; border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 14px; text-decoration: none; display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: white; color: white; }
+
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 160px 64px 80px 32px;
+  position: relative; z-index: 1;
+  opacity: 0; animation: fadeIn 0.9s 0.5s forwards;
+}
+
+.photo-frame {
+  position: relative;
+  width: 340px; height: 420px;
+}
+
+.photo-frame::before {
+  content: '';
+  position: absolute;
+  top: 16px; left: 16px;
+  right: -16px; bottom: -16px;
+  border: 2px solid var(--yellow);
+  border-radius: 4px;
+  opacity: 0.4;
+}
+
+.photo-placeholder {
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+}
+
+.photo-placeholder::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(245,200,66,0.05) 0%, transparent 60%);
+}
+
+.photo-icon {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(245,200,66,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+
+.photo-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+}
+
+/* photo when added */
+.photo-placeholder img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; border-radius: 4px;
+}
+
+/* ─── STATS STRIP ──────────────────────────────────────────────────── */
+.stats-strip {
+  background: var(--yellow);
+  padding: 28px 48px;
+  display: flex; justify-content: center; gap: 80px;
+  flex-wrap: wrap;
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 36px; font-weight: 900;
+  color: var(--navy); line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(27,45,91,0.65);
+  margin-top: 4px;
+}
+
+/* ─── SECTION BASE ─────────────────────────────────────────────────── */
+section { padding: 100px 48px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--yellow2);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-eyebrow::after {
+  content: ''; flex: 0 0 40px; height: 1px;
+  background: var(--yellow2);
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--navy); margin-bottom: 16px;
+}
+.section-title em { font-style: italic; font-weight: 300; color: var(--muted); }
+
+.section-intro {
+  font-size: 16px; color: var(--muted); line-height: 1.7;
+  max-width: 580px; margin-bottom: 60px;
+}
+
+/* ─── WORK / CASE STUDIES ──────────────────────────────────────────── */
+#work { background: var(--white); }
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.case-card {
+  background: var(--white);
+  padding: 40px;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.case-card:hover { background: #FAFAF7; }
+
+.case-card.featured {
+  grid-column: 1 / -1;
+  background: var(--navy);
+  color: white;
+}
+
+.case-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.case-card.featured .case-num { color: rgba(255,255,255,0.4); }
+
+.case-category {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 3px;
+  display: inline-block; margin-bottom: 16px;
+  background: var(--sand); color: var(--navy);
+}
+.case-card.featured .case-category {
+  background: var(--yellow); color: var(--navy);
+}
+.case-category.green { background: #D8F3DC; color: var(--green); }
+
+.case-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 700;
+  line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--navy); margin-bottom: 12px;
+}
+.case-card.featured .case-title { color: white; font-size: 28px; }
+
+.case-desc {
+  font-size: 14px; color: var(--muted);
+  line-height: 1.6; margin-bottom: 24px;
+}
+.case-card.featured .case-desc { color: rgba(255,255,255,0.6); }
+
+.case-result {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--navy); padding: 8px 14px;
+  background: var(--yellow); border-radius: 3px;
+  display: inline-block;
+}
+.case-card.featured .case-result {
+  background: rgba(245,200,66,0.2); color: var(--yellow);
+}
+
+.case-arrow {
+  position: absolute; top: 40px; right: 40px;
+  font-size: 20px; color: var(--border);
+  transition: color 0.2s, transform 0.2s;
+}
+.case-card:hover .case-arrow { color: var(--navy); transform: translate(3px,-3px); }
+.case-card.featured .case-arrow { color: rgba(255,255,255,0.2); }
+.case-card.featured:hover .case-arrow { color: var(--yellow); }
+
+/* ─── SUSTAINABILITY ───────────────────────────────────────────────── */
+#sustainability {
+  background: var(--navy);
+  color: white;
+  position: relative; overflow: hidden;
+}
+
+#sustainability::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,200,66,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+#sustainability .section-title { color: white; }
+#sustainability .section-eyebrow { color: var(--yellow); }
+#sustainability .section-eyebrow::after { background: var(--yellow); }
+#sustainability .section-intro { color: rgba(255,255,255,0.6); max-width: 620px; }
+
+.sustain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sustain-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 32px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.sustain-card:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(245,200,66,0.3);
+}
+
+.sustain-icon {
+  font-size: 28px; margin-bottom: 16px;
+}
+
+.sustain-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  color: white; margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.sustain-desc {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+.sustain-tag {
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--yellow); opacity: 0.8;
+}
+
+/* ─── EXPERIENCE TIMELINE ──────────────────────────────────────────── */
+#experience { background: var(--cream); }
+
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 8px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--border);
+}
+
+.tl-item {
+  position: relative; margin-bottom: 48px;
+}
+.tl-item:last-child { margin-bottom: 0; }
+
+.tl-dot {
+  position: absolute; left: -28px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--navy); border: 2px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--border);
+}
+.tl-dot.current {
+  background: var(--yellow);
+  box-shadow: 0 0 0 2px var(--yellow), 0 0 0 4px var(--cream);
+}
+
+.tl-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 6px;
+}
+
+.tl-role {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--navy); letter-spacing: -0.01em;
+  margin-bottom: 2px;
+}
+
+.tl-company {
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.tl-desc {
+  font-size: 14px; color: var(--text);
+  line-height: 1.65; max-width: 620px;
+}
+
+.tl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tl-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 3px;
+  background: var(--sand); color: var(--muted);
+}
+
+/* ─── MBA SECTION ──────────────────────────────────────────────────── */
+#mba { background: var(--white); }
+
+.mba-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.mba-card {
+  border: 1px solid var(--border);
+  border-radius: 8px; padding: 28px;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.mba-card:hover {
+  box-shadow: 0 8px 32px rgba(27,45,91,0.08);
+  border-color: var(--navy);
+}
+
+.mba-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--navy);
+}
+.mba-card.award::before { background: var(--yellow); }
+.mba-card.sustain::before { background: var(--green); }
+
+.mba-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+}
+.mba-card.award .mba-label { color: var(--yellow2); }
+.mba-card.sustain .mba-label { color: var(--green); }
+
+.mba-title {
+  font-family: 'Fraunces', serif;
+  font-size: 17px; font-weight: 700;
+  color: var(--navy); line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.mba-desc {
+  font-size: 13px; color: var(--muted);
+  line-height: 1.6;
+}
+
+.mba-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--yellow); color: var(--navy);
+  padding: 5px 12px; border-radius: 3px;
+}
+
+/* ─── BRANDS ───────────────────────────────────────────────────────── */
+#brands {
+  background: var(--sand);
+  padding: 60px 48px;
+}
+.brands-inner { max-width: 1100px; margin: 0 auto; }
+.brands-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); text-align: center; margin-bottom: 28px;
+}
+.brands-list {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 24px; align-items: center;
+}
+.brand-item {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--navy); opacity: 0.5;
+  letter-spacing: -0.01em;
+  transition: opacity 0.2s;
+}
+.brand-item:hover { opacity: 1; }
+
+/* ─── CONTACT ──────────────────────────────────────────────────────── */
+#contact {
+  background: var(--navy);
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: '';
+  position: absolute; bottom: -150px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,200,66,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+#contact .section-title { color: white; }
+#contact .section-eyebrow { justify-content: center; color: var(--yellow); }
+#contact .section-eyebrow::after { display: none; }
+#contact .section-eyebrow::before { content: ''; flex: 0 0 40px; height: 1px; background: var(--yellow); }
+#contact .section-intro { color: rgba(255,255,255,0.55); margin: 0 auto 40px; }
+
+.contact-links {
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+}
+
+.contact-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 4px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.contact-link:hover { transform: translateY(-2px); }
+.contact-link.email { background: var(--yellow); color: var(--navy); }
+.contact-link.email:hover { background: var(--yellow2); }
+.contact-link.linkedin { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.2); }
+.contact-link.linkedin:hover { background: rgba(255,255,255,0.14); }
+
+.contact-note {
+  margin-top: 48px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; color: rgba(255,255,255,0.25);
+  letter-spacing: 0.08em;
+}
+
+/* ─── FOOTER ───────────────────────────────────────────────────────── */
+footer {
+  background: var(--navy2);
+  padding: 24px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-name {
+  font-family: 'Fraunces', serif;
+  font-size: 14px; font-weight: 700;
+  color: rgba(255,255,255,0.4); letter-spacing: -0.01em;
+}
+.footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+}
+
+/* ─── ANIMATIONS ───────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── MOBILE ───────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 120px 24px 40px; }
+  .hero-right { display: none; }
+  section { padding: 72px 24px; }
+  .cases-grid, .sustain-grid, .mba-grid { grid-template-columns: 1fr; }
+  .case-card.featured { grid-column: 1; }
+  .stats-strip { gap: 40px; padding: 28px 24px; }
+  #brands { padding: 48px 24px; }
+  #contact { padding: 72px 24px; }
+  footer { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">N<span>.</span>Bahri</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#sustainability">Sustainability</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#mba">MBA</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">MBA · University of Bath · Full Scholarship</div>
+    <h1>Commercial<br><em>Strategy</em><br>& Growth</h1>
+    <p class="hero-desc">
+      I help organisations turn data into strategy and strategy into sustainable growth.
+      Five years across global retail and D2C, now building in renewable energy at UrbanChain.
+    </p>
+    <div class="hero-tags">
+      <span class="tag tag-yellow">UrbanChain</span>
+      <span class="tag">D2C</span>
+      <span class="tag">Market Entry</span>
+      <span class="tag">Climate Tech</span>
+      <span class="tag">£170K+ Media</span>
+      <span class="tag">Consulting</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#work" class="btn-primary">See my work</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <div class="photo-placeholder" id="photo-area">
+        <!-- Replace this div's contents with: <img src="your-photo.jpg" alt="Nikita Bahri"> -->
+        <div class="photo-icon">👩🏻</div>
+        <span class="photo-label">Add your photo here</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Years experience</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">£170K</div>
+    <div class="stat-label">Monthly media managed</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Global brands</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">133%</div>
+    <div class="stat-label">Revenue uplift delivered</div>
+  </div>
+</div>
+
+<!-- WORK / CASE STUDIES -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Selected work</div>
+    <h2 class="section-title reveal">Work that <em>changed</em><br>the direction</h2>
+    <p class="section-intro reveal">Not every brief is what it seems. The most useful thing I do is figure out what the real problem is before deciding how to solve it.</p>
+
+    <div class="cases-grid reveal">
+
+      <div class="case-card featured">
+        <span class="case-arrow">↗</span>
+        <div class="case-num">01</div>
+        <div class="case-category">Market Strategy</div>
+        <div class="case-title">Talked a client out of a bad expansion</div>
+        <div class="case-desc">Da Milano wanted to expand into tier-2 Indian cities. After running the financials, the unit economics did not work. Built the full research case, presented it to the client, and they changed direction. Sometimes the most valuable thing is knowing when not to expand.</div>
+        <span class="case-result">Saved: Misdirected investment in unviable market</span>
+      </div>
+
+      <div class="case-card">
+        <span class="case-arrow">↗</span>
+        <div class="case-num">02</div>
+        <div class="case-category green">Inventory & Growth</div>
+        <div class="case-title">Cleared old stock while launching new</div>
+        <div class="case-desc">Forever New had a backlog of unsold prior-season inventory alongside an upcoming new season launch. Ran both campaigns together, cleared the old stock without hurting the brand or missing targets.</div>
+        <span class="case-result">Result: Full inventory cleared, launch targets hit</span>
+      </div>
+
+      <div class="case-card">
+        <span class="case-arrow">↗</span>
+        <div class="case-num">03</div>
+        <div class="case-category">Market Entry</div>
+        <div class="case-title">India to Dubai in one project</div>
+        <div class="case-desc">Project lead for a brand expanding from India into the UAE. Built the financial model, defined audiences and creative for the Dubai market, and directed the website rebuild using competitor research done in-market.</div>
+        <span class="case-result">Delivered: Full GTM plan, financial model, website brief</span>
+      </div>
+
+      <div class="case-card">
+        <span class="case-arrow">↗</span>
+        <div class="case-num">04</div>
+        <div class="case-category green">Brand Strategy</div>
+        <div class="case-title">Sequenced a relaunch the right way round</div>
+        <div class="case-desc">A premium UAE furniture brand was relaunching after a year offline. Designed a two-phase plan: six months of brand awareness before pushing sales. Sequenced it that way deliberately because pushing conversion too early on a relaunching premium brand rarely works.</div>
+        <span class="case-result">Approach: Awareness first, conversion second</span>
+      </div>
+
+      <div class="case-card">
+        <span class="case-arrow">↗</span>
+        <div class="case-num">05</div>
+        <div class="case-category">D2C Growth</div>
+        <div class="case-title">Zero to £30K in five months</div>
+        <div class="case-desc">At ScaleX, built paid growth strategies on Google and Meta for a portfolio of D2C brands. Took multiple brands from zero to £30K monthly revenue within five months, improving campaign performance by 2 to 3x and cutting wasted spend by around 40%.</div>
+        <span class="case-result">Result: £30K MRR · 2-3x performance · 40% efficiency gain</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<div id="brands">
+  <div class="brands-inner">
+    <div class="brands-label">Brands worked with</div>
+    <div class="brands-list">
+      <span class="brand-item">Forever New</span>
+      <span class="brand-item">Ray-Ban</span>
+      <span class="brand-item">Da Milano</span>
+      <span class="brand-item">Bath &amp; Body Works</span>
+      <span class="brand-item">Aldo</span>
+      <span class="brand-item">Vero Moda</span>
+      <span class="brand-item">UrbanChain</span>
+    </div>
+  </div>
+</div>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Sustainability focus</div>
+    <h2 class="section-title reveal">Growth that <em>means</em><br>something</h2>
+    <p class="section-intro reveal">I want to work on problems that matter. That means consumer, climate tech, and sustainability, where commercial rigour and purpose point in the same direction.</p>
+
+    <div class="sustain-grid reveal">
+      <div class="sustain-card">
+        <div class="sustain-icon">⚡</div>
+        <div class="sustain-title">Renewable Energy</div>
+        <div class="sustain-desc">Currently building at UrbanChain, a renewable energy startup in Manchester. Building their lead generation engine, HubSpot CRM, website strategy, and PR from scratch.</div>
+        <div class="sustain-tag">Live · UrbanChain</div>
+      </div>
+      <div class="sustain-card">
+        <div class="sustain-icon">🌿</div>
+        <div class="sustain-title">Sustainable Brands</div>
+        <div class="sustain-desc">Drawn to B-Corp brands, purpose-led FMCG, and D2C companies where the product and the mission are aligned. These are the brands I want to help grow.</div>
+        <div class="sustain-tag">Target · FMCG + D2C</div>
+      </div>
+      <div class="sustain-card">
+        <div class="sustain-icon">🤖</div>
+        <div class="sustain-title">AI for Good Work</div>
+        <div class="sustain-desc">I use Claude Code to build automation workflows that make teams faster without burning people out. At UrbanChain I also delivered a framework for how to implement AI correctly: fix the process first, then automate it.</div>
+        <div class="sustain-tag">Skill · Claude Code · AI Workflows</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Career</div>
+    <h2 class="section-title reveal">Five years <em>building</em><br>commercial things</h2>
+
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot current"></div>
+        <div class="tl-date">Apr 2026 – Present</div>
+        <div class="tl-role">Growth Associate</div>
+        <div class="tl-company">UrbanChain · Renewable Energy · Remote</div>
+        <div class="tl-desc">Building the commercial growth function from scratch. HubSpot CRM setup, lead acquisition strategy, website conversion, PR strategy, and AI automation workflows. Also delivered UrbanChain's go-to-market plan as part of my MBA Consultancy Project.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">HubSpot</span>
+          <span class="tl-tag">Lead Gen</span>
+          <span class="tl-tag">CRO</span>
+          <span class="tl-tag">PR Strategy</span>
+          <span class="tl-tag">Claude Code</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Dec 2024 – Sep 2025</div>
+        <div class="tl-role">Performance Strategist</div>
+        <div class="tl-company">ScaleX · Remote</div>
+        <div class="tl-desc">Paid growth strategy on Google and Meta for a portfolio of D2C brands. Improved campaign performance by 2 to 3x, cut wasted spend by 40%, and took multiple brands from zero to £30K monthly revenue in under five months.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Google Ads</span>
+          <span class="tl-tag">Meta Ads</span>
+          <span class="tl-tag">D2C</span>
+          <span class="tl-tag">Performance Marketing</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Nov 2023 – Aug 2024</div>
+        <div class="tl-role">Assistant Manager, Digital Marketing</div>
+        <div class="tl-company">Green Honchos · India</div>
+        <div class="tl-desc">Managed commercial and marketing strategy for 10+ global brands including Forever New, Da Milano, and Ray-Ban. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as main senior client contact for financial planning and strategy. Contributed to a 133% increase in daily portfolio revenue.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">£170K Media Budget</span>
+          <span class="tl-tag">Team Leadership</span>
+          <span class="tl-tag">Client Strategy</span>
+          <span class="tl-tag">Financial Planning</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Oct 2022 – Oct 2023</div>
+        <div class="tl-role">Key Account Manager</div>
+        <div class="tl-company">Sociowash · New Delhi</div>
+        <div class="tl-desc">Managed key client accounts across performance marketing and brand strategy at a digital-first agency.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Account Management</span>
+          <span class="tl-tag">Brand Strategy</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Sep 2020 – Jun 2022</div>
+        <div class="tl-role">Associate / Digital Marketer</div>
+        <div class="tl-company">Globalbees · ANS Commerce · Gurgaon</div>
+        <div class="tl-desc">Started in digital marketing at ANS Commerce running paid and organic channels for e-commerce clients, then moved into growth and commercial operations at Globalbees supporting a D2C brand portfolio.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">E-commerce</span>
+          <span class="tl-tag">Paid + Organic</span>
+          <span class="tl-tag">D2C</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MBA -->
+<section id="mba">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Education</div>
+    <h2 class="section-title reveal">MBA · University of Bath<br><em>Full scholarship, 2025-2026</em></h2>
+    <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Three live projects running alongside coursework.</p>
+
+    <div class="mba-grid reveal">
+      <div class="mba-card award">
+        <div class="mba-label">Entrepreneurship Project</div>
+        <div class="mba-title">FreshTrack — Best Pitch Award</div>
+        <div class="mba-desc">Pitched FreshTrack, a food freshness tracking platform, to a panel of investors and industry judges. Won Best Pitch. Judges singled me out by name for how I handled the live Q&A.</div>
+        <div class="mba-badge">🏆 Best Pitch Award</div>
+      </div>
+      <div class="mba-card">
+        <div class="mba-label">Consultancy Project</div>
+        <div class="mba-title">UrbanChain GTM and AI Framework</div>
+        <div class="mba-desc">Built a full go-to-market plan for UrbanChain's commercial expansion and an AI implementation framework for the business: fix internal processes first, then automate. Applied to how they train and deploy Claude.</div>
+      </div>
+      <div class="mba-card sustain">
+        <div class="mba-label">Social Impact Project</div>
+        <div class="mba-title">Forest of Imagination</div>
+        <div class="mba-desc">Worked with Forest of Imagination on their next year's programme. Developed a funding strategy and marketing plan focused on increasing revenue and growing their audience reach.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Get in touch</div>
+    <h2 class="section-title reveal">Open to the right<br><em>conversation</em></h2>
+    <p class="section-intro reveal">Looking for roles in commercial strategy, growth, or consulting, ideally in sustainability, consumer, or climate tech, in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
+        ✉ nikkibahri99@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/nikitabahri" target="_blank" class="contact-link linkedin">
+        in linkedin.com/in/nikitabahri
+      </a>
+    </div>
+    <div class="contact-note reveal">Bath, UK · Open to Dubai · Available from September 2026</div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Nikita Bahri</span>
+  <span class="footer-note">Commercial Strategy · Growth · Sustainability · Bath MBA 2026</span>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      // stagger siblings
+      const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('visible'), idx * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+reveals.forEach(el => io.observe(el));
+
+// Smooth nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>

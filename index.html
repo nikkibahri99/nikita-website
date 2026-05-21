@@ -949,6 +949,41 @@ footer {
   .sc-label { display: none; }
   .cap-grid { grid-template-columns: 1fr; }
 }
+
+/* ─── DOODLE ELEMENTS ──────────────────────────────────────────────── */
+.hero-doodles {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 2; overflow: visible;
+}
+.doodle-spark {
+  position: absolute;
+  animation: dSparkFloat 9s ease-in-out infinite;
+}
+@keyframes dSparkFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.65; }
+  40%       { transform: translateY(-14px) rotate(12deg); opacity: 1; }
+  70%       { transform: translateY(5px) rotate(-6deg); opacity: 0.4; }
+}
+.doodle-char-wrap {
+  position: absolute;
+  bottom: 52px; left: 14px;
+  z-index: 3; pointer-events: none;
+  animation: dCharFloat 7s ease-in-out infinite;
+  filter: drop-shadow(0 6px 20px rgba(245,200,66,0.18));
+}
+@keyframes dCharFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50%       { transform: translateY(-10px) rotate(1.5deg); }
+}
+.brand-svg-icon { display: block; flex-shrink: 0; }
+.brands-more-text {
+  text-align: center;
+  margin-top: 22px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.6;
+}
+@media (max-width: 900px) { .hero-doodles { display: none; } }
 </style>
 </head>
 <body>
@@ -998,9 +1033,66 @@ footer {
     </div>
   </div>
   <div class="hero-right">
+    <!-- Doodle decorations -->
+    <div class="hero-doodles" aria-hidden="true">
+      <!-- Sparkle stars -->
+      <svg class="doodle-spark" style="top:8%;left:6%;animation-delay:0s;animation-duration:10s;" viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 1 L20.5 15.5 L35 18 L20.5 20.5 L18 35 L15.5 20.5 L1 18 L15.5 15.5Z" fill="rgba(245,200,66,0.18)" stroke="rgba(245,200,66,0.65)" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <svg class="doodle-spark" style="top:18%;right:6%;animation-delay:2.5s;animation-duration:8s;" viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1 L13.5 10.5 L23 12 L13.5 13.5 L12 23 L10.5 13.5 L1 12 L10.5 10.5Z" fill="rgba(245,200,66,0.28)" stroke="rgba(245,200,66,0.75)" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <svg class="doodle-spark" style="bottom:32%;right:10%;animation-delay:4.5s;animation-duration:11s;" viewBox="0 0 28 28" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 1 L16 12 L27 14 L16 16 L14 27 L12 16 L1 14 L12 12Z" fill="rgba(245,200,66,0.15)" stroke="rgba(245,200,66,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <svg class="doodle-spark" style="top:55%;left:12%;animation-delay:1.5s;animation-duration:13s;" viewBox="0 0 16 16" width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 1 L9 7 L15 8 L9 9 L8 15 L7 9 L1 8 L7 7Z" fill="rgba(245,200,66,0.5)"/>
+      </svg>
+      <svg class="doodle-spark" style="top:35%;left:50%;animation-delay:6s;animation-duration:7s;" viewBox="0 0 14 14" width="11" height="11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 1 L8 6 L13 7 L8 8 L7 13 L6 8 L1 7 L6 6Z" fill="rgba(255,255,255,0.25)"/>
+      </svg>
+      <!-- Anime-style character doodle -->
+      <div class="doodle-char-wrap">
+        <svg viewBox="0 0 88 100" width="96" height="109" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Curly poof hair (layered circles) -->
+          <circle cx="44" cy="35" r="22" fill="rgba(245,200,66,0.82)"/>
+          <circle cx="23" cy="28" r="10" fill="rgba(245,200,66,0.82)"/>
+          <circle cx="17" cy="40" r="8"  fill="rgba(245,200,66,0.78)"/>
+          <circle cx="65" cy="28" r="10" fill="rgba(245,200,66,0.82)"/>
+          <circle cx="71" cy="40" r="8"  fill="rgba(245,200,66,0.78)"/>
+          <circle cx="44" cy="15" r="9"  fill="rgba(245,200,66,0.82)"/>
+          <circle cx="30" cy="13" r="7"  fill="rgba(245,200,66,0.78)"/>
+          <circle cx="58" cy="13" r="7"  fill="rgba(245,200,66,0.78)"/>
+          <!-- Face -->
+          <ellipse cx="44" cy="44" rx="22" ry="23" fill="rgba(250,248,243,0.97)"/>
+          <!-- Glasses -->
+          <rect x="23" y="37" width="16" height="12" rx="4.5" stroke="rgba(27,45,91,0.72)" stroke-width="1.8" fill="rgba(27,45,91,0.03)"/>
+          <rect x="49" y="37" width="16" height="12" rx="4.5" stroke="rgba(27,45,91,0.72)" stroke-width="1.8" fill="rgba(27,45,91,0.03)"/>
+          <line x1="39" y1="43" x2="49" y2="43" stroke="rgba(27,45,91,0.72)" stroke-width="1.8"/>
+          <line x1="23" y1="43" x2="19" y2="41" stroke="rgba(27,45,91,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="65" y1="43" x2="69" y2="41" stroke="rgba(27,45,91,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Eyes -->
+          <circle cx="31" cy="43" r="3.2" fill="rgba(27,45,91,0.9)"/>
+          <circle cx="57" cy="43" r="3.2" fill="rgba(27,45,91,0.9)"/>
+          <circle cx="32.2" cy="41.8" r="1.3" fill="white"/>
+          <circle cx="58.2" cy="41.8" r="1.3" fill="white"/>
+          <!-- Nose -->
+          <path d="M42 53 Q44 56 46 53" stroke="rgba(27,45,91,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Smile -->
+          <path d="M34 60 Q44 68 54 60" stroke="rgba(27,45,91,0.62)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Blush -->
+          <ellipse cx="22" cy="56" rx="5" ry="3" fill="rgba(255,130,130,0.18)"/>
+          <ellipse cx="66" cy="56" rx="5" ry="3" fill="rgba(255,130,130,0.18)"/>
+          <!-- Shoulders / body top -->
+          <path d="M10 90 Q8 100 10 100 L78 100 Q80 100 78 90 Q66 74 44 75 Q22 74 10 90Z" fill="rgba(27,45,91,0.88)"/>
+          <!-- V-neck accent -->
+          <path d="M34 75 L44 87 L54 75" stroke="rgba(245,200,66,0.8)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <!-- Replace this div's contents with: <img src="your-photo.jpg" alt="Nikita Bahri"> -->
+        <img src="nikita-photo.jpg" alt="Nikita Bahri" onerror="this.style.display='none'">
         <div class="photo-icon">👩🏻</div>
         <span class="photo-label">Add your photo here</span>
       </div>
@@ -1125,7 +1217,13 @@ footer {
           <div class="brand-logo-name">Jack &amp; Jones</div>
         </div>
         <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#B8860B;">AJ</div>
+          <div class="brand-logo-icon" style="background:#B8860B;">
+            <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" width="27" height="27">
+              <path d="M6 3h12l4 6-10 13L2 9l4-6z" stroke="white" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" fill="rgba(255,255,255,0.12)"/>
+              <path d="M2 9h20" stroke="rgba(255,255,255,0.7)" stroke-width="1" stroke-linecap="round"/>
+              <path d="M6 3l6 6 6-6" stroke="rgba(255,255,255,0.7)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="brand-logo-name">Ajnaa Jewellers</div>
         </div>
         <div class="brand-logo-card">
@@ -1141,19 +1239,23 @@ footer {
           <div class="brand-logo-name">ASICS</div>
         </div>
         <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#4A7C59;">PH</div>
+          <div class="brand-logo-icon" style="background:#4A7C59;">
+            <svg class="brand-svg-icon" viewBox="0 0 24 24" fill="none" width="27" height="27">
+              <path d="M12 22c0 0 8-4.5 8-11a8 8 0 0 0-16 0c0 6.5 8 11 8 11z" stroke="white" stroke-width="1.5" fill="rgba(255,255,255,0.15)" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 22V12" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M12 16c1.5-1 3.5-2.5 4-5" stroke="rgba(255,255,255,0.65)" stroke-width="1" stroke-linecap="round"/>
+              <path d="M12 16c-1.5-1-3.5-2.5-4-5" stroke="rgba(255,255,255,0.65)" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div class="brand-logo-name">Pure Home Living</div>
         </div>
         <div class="brand-logo-card">
           <div class="brand-logo-icon" style="background:#37474F;">T1<img class="brand-real-logo" src="https://logo.clearbit.com/theone.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
           <div class="brand-logo-name">THE One</div>
         </div>
-        <div class="brand-logo-card brand-more-card">
-          <div class="brand-logo-icon">+</div>
-          <div class="brand-logo-name">&amp; many more</div>
-        </div>
       </div>
     </div>
+    <p class="brands-more-text reveal">& many more</p>
   </div>
 </div>
 

@@ -1011,20 +1011,93 @@ footer {
 
 /* ─── CONDENSED SECTIONS ────────────────────────────────────────── */
 section.condensed { padding: 60px 48px; }
-section.condensed .section-intro { margin-bottom: 16px; max-width: 760px; }
+section.condensed .section-intro { margin-bottom: 20px; max-width: 760px; }
 section.condensed .section-title { margin-bottom: 10px; }
-.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-pill {
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 6px 14px; border-radius: 4px;
-  background: var(--sand); color: var(--navy);
+  padding: 8px 18px; border-radius: 6px;
+  background: var(--white); color: var(--navy);
+  border: 1.5px solid var(--border);
+  box-shadow: 0 2px 6px rgba(28,58,46,0.06);
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.skill-pill:hover { background: var(--navy); color: var(--white); border-color: var(--navy); transform: translateY(-2px); }
+.skill-pill.hl-green { background: rgba(74,124,90,0.1); border-color: rgba(74,124,90,0.45); color: var(--green); }
+.skill-pill.hl-amber { background: rgba(200,146,58,0.1); border-color: rgba(200,146,58,0.5); color: var(--yellow2); }
+.skill-pill.hl-navy  { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+/* ─── CAPABILITIES TWO-COLUMN ───────────────────────────────────── */
+.cap-two-col {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.cap-text-col .section-eyebrow { margin-bottom: 14px; }
+.cap-text-col .section-title   { margin-bottom: 14px; font-size: clamp(28px,3.5vw,44px); }
+.cap-text-col .section-intro   { margin-bottom: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
+.cap-pills-col { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 6px; }
+
+/* ─── WORK MINI-CARDS ───────────────────────────────────────────── */
+.work-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+.work-card {
+  background: var(--white);
   border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+}
+.work-card:hover { box-shadow: 0 6px 20px rgba(28,58,46,0.09); border-color: var(--navy); transform: translateY(-2px); }
+.work-card-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 3px;
+  background: var(--sand); color: var(--navy);
+  display: inline-block; margin-bottom: 10px;
+}
+.work-card-tag.green { background: rgba(74,124,90,0.12); color: var(--green); }
+.work-card-tag.amber { background: rgba(200,146,58,0.12); color: var(--yellow2); }
+.work-card-desc { font-size: 13px; color: var(--text); line-height: 1.55; margin-bottom: 12px; }
+.work-card-result {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--navy);
+  padding: 5px 10px; border-radius: 3px;
+  background: var(--yellow); display: inline-block;
+}
+
+/* ─── PAGE SIDE LEAVES ──────────────────────────────────────────── */
+.page-leaf-left,
+.page-leaf-right {
+  position: fixed; top: 0; bottom: 0;
+  width: 68px; pointer-events: none; z-index: 2; overflow: hidden;
+}
+.page-leaf-left  { left: 0; }
+.page-leaf-right { right: 0; }
+.page-leaf-svg { position: absolute; animation: bgDecoFloat 18s ease-in-out infinite; }
+@media (max-width: 1280px) { .page-leaf-left, .page-leaf-right { display: none; } }
+
+@media (max-width: 1100px) {
+  .cap-two-col { grid-template-columns: 1fr; gap: 32px; }
+  .work-cards  { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
   #industries { padding: 44px 24px; }
   section.condensed { padding: 48px 24px; }
+  .work-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .work-cards { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1244,18 +1317,39 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="work" class="condensed">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Selected work</div>
-    <h2 class="section-title reveal">Work that <em>changed</em><br>the direction</h2>
-    <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C — market entry, inventory campaigns, brand relaunches, and taking brands from zero to £30K MRR.</p>
-    <div class="skill-pills reveal">
-      <span class="skill-pill">Market Strategy</span>
-      <span class="skill-pill">Market Entry</span>
-      <span class="skill-pill">D2C Growth</span>
-      <span class="skill-pill">Brand Relaunch</span>
-      <span class="skill-pill">Inventory Campaigns</span>
-      <span class="skill-pill">GTM Planning</span>
-      <span class="skill-pill">Financial Modelling</span>
-      <span class="skill-pill">30% ROAS Uplift</span>
-      <span class="skill-pill">£30K MRR</span>
+    <h2 class="section-title reveal">Work that <em>changed</em> the direction</h2>
+    <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C.</p>
+    <div class="work-cards reveal">
+      <div class="work-card">
+        <span class="work-card-tag">Market Strategy</span>
+        <div class="work-card-desc">Advised Da Milano against tier-2 India expansion after financial modelling showed unviable unit economics.</div>
+        <span class="work-card-result">Saved misdirected capex</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag green">D2C Growth</span>
+        <div class="work-card-desc">Took multiple brands from £0 to £30K MRR on Google &amp; Meta in under five months.</div>
+        <span class="work-card-result">2–3× ROAS · 40% spend saved</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag amber">Market Entry</span>
+        <div class="work-card-desc">India → UAE GTM for multiple brands; financial models, audience strategy, and website briefs.</div>
+        <span class="work-card-result">Full GTM packages delivered</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag green">Inventory &amp; Growth</span>
+        <div class="work-card-desc">Cleared prior-season stock while launching new season simultaneously for Forever New.</div>
+        <span class="work-card-result">30% ROAS uplift · All targets hit</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">Brand Relaunch</span>
+        <div class="work-card-desc">Sequenced a UAE premium brand relaunch: six months awareness-first, then conversion.</div>
+        <span class="work-card-result">Right sequence, right result</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag amber">Portfolio Management</span>
+        <div class="work-card-desc">Managed £170K+/month media across 10+ global brands at Green Honchos.</div>
+        <span class="work-card-result">133% daily revenue uplift</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1263,22 +1357,30 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- CAPABILITIES -->
 <section id="capabilities" class="condensed">
   <div class="section-inner">
-    <div class="section-eyebrow reveal">What I work on</div>
-    <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-    <p class="section-intro reveal">Full-funnel commercial growth — from brand awareness and lead gen to CRO and ecommerce, always strategy first.</p>
-    <div class="skill-pills reveal">
-      <span class="skill-pill">Brand Awareness</span>
-      <span class="skill-pill">Lead Generation</span>
-      <span class="skill-pill">CRO</span>
-      <span class="skill-pill">CPL Optimisation</span>
-      <span class="skill-pill">Ecommerce</span>
-      <span class="skill-pill">Performance Strategy</span>
-      <span class="skill-pill">Google Ads</span>
-      <span class="skill-pill">Meta Ads</span>
-      <span class="skill-pill">HubSpot</span>
-      <span class="skill-pill">LinkedIn Ads</span>
-      <span class="skill-pill">Google Shopping</span>
-      <span class="skill-pill">Financial Modelling</span>
+    <div class="cap-two-col">
+      <div class="cap-text-col">
+        <div class="section-eyebrow reveal">What I work on</div>
+        <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
+        <p class="section-intro reveal">Full-funnel commercial growth — brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
+      </div>
+      <div class="cap-pills-col reveal">
+        <span class="skill-pill hl-navy">Brand Awareness</span>
+        <span class="skill-pill hl-green">Lead Generation</span>
+        <span class="skill-pill hl-amber">CRO</span>
+        <span class="skill-pill hl-green">CPL Optimisation</span>
+        <span class="skill-pill hl-navy">Ecommerce Campaigns</span>
+        <span class="skill-pill hl-amber">Performance Strategy</span>
+        <span class="skill-pill">Google Ads</span>
+        <span class="skill-pill">Meta Ads</span>
+        <span class="skill-pill">HubSpot CRM</span>
+        <span class="skill-pill">LinkedIn Ads</span>
+        <span class="skill-pill">Google Shopping</span>
+        <span class="skill-pill">Financial Modelling</span>
+        <span class="skill-pill">Market Research</span>
+        <span class="skill-pill">GTM Strategy</span>
+        <span class="skill-pill">D2C Strategy</span>
+        <span class="skill-pill">Audience Segmentation</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1498,6 +1600,46 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="deco-sym">✦</div>
   <div class="deco-dot"></div>
   <div class="deco-line"></div>
+</div>
+
+<!-- PAGE SIDE LEAF DECORATIONS -->
+<div class="page-leaf-left" aria-hidden="true">
+  <svg class="page-leaf-svg" style="top:12%;left:4px;width:56px;height:56px;--r:30deg;--op:0.12;animation-delay:0s;animation-duration:14s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
+    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:34%;left:-4px;width:48px;height:48px;--r:-22deg;--op:0.10;animation-delay:4s;animation-duration:20s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.24)" stroke="rgba(74,124,90,0.45)" stroke-width="1.5"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:56%;left:8px;width:42px;height:42px;--r:50deg;--op:0.09;animation-delay:9s;animation-duration:17s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.26)" stroke="rgba(74,124,90,0.48)" stroke-width="1.5"/>
+    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.28)" stroke-width="1"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:76%;left:2px;width:36px;height:36px;--r:-38deg;--op:0.08;animation-delay:13s;animation-duration:22s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.20)" stroke="rgba(200,146,58,0.38)" stroke-width="1.5"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:23%;left:14px;width:28px;height:28px;--r:65deg;--op:0.08;animation-delay:6s;animation-duration:24s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.32)" stroke-width="1.5"/>
+  </svg>
+</div>
+<div class="page-leaf-right" aria-hidden="true">
+  <svg class="page-leaf-svg" style="top:18%;left:6px;width:56px;height:56px;--r:-28deg;--op:0.12;animation-delay:2s;animation-duration:16s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
+    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:42%;left:10px;width:48px;height:48px;--r:20deg;--op:0.10;animation-delay:7s;animation-duration:19s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.24)" stroke="rgba(74,124,90,0.45)" stroke-width="1.5"/>
+    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.28)" stroke-width="1"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:64%;left:4px;width:40px;height:40px;--r:-55deg;--op:0.09;animation-delay:11s;animation-duration:15s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.22)" stroke="rgba(74,124,90,0.42)" stroke-width="1.5"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:82%;left:14px;width:34px;height:34px;--r:40deg;--op:0.08;animation-delay:15s;animation-duration:21s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.34)" stroke-width="1.5"/>
+  </svg>
+  <svg class="page-leaf-svg" style="top:30%;left:2px;width:30px;height:30px;--r:-12deg;--op:0.08;animation-delay:5s;animation-duration:26s;" viewBox="0 0 50 50" fill="none">
+    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.16)" stroke="rgba(200,146,58,0.30)" stroke-width="1.5"/>
+  </svg>
 </div>
 
 <script>

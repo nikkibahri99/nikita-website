@@ -967,6 +967,65 @@ footer {
 }
 .brand-svg-icon { display: block; flex-shrink: 0; }
 @media (max-width: 900px) { .hero-doodles { display: none; } }
+
+/* ─── DECORATIVE BG LEAVES & RETAIL ICONS ──────────────────────── */
+.hero-bg-decos {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
+}
+.bg-deco {
+  position: absolute;
+  animation: bgDecoFloat 16s ease-in-out infinite;
+}
+@keyframes bgDecoFloat {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); opacity: var(--op, 0.06); }
+  50%       { transform: translateY(-22px) rotate(calc(var(--r, 0deg) + 12deg)); opacity: calc(var(--op, 0.06) * 0.6); }
+}
+
+/* ─── INDUSTRIES ────────────────────────────────────────────────── */
+#industries {
+  background: var(--sand);
+  padding: 52px 48px;
+}
+.industries-inner { max-width: 1100px; margin: 0 auto; }
+.industry-tags {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 20px;
+}
+.industry-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 40px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--white); color: var(--navy);
+  border: 1px solid var(--border);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  cursor: default;
+}
+.industry-tag:hover {
+  background: var(--navy); color: var(--white);
+  border-color: var(--navy);
+}
+.ind-icon { font-size: 12px; line-height: 1; }
+
+/* ─── CONDENSED SECTIONS ────────────────────────────────────────── */
+section.condensed { padding: 60px 48px; }
+section.condensed .section-intro { margin-bottom: 16px; max-width: 760px; }
+section.condensed .section-title { margin-bottom: 10px; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 4px;
+  background: var(--sand); color: var(--navy);
+  border: 1px solid var(--border);
+}
+@media (max-width: 900px) {
+  #industries { padding: 44px 24px; }
+  section.condensed { padding: 48px 24px; }
+}
 </style>
 </head>
 <body>
@@ -1047,6 +1106,37 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="hero-bg-decos" aria-hidden="true">
+    <!-- Leaf 1 – top right -->
+    <svg class="bg-deco" style="top:12%;right:12%;width:72px;height:72px;--r:-25deg;--op:0.08;animation-delay:0s;animation-duration:14s;" viewBox="0 0 50 50" fill="none">
+      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.45)" stroke="rgba(74,124,90,0.7)" stroke-width="1.5"/>
+      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.5)" stroke-width="1"/>
+    </svg>
+    <!-- Leaf 2 – bottom left -->
+    <svg class="bg-deco" style="bottom:18%;left:6%;width:55px;height:55px;--r:40deg;--op:0.06;animation-delay:3s;animation-duration:18s;" viewBox="0 0 50 50" fill="none">
+      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.40)" stroke="rgba(74,124,90,0.6)" stroke-width="1.5"/>
+      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.4)" stroke-width="1"/>
+    </svg>
+    <!-- Leaf 3 – mid right -->
+    <svg class="bg-deco" style="top:50%;right:5%;width:44px;height:44px;--r:-10deg;--op:0.05;animation-delay:6s;animation-duration:20s;" viewBox="0 0 50 50" fill="none">
+      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.35)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
+      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
+    </svg>
+    <!-- Small leaf – top centre-left -->
+    <svg class="bg-deco" style="top:30%;left:28%;width:30px;height:30px;--r:55deg;--op:0.05;animation-delay:4s;animation-duration:22s;" viewBox="0 0 50 50" fill="none">
+      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.50)" stroke-width="1.5"/>
+    </svg>
+    <!-- Shopping bag 1 – upper left area -->
+    <svg class="bg-deco" style="top:20%;left:16%;width:50px;height:50px;--r:10deg;--op:0.06;animation-delay:1.5s;animation-duration:16s;" viewBox="0 0 40 44" fill="none">
+      <path d="M6 14 L2 42 L38 42 L34 14 Z" fill="rgba(200,146,58,0.15)" stroke="rgba(200,146,58,0.4)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M14 14 C14 9 17 2 20 2 C23 2 26 9 26 14" stroke="rgba(200,146,58,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <!-- Shopping bag 2 – lower right -->
+    <svg class="bg-deco" style="bottom:25%;right:15%;width:42px;height:42px;--r:-15deg;--op:0.05;animation-delay:8s;animation-duration:13s;" viewBox="0 0 40 44" fill="none">
+      <path d="M6 14 L2 42 L38 42 L34 14 Z" fill="rgba(200,146,58,0.12)" stroke="rgba(200,146,58,0.35)" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M14 14 C14 9 17 2 20 2 C23 2 26 9 26 14" stroke="rgba(200,146,58,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
   <div class="hero-shapes" aria-hidden="true">
     <div class="hs hs-ring" style="width:280px;height:280px;top:-40px;right:80px;animation-duration:12s;animation-delay:0s;"></div>
     <div class="hs hs-ring" style="width:160px;height:160px;bottom:100px;left:40px;animation-duration:9s;animation-delay:2s;border-color:rgba(255,255,255,0.06);"></div>
@@ -1128,132 +1218,77 @@ footer {
   </div>
 </div>
 
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="industries-inner">
+    <div class="section-eyebrow reveal">Sectors</div>
+    <h2 class="section-title reveal">Industries <em>I've worked in</em></h2>
+    <div class="industry-tags reveal">
+      <span class="industry-tag"><span class="ind-icon">🛍️</span>Retail</span>
+      <span class="industry-tag"><span class="ind-icon">💎</span>Jewellery</span>
+      <span class="industry-tag"><span class="ind-icon">👟</span>Footwear</span>
+      <span class="industry-tag"><span class="ind-icon">🍽️</span>Food &amp; Beverage</span>
+      <span class="industry-tag"><span class="ind-icon">💄</span>Makeup &amp; Skincare</span>
+      <span class="industry-tag"><span class="ind-icon">🏡</span>Home Decor</span>
+      <span class="industry-tag"><span class="ind-icon">👜</span>Handbags</span>
+      <span class="industry-tag"><span class="ind-icon">🧴</span>Body Washes</span>
+      <span class="industry-tag"><span class="ind-icon">🏥</span>Healthcare</span>
+      <span class="industry-tag"><span class="ind-icon">⚡</span>Energy</span>
+      <span class="industry-tag"><span class="ind-icon">🌱</span>Renewable Energy</span>
+      <span class="industry-tag"><span class="ind-icon">💻</span>Software &amp; Technology</span>
+    </div>
+  </div>
+</section>
+
 <!-- WORK / CASE STUDIES -->
-<section id="work">
+<section id="work" class="condensed">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Selected work</div>
     <h2 class="section-title reveal">Work that <em>changed</em><br>the direction</h2>
-    <p class="section-intro reveal">Not every brief is what it seems. The most useful thing I do is figure out what the real problem is before deciding how to solve it.</p>
-
-    <div class="cases-grid reveal">
-
-      <div class="case-card featured">
-        <span class="case-arrow">↗</span>
-        <div class="case-num">01</div>
-        <div class="case-category">Market Strategy</div>
-        <div class="case-title">Talked a client out of a bad expansion</div>
-        <div class="case-desc">Da Milano wanted to expand into tier-2 Indian cities. After running the financials, the unit economics did not work. Built the full research case, presented it to the client, and they changed direction. Sometimes the most valuable thing is knowing when not to expand.</div>
-        <span class="case-result">Saved: Misdirected investment in unviable market</span>
-      </div>
-
-      <div class="case-card">
-        <span class="case-arrow">↗</span>
-        <div class="case-num">02</div>
-        <div class="case-category green">Inventory & Growth</div>
-        <div class="case-title">Cleared old stock while launching new</div>
-        <div class="case-desc">Forever New had a backlog of unsold prior-season inventory alongside an upcoming new season launch. Ran both campaigns simultaneously, cleared old stock without hurting the brand or missing targets, and increased ROAS by 30% within the first two months by restructuring their Google Ads and overhauling keyword targeting.</div>
-        <span class="case-result">Result: 30% ROAS uplift · Full inventory cleared · Launch targets hit</span>
-      </div>
-
-      <div class="case-card">
-        <span class="case-arrow">↗</span>
-        <div class="case-num">03</div>
-        <div class="case-category">Market Entry</div>
-        <div class="case-title">India to Dubai: Market Entry</div>
-        <div class="case-desc">Led multiple brands expanding from India into the UAE. For each, I built the financial model, defined audiences and creatives for the Dubai market, and directed the website rebuild using competitor research done in-market. Every project was shaped around the brand's positioning and budget.</div>
-        <span class="case-result">Delivered: GTM plans, financial models, website briefs</span>
-      </div>
-
-      <div class="case-card">
-        <span class="case-arrow">↗</span>
-        <div class="case-num">04</div>
-        <div class="case-category green">Brand Strategy</div>
-        <div class="case-title">Sequenced a relaunch the right way round</div>
-        <div class="case-desc">A premium UAE furniture brand was relaunching after a year offline. Designed a two-phase plan: six months of brand awareness before pushing sales. Sequenced it that way deliberately because pushing conversion too early on a relaunching premium brand rarely works.</div>
-        <span class="case-result">Approach: Awareness first, conversion second</span>
-      </div>
-
-      <div class="case-card">
-        <span class="case-arrow">↗</span>
-        <div class="case-num">05</div>
-        <div class="case-category">D2C Growth</div>
-        <div class="case-title">Zero to £30K in five months</div>
-        <div class="case-desc">At ScaleX, built paid growth strategies on Google and Meta for a portfolio of D2C brands. Took multiple brands from zero to £30K monthly revenue within five months, improving campaign performance by 2 to 3x and cutting wasted spend by around 40%.</div>
-        <span class="case-result">Result: £30K MRR · 2-3x performance · 40% efficiency gain</span>
-      </div>
-
+    <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C — market entry, inventory campaigns, brand relaunches, and taking brands from zero to £30K MRR.</p>
+    <div class="skill-pills reveal">
+      <span class="skill-pill">Market Strategy</span>
+      <span class="skill-pill">Market Entry</span>
+      <span class="skill-pill">D2C Growth</span>
+      <span class="skill-pill">Brand Relaunch</span>
+      <span class="skill-pill">Inventory Campaigns</span>
+      <span class="skill-pill">GTM Planning</span>
+      <span class="skill-pill">Financial Modelling</span>
+      <span class="skill-pill">30% ROAS Uplift</span>
+      <span class="skill-pill">£30K MRR</span>
     </div>
   </div>
 </section>
 
 <!-- CAPABILITIES -->
-<section id="capabilities">
+<section id="capabilities" class="condensed">
   <div class="section-inner">
     <div class="section-eyebrow reveal">What I work on</div>
     <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-    <p class="cap-intro reveal">From launching brands to scaling revenue, I work across the full commercial stack, always starting with strategy before touching tactics.</p>
-    <div class="cap-grid reveal">
-      <div class="cap-card">
-        <div class="cap-icon">📣</div>
-        <div class="cap-title">Brand Awareness</div>
-        <div class="cap-desc">Building top-of-funnel presence across paid social, display, and content, measured in reach, share of voice, and brand search lift.</div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">🎯</div>
-        <div class="cap-title">Lead Generation</div>
-        <div class="cap-desc">Designing and running B2B and B2C lead gen campaigns across Meta, Google, LinkedIn, and HubSpot, with full funnel tracking from click to close.</div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">📈</div>
-        <div class="cap-title">CRO</div>
-        <div class="cap-desc">Improving conversion at every step: landing pages, ad copy, audience segmentation, and bid strategy, turning the same spend into more revenue.</div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">💰</div>
-        <div class="cap-title">CPL Optimisation</div>
-        <div class="cap-desc">Systematically reducing cost per lead through audience refinement, negative keyword management, creative testing, and budget reallocation.</div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">🛒</div>
-        <div class="cap-title">Ecommerce Campaigns</div>
-        <div class="cap-desc">Full-funnel D2C campaigns on Google Shopping, Meta catalogue ads, and dynamic retargeting, from zero revenue to £30K MRR in under five months.</div>
-      </div>
-      <div class="cap-card">
-        <div class="cap-icon">⚡</div>
-        <div class="cap-title">Performance Strategy</div>
-        <div class="cap-desc">Setting up the measurement frameworks and testing cadence that let teams improve consistently: not just running campaigns, but owning results.</div>
-      </div>
+    <p class="section-intro reveal">Full-funnel commercial growth — from brand awareness and lead gen to CRO and ecommerce, always strategy first.</p>
+    <div class="skill-pills reveal">
+      <span class="skill-pill">Brand Awareness</span>
+      <span class="skill-pill">Lead Generation</span>
+      <span class="skill-pill">CRO</span>
+      <span class="skill-pill">CPL Optimisation</span>
+      <span class="skill-pill">Ecommerce</span>
+      <span class="skill-pill">Performance Strategy</span>
+      <span class="skill-pill">Google Ads</span>
+      <span class="skill-pill">Meta Ads</span>
+      <span class="skill-pill">HubSpot</span>
+      <span class="skill-pill">LinkedIn Ads</span>
+      <span class="skill-pill">Google Shopping</span>
+      <span class="skill-pill">Financial Modelling</span>
     </div>
   </div>
 </section>
 
 <!-- SUSTAINABILITY -->
-<section id="sustainability">
+<section id="sustainability" class="condensed">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Sustainability focus</div>
     <h2 class="section-title reveal">Growth that <em>means</em><br>something</h2>
-    <p class="section-intro reveal">I want to work on problems that matter. That means consumer, climate tech, and sustainability, where commercial rigour and purpose point in the same direction.</p>
-
-    <div class="sustain-grid reveal">
-      <div class="sustain-card">
-        <div class="sustain-icon">⚡</div>
-        <div class="sustain-title">Renewable Energy</div>
-        <div class="sustain-desc">Currently building at UrbanChain, a renewable energy startup in Manchester. Building their lead generation engine, HubSpot CRM, website strategy, and PR from scratch.</div>
-        <div class="sustain-tag">Live · UrbanChain</div>
-      </div>
-      <div class="sustain-card">
-        <div class="sustain-icon">🌿</div>
-        <div class="sustain-title">Sustainable Brands</div>
-        <div class="sustain-desc">Drawn to B-Corp brands, purpose-led FMCG, and D2C companies where the product and the mission are aligned. These are the brands I want to help grow.</div>
-        <div class="sustain-tag">Target · FMCG + D2C</div>
-      </div>
-      <div class="sustain-card">
-        <div class="sustain-icon">🤖</div>
-        <div class="sustain-title">AI for Good Work</div>
-        <div class="sustain-desc">I use Claude Code to build automation workflows that make teams faster without burning people out. At UrbanChain I also delivered a framework for how to implement AI correctly: fix the process first, then automate it.</div>
-        <div class="sustain-tag">Skill · Claude Code · AI Workflows</div>
-      </div>
-    </div>
+    <p class="section-intro reveal">Currently building at UrbanChain in renewable energy. I want to work on problems that matter — climate tech, purpose-led consumer brands, and companies where commercial rigour and mission point in the same direction.</p>
   </div>
 </section>
 

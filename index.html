@@ -12,16 +12,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:   #1B2D5B;
-  --navy2:  #0F1A38;
-  --yellow: #F5C842;
-  --yellow2:#E8B820;
-  --cream:  #FAF8F3;
-  --sand:   #EDE8DE;
-  --green:  #2D6A4F;
-  --text:   #1C1917;
-  --muted:  #6B6B5A;
-  --border: #D8D2C2;
+  --navy:   #1C3A2E;
+  --navy2:  #112318;
+  --yellow: #C8923A;
+  --yellow2:#B47A2C;
+  --cream:  #F7F4EE;
+  --sand:   #EAE0CC;
+  --green:  #4A7C5A;
+  --text:   #2C1A0E;
+  --muted:  #6B5840;
+  --border: #D4C9B0;
   --white:  #FFFFFF;
 }
 
@@ -48,7 +48,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 20px 48px;
   display: flex; justify-content: space-between; align-items: center;
-  background: rgba(250,248,243,0.95);
+  background: rgba(247,244,238,0.95);
   backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 var(--border);
   transition: background 0.3s, box-shadow 0.3s;
@@ -103,7 +103,7 @@ nav {
   position: absolute;
   bottom: -160px; right: -120px;
   width: 640px; height: 640px;
-  background: radial-gradient(circle, rgba(245,200,66,0.1) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(200,146,58,0.1) 0%, transparent 65%);
   border-radius: 50%;
   pointer-events: none;
   animation: orbPulse 10s ease-in-out infinite;
@@ -231,13 +231,13 @@ nav {
 .photo-placeholder::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(245,200,66,0.05) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(200,146,58,0.05) 0%, transparent 60%);
 }
 
 .photo-icon {
   width: 64px; height: 64px;
   border-radius: 50%;
-  background: rgba(245,200,66,0.15);
+  background: rgba(200,146,58,0.15);
   display: flex; align-items: center; justify-content: center;
   font-size: 28px;
 }
@@ -267,8 +267,8 @@ nav {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -285,7 +285,7 @@ nav {
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(27,45,91,0.65);
+  color: rgba(28,58,46,0.65);
   margin-top: 4px;
 }
 
@@ -323,7 +323,7 @@ section { padding: 100px 48px; }
 /* ─── WORK / CASE STUDIES ──────────────────────────────────────────── */
 #work {
   background-color: var(--white);
-  background-image: radial-gradient(rgba(27,45,91,0.055) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(28,58,46,0.055) 1px, transparent 1px);
   background-size: 26px 26px;
 }
 
@@ -397,7 +397,7 @@ section { padding: 100px 48px; }
   display: inline-block;
 }
 .case-card.featured .case-result {
-  background: rgba(245,200,66,0.2); color: var(--yellow);
+  background: rgba(200,146,58,0.2); color: var(--yellow);
 }
 
 .case-arrow {
@@ -421,7 +421,7 @@ section { padding: 100px 48px; }
   position: absolute; top: -200px; right: -200px;
   width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,200,66,0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(200,146,58,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -445,7 +445,7 @@ section { padding: 100px 48px; }
 }
 .sustain-card:hover {
   background: rgba(255,255,255,0.08);
-  border-color: rgba(245,200,66,0.3);
+  border-color: rgba(200,146,58,0.3);
 }
 
 .sustain-icon {
@@ -475,7 +475,7 @@ section { padding: 100px 48px; }
 /* ─── EXPERIENCE TIMELINE ──────────────────────────────────────────── */
 #experience {
   background-color: var(--cream);
-  background-image: radial-gradient(rgba(27,45,91,0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(28,58,46,0.07) 1px, transparent 1px);
   background-size: 26px 26px;
 }
 
@@ -538,7 +538,7 @@ section { padding: 100px 48px; }
 /* ─── MBA SECTION ──────────────────────────────────────────────────── */
 #mba {
   background-color: var(--white);
-  background-image: radial-gradient(rgba(27,45,91,0.055) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(28,58,46,0.055) 1px, transparent 1px);
   background-size: 26px 26px;
 }
 
@@ -555,7 +555,7 @@ section { padding: 100px 48px; }
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 .mba-card:hover {
-  box-shadow: 0 8px 32px rgba(27,45,91,0.08);
+  box-shadow: 0 8px 32px rgba(28,58,46,0.08);
   border-color: var(--navy);
 }
 
@@ -605,7 +605,7 @@ section { padding: 100px 48px; }
   margin: 20px 0 14px;
   padding: 16px 20px;
   border-left: 3px solid var(--yellow);
-  background: rgba(245,200,66,0.07);
+  background: rgba(200,146,58,0.07);
   border-radius: 0 6px 6px 0;
   line-height: 1.65;
 }
@@ -662,9 +662,9 @@ section { padding: 100px 48px; }
   flex-shrink: 0; width: 136px;
 }
 .brand-logo-card:hover {
-  box-shadow: 0 6px 24px rgba(27,45,91,0.12);
+  box-shadow: 0 6px 24px rgba(28,58,46,0.12);
   transform: translateY(-4px);
-  border-color: rgba(27,45,91,0.25);
+  border-color: rgba(28,58,46,0.25);
 }
 .brand-logo-icon {
   width: 52px; height: 52px;
@@ -712,7 +712,7 @@ img.brand-real-logo {
   position: absolute; bottom: -150px; left: 50%; transform: translateX(-50%);
   width: 600px; height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245,200,66,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(200,146,58,0.1) 0%, transparent 70%);
   pointer-events: none;
 }
 #contact .section-title { color: white; }
@@ -777,11 +777,11 @@ footer {
   pointer-events: none; z-index: 0; overflow: hidden;
 }
 .hs { position: absolute; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
-.hs-ring { border-radius: 50%; border: 1px solid rgba(245,200,66,0.15); animation-name: hsRing; }
+.hs-ring { border-radius: 50%; border: 1px solid rgba(200,146,58,0.15); animation-name: hsRing; }
 .hs-dot  { border-radius: 50%; background: var(--yellow); animation-name: hsDot; }
 .hs-cross { animation-name: hsDot; }
 .hs-cross::before, .hs-cross::after {
-  content: ''; position: absolute; background: rgba(245,200,66,0.3);
+  content: ''; position: absolute; background: rgba(200,146,58,0.3);
 }
 .hs-cross::before { width: 100%; height: 1px; top: 50%; }
 .hs-cross::after  { width: 1px; height: 100%; left: 50%; }
@@ -856,7 +856,7 @@ footer {
   transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
 }
 .cap-card:hover {
-  box-shadow: 0 6px 20px rgba(27,45,91,0.08);
+  box-shadow: 0 6px 20px rgba(28,58,46,0.08);
   border-color: var(--navy); transform: translateY(-2px);
 }
 .cap-icon { font-size: 26px; margin-bottom: 12px; }
@@ -969,7 +969,7 @@ footer {
   bottom: 52px; left: 14px;
   z-index: 3; pointer-events: none;
   animation: dCharFloat 7s ease-in-out infinite;
-  filter: drop-shadow(0 6px 20px rgba(245,200,66,0.18));
+  filter: drop-shadow(0 6px 20px rgba(200,146,58,0.18));
 }
 @keyframes dCharFloat {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
@@ -1005,7 +1005,7 @@ footer {
   <div class="hero-shapes" aria-hidden="true">
     <div class="hs hs-ring" style="width:280px;height:280px;top:-40px;right:80px;animation-duration:12s;animation-delay:0s;"></div>
     <div class="hs hs-ring" style="width:160px;height:160px;bottom:100px;left:40px;animation-duration:9s;animation-delay:2s;border-color:rgba(255,255,255,0.06);"></div>
-    <div class="hs hs-ring" style="width:440px;height:440px;top:50%;left:38%;transform:translate(-50%,-50%);animation-duration:16s;animation-delay:1s;border-color:rgba(245,200,66,0.06);"></div>
+    <div class="hs hs-ring" style="width:440px;height:440px;top:50%;left:38%;transform:translate(-50%,-50%);animation-duration:16s;animation-delay:1s;border-color:rgba(200,146,58,0.06);"></div>
     <div class="hs hs-dot" style="width:7px;height:7px;top:29%;left:43%;opacity:0.4;animation-duration:6s;animation-delay:0s;"></div>
     <div class="hs hs-dot" style="width:5px;height:5px;top:64%;right:28%;opacity:0.2;animation-duration:8s;animation-delay:3s;"></div>
     <div class="hs hs-dot" style="width:10px;height:10px;bottom:26%;left:15%;background:rgba(255,255,255,0.1);animation-duration:7s;animation-delay:5s;"></div>
@@ -1037,16 +1037,16 @@ footer {
     <div class="hero-doodles" aria-hidden="true">
       <!-- Sparkle stars -->
       <svg class="doodle-spark" style="top:8%;left:6%;animation-delay:0s;animation-duration:10s;" viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 1 L20.5 15.5 L35 18 L20.5 20.5 L18 35 L15.5 20.5 L1 18 L15.5 15.5Z" fill="rgba(245,200,66,0.18)" stroke="rgba(245,200,66,0.65)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M18 1 L20.5 15.5 L35 18 L20.5 20.5 L18 35 L15.5 20.5 L1 18 L15.5 15.5Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.65)" stroke-width="1.5" stroke-linejoin="round"/>
       </svg>
       <svg class="doodle-spark" style="top:18%;right:6%;animation-delay:2.5s;animation-duration:8s;" viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 1 L13.5 10.5 L23 12 L13.5 13.5 L12 23 L10.5 13.5 L1 12 L10.5 10.5Z" fill="rgba(245,200,66,0.28)" stroke="rgba(245,200,66,0.75)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M12 1 L13.5 10.5 L23 12 L13.5 13.5 L12 23 L10.5 13.5 L1 12 L10.5 10.5Z" fill="rgba(200,146,58,0.28)" stroke="rgba(200,146,58,0.75)" stroke-width="1.5" stroke-linejoin="round"/>
       </svg>
       <svg class="doodle-spark" style="bottom:32%;right:10%;animation-delay:4.5s;animation-duration:11s;" viewBox="0 0 28 28" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 1 L16 12 L27 14 L16 16 L14 27 L12 16 L1 14 L12 12Z" fill="rgba(245,200,66,0.15)" stroke="rgba(245,200,66,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M14 1 L16 12 L27 14 L16 16 L14 27 L12 16 L1 14 L12 12Z" fill="rgba(200,146,58,0.15)" stroke="rgba(200,146,58,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
       </svg>
       <svg class="doodle-spark" style="top:55%;left:12%;animation-delay:1.5s;animation-duration:13s;" viewBox="0 0 16 16" width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 1 L9 7 L15 8 L9 9 L8 15 L7 9 L1 8 L7 7Z" fill="rgba(245,200,66,0.5)"/>
+        <path d="M8 1 L9 7 L15 8 L9 9 L8 15 L7 9 L1 8 L7 7Z" fill="rgba(200,146,58,0.5)"/>
       </svg>
       <svg class="doodle-spark" style="top:35%;left:50%;animation-delay:6s;animation-duration:7s;" viewBox="0 0 14 14" width="11" height="11" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7 1 L8 6 L13 7 L8 8 L7 13 L6 8 L1 7 L6 6Z" fill="rgba(255,255,255,0.25)"/>

@@ -617,33 +617,29 @@ section { padding: 100px 48px; }
   display: block; margin-top: 10px;
 }
 
-/* ─── BRANDS ───────────────────────────────────────────────────────── */
+/* ─── BRANDS STICKY TICKER ─────────────────────────────────────────── */
 #brands {
-  background: var(--white);
-  padding: 80px 48px;
+  position: sticky;
+  top: 64px;
+  z-index: 90;
+  margin-top: 64px;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(28,58,46,0.08);
+  padding: 6px 0;
 }
-.brands-inner { max-width: 1100px; margin: 0 auto; }
-.brands-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--yellow2); margin-bottom: 32px;
-  display: flex; align-items: center; gap: 12px;
-}
-.brands-label::after {
-  content: ''; flex: 0 0 40px; height: 1px; background: var(--yellow2);
-}
+.brands-inner { max-width: 100%; margin: 0; padding: 0; }
 .brands-marquee {
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 .brands-track {
   display: flex;
   flex-wrap: nowrap;
-  gap: 14px;
+  gap: 6px;
   width: max-content;
-  animation: brandScroll 45s linear infinite;
+  animation: brandScroll 55s linear infinite;
 }
 .brands-track:hover { animation-play-state: paused; }
 @keyframes brandScroll {
@@ -651,27 +647,26 @@ section { padding: 100px 48px; }
   to   { transform: translateX(-50%); }
 }
 .brand-logo-card {
-  background: var(--cream);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px 12px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 5px 8px 6px;
   display: flex; flex-direction: column;
-  align-items: center; gap: 10px;
-  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  align-items: center; gap: 5px;
+  transition: background 0.2s, border-color 0.2s;
   cursor: default;
-  flex-shrink: 0; width: 136px;
+  flex-shrink: 0; width: 80px;
 }
 .brand-logo-card:hover {
-  box-shadow: 0 6px 24px rgba(28,58,46,0.12);
-  transform: translateY(-4px);
-  border-color: rgba(28,58,46,0.25);
+  background: var(--sand);
+  border-color: var(--border);
 }
 .brand-logo-icon {
-  width: 52px; height: 52px;
-  border-radius: 10px;
+  width: 38px; height: 38px;
+  border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Fraunces', serif;
-  font-size: 14px; font-weight: 900;
+  font-size: 11px; font-weight: 900;
   color: var(--white); flex-shrink: 0;
   letter-spacing: -0.02em;
   position: relative; overflow: hidden;
@@ -680,25 +675,20 @@ section { padding: 100px 48px; }
 img.brand-real-logo {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: contain; padding: 6px;
+  object-fit: contain; padding: 4px;
   background: white; opacity: 0;
   transition: opacity 0.4s;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 .brand-logo-icon.logo-loaded { background: white !important; }
 .brand-logo-icon.logo-loaded img.brand-real-logo { opacity: 1; }
 .brand-logo-name {
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 11px; font-weight: 600;
-  color: var(--navy); letter-spacing: 0.01em;
-  text-align: center; line-height: 1.3;
-}
-.brand-more-card { background: var(--navy); border-color: transparent; }
-.brand-more-card:hover { border-color: var(--yellow2); }
-.brand-more-card .brand-logo-name { color: rgba(255,255,255,0.5); font-style: italic; }
-.brand-more-card .brand-logo-icon {
-  background: rgba(255,255,255,0.08) !important;
-  color: var(--yellow); font-size: 22px;
+  font-size: 9px; font-weight: 600;
+  color: var(--muted); letter-spacing: 0.01em;
+  text-align: center; line-height: 1.2;
+  white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis; max-width: 76px;
 }
 
 /* ─── CONTACT ──────────────────────────────────────────────────────── */
@@ -936,7 +926,7 @@ footer {
   .cases-grid, .sustain-grid, .mba-grid { grid-template-columns: 1fr; }
   .case-card.featured { grid-column: 1; }
   .stats-strip { gap: 40px; padding: 28px 24px; }
-  #brands { padding: 48px 24px; }
+  #brands { top: 56px; padding: 4px 0; }
   #contact { padding: 72px 24px; }
   footer { padding: 20px 24px; }
   .cap-grid { grid-template-columns: 1fr 1fr; }
@@ -976,13 +966,6 @@ footer {
   50%       { transform: translateY(-10px) rotate(1.5deg); }
 }
 .brand-svg-icon { display: block; flex-shrink: 0; }
-.brands-more-text {
-  text-align: center;
-  margin-top: 22px;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--muted); opacity: 0.6;
-}
 @media (max-width: 900px) { .hero-doodles { display: none; } }
 </style>
 </head>
@@ -999,6 +982,68 @@ footer {
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
 </nav>
+
+<!-- BRANDS STICKY TICKER -->
+<div id="brands">
+  <div class="brands-inner">
+    <div class="brands-marquee">
+      <div class="brands-track" id="brands-track">
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#D4728A;">FN<img class="brand-real-logo" src="https://logo.clearbit.com/forevernew.co.uk" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Forever New</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#C0392B;">RB<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Ray-Ban_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Ray-Ban</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#8B6842;">DM<img class="brand-real-logo" src="https://logo.clearbit.com/damilano.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Da Milano</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#9370B0;">BB<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Bath_%26_Body_Works_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Bath &amp; Body Works</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#2E86AB;">AL<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Aldo_Group_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Aldo</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#E07060;">VM<img class="brand-real-logo" src="https://logo.clearbit.com/veromoda.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Vero Moda</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#2D6A4F;">UC<img class="brand-real-logo" src="https://logo.clearbit.com/urbanchain.co.uk" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">UrbanChain</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#1B2D5B;">J&amp;J<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Jack_%26_Jones_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Jack &amp; Jones</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#B8860B;">AJ<img class="brand-real-logo" src="https://www.ajnaajewels.com/cdn/shop/files/Ajnaa_Logo.svg?v=1777368660" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Ajnaa Jewels</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#1565C0;">PA<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Panasonic_logo_%28Blue%29.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Panasonic</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#B52020;">OT<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/en/8/87/Onitsuka_Tiger_Logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Onitsuka Tiger</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#1A237E;">AS<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">ASICS</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#4A7C59;">PHL<img class="brand-real-logo" src="https://www.purehomeandliving.com/cdn/shop/files/1_f61ea0c6-94ab-483a-8d82-8b04832e135e.png?v=1773398664" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Pure Home &amp; Living</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1140,70 +1185,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- BRANDS -->
-<div id="brands">
-  <div class="brands-inner">
-    <div class="brands-label reveal">Brands worked with</div>
-    <div class="brands-marquee reveal">
-      <div class="brands-track" id="brands-track">
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#D4728A;">FN<img class="brand-real-logo" src="https://logo.clearbit.com/forevernew.co.uk" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Forever New</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#C0392B;">RB<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Ray-Ban_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Ray-Ban</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#8B6842;">DM<img class="brand-real-logo" src="https://logo.clearbit.com/damilano.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Da Milano</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#9370B0;">BB<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Bath_%26_Body_Works_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Bath &amp; Body Works</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#2E86AB;">AL<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Aldo_Group_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Aldo</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#E07060;">VM<img class="brand-real-logo" src="https://logo.clearbit.com/veromoda.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Vero Moda</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#2D6A4F;">UC<img class="brand-real-logo" src="https://logo.clearbit.com/urbanchain.co.uk" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">UrbanChain</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#1B2D5B;">J&amp;J<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Jack_%26_Jones_logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Jack &amp; Jones</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#B8860B;">AJ<img class="brand-real-logo" src="https://www.ajnaajewels.com/cdn/shop/files/Ajnaa_Logo.svg?v=1777368660" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Ajnaa Jewels</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#1565C0;">PA<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Panasonic_logo_%28Blue%29.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Panasonic</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#B52020;">OT<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/en/8/87/Onitsuka_Tiger_Logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Onitsuka Tiger</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#1A237E;">AS<img class="brand-real-logo" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Asics_Logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">ASICS</div>
-        </div>
-        <div class="brand-logo-card">
-          <div class="brand-logo-icon" style="background:#4A7C59;">PHL<img class="brand-real-logo" src="https://www.purehomeandliving.com/cdn/shop/files/1_f61ea0c6-94ab-483a-8d82-8b04832e135e.png?v=1773398664" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
-          <div class="brand-logo-name">Pure Home &amp; Living</div>
-        </div>
-      </div>
-    </div>
-    <p class="brands-more-text reveal">& many more</p>
-  </div>
-</div>
 
 <!-- CAPABILITIES -->
 <section id="capabilities">

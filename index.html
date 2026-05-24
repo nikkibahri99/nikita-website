@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nikita Bahri · Commercial Strategy & Growth</title>
 <meta name="description" content="Nikita Bahri, commercial strategist with 5+ years in growth, market entry and D2C. MBA at University of Bath. Currently at UrbanChain.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231C3A2E'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia%2Cserif' font-size='14' font-weight='900' fill='%23C8923A'%3ENB%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nikita-website-chi.vercel.app/">
+<meta property="og:title" content="Nikita Bahri · Commercial Strategy & Growth">
+<meta property="og:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
+<meta property="og:image" content="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nikita Bahri · Commercial Strategy & Growth">
+<meta name="twitter:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
+<meta name="twitter:image" content="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -758,30 +768,8 @@ footer {
   from { opacity: 0; } to { opacity: 1; }
 }
 
-/* ─── HERO FLOATING SHAPES ─────────────────────────────────────────── */
-.hero-shapes {
-  position: absolute; inset: 0;
-  pointer-events: none; z-index: 0; overflow: hidden;
-}
-.hs { position: absolute; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
-.hs-ring { border-radius: 50%; border: 1px solid rgba(200,146,58,0.15); animation-name: hsRing; }
-.hs-dot  { border-radius: 50%; background: var(--yellow); animation-name: hsDot; }
-.hs-cross { animation-name: hsDot; }
-.hs-cross::before, .hs-cross::after {
-  content: ''; position: absolute; background: rgba(200,146,58,0.3);
-}
-.hs-cross::before { width: 100%; height: 1px; top: 50%; }
-.hs-cross::after  { width: 1px; height: 100%; left: 50%; }
-@keyframes hsRing {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50%       { transform: scale(1.1); opacity: 0.25; }
-}
-@keyframes hsDot {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-14px); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .hs, .hero::after { animation: none !important; }
+  .hero::after { animation: none !important; }
 }
 
 /* ─── CERTIFICATES ──────────────────────────────────────────────────── */
@@ -920,40 +908,7 @@ footer {
 .sticky-contact-btn.sc-email { background: var(--yellow); color: var(--navy); }
 .sticky-contact-btn.sc-linkedin { background: var(--navy); color: var(--white); }
 
-/* ─── SIDE DECORATIONS ──────────────────────────────────────────────── */
-.side-deco {
-  position: fixed; left: 18px; top: 50%;
-  transform: translateY(-50%);
-  display: flex; flex-direction: column;
-  align-items: center; gap: 8px;
-  z-index: 5; pointer-events: none; opacity: 0.5;
-}
-.side-deco .deco-line {
-  width: 1px; height: 32px;
-  background: linear-gradient(to bottom, transparent, var(--border), transparent);
-}
-.side-deco .deco-dot {
-  width: 5px; height: 5px; border-radius: 50%;
-  background: var(--yellow2);
-  animation: decoFloat 3s ease-in-out infinite;
-}
-.side-deco .deco-dot:nth-child(even) {
-  background: var(--navy); opacity: 0.4;
-  animation-delay: 1.5s;
-}
-.side-deco .deco-sym {
-  font-size: 9px; color: var(--yellow2); line-height: 1;
-  animation: decoFloat 4s ease-in-out infinite;
-  animation-delay: 0.8s;
-}
-.side-deco .deco-sym.navy { color: var(--navy); opacity: 0.3; }
-@keyframes decoFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
 /* ─── MOBILE ───────────────────────────────────────────────────────── */
-@media (max-width: 1280px) { .side-deco { display: none; } }
 
 @media (max-width: 900px) {
   nav { padding: 16px 20px; }
@@ -979,47 +934,7 @@ footer {
   .cap-grid { grid-template-columns: 1fr; }
 }
 
-/* ─── DOODLE ELEMENTS ──────────────────────────────────────────────── */
-.hero-doodles {
-  position: absolute; inset: 0;
-  pointer-events: none; z-index: 2; overflow: visible;
-}
-.doodle-spark {
-  position: absolute;
-  animation: dSparkFloat 9s ease-in-out infinite;
-}
-@keyframes dSparkFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.65; }
-  40%       { transform: translateY(-14px) rotate(12deg); opacity: 1; }
-  70%       { transform: translateY(5px) rotate(-6deg); opacity: 0.4; }
-}
-.doodle-char-wrap {
-  position: absolute;
-  bottom: 52px; left: 14px;
-  z-index: 3; pointer-events: none;
-  animation: dCharFloat 7s ease-in-out infinite;
-  filter: drop-shadow(0 6px 20px rgba(200,146,58,0.18));
-}
-@keyframes dCharFloat {
-  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-  50%       { transform: translateY(-10px) rotate(1.5deg); }
-}
 .brand-svg-icon { display: block; flex-shrink: 0; }
-@media (max-width: 900px) { .hero-doodles { display: none; } }
-
-/* ─── DECORATIVE BG LEAVES & RETAIL ICONS ──────────────────────── */
-.hero-bg-decos {
-  position: absolute; inset: 0;
-  pointer-events: none; overflow: hidden; z-index: 0;
-}
-.bg-deco {
-  position: absolute;
-  animation: bgDecoFloat 16s ease-in-out infinite;
-}
-@keyframes bgDecoFloat {
-  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); opacity: var(--op, 0.06); }
-  50%       { transform: translateY(-22px) rotate(calc(var(--r, 0deg) + 12deg)); opacity: calc(var(--op, 0.06) * 0.6); }
-}
 
 /* ─── INDUSTRIES ────────────────────────────────────────────────── */
 #industries {
@@ -1111,16 +1026,6 @@ section.condensed .section-title { margin-bottom: 10px; }
   background: var(--yellow); display: inline-block;
 }
 
-/* ─── PAGE SIDE LEAVES ──────────────────────────────────────────── */
-.page-leaf-left,
-.page-leaf-right {
-  position: fixed; top: 0; bottom: 0;
-  width: 68px; pointer-events: none; z-index: 2; overflow: hidden;
-}
-.page-leaf-left  { left: 0; }
-.page-leaf-right { right: 0; }
-.page-leaf-svg { position: absolute; animation: bgDecoFloat 18s ease-in-out infinite; }
-@media (max-width: 1280px) { .page-leaf-left, .page-leaf-right { display: none; } }
 
 @media (max-width: 1100px) {
   .cap-two-col { grid-template-columns: 1fr; gap: 32px; }
@@ -1243,16 +1148,16 @@ section.condensed .section-title { margin-bottom: 10px; }
     </div>
     <div class="hero-ctas">
       <a href="#work" class="btn-primary">See my work</a>
+      <a href="assets/Nikita_Bahri_CV_May26.pdf" download class="btn-ghost">↓ Download CV</a>
       <a href="#contact" class="btn-ghost">Get in touch</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <!-- PHOTO: replace the src below with your hosted image URL -->
-        <img src="" alt="Nikita Bahri" id="hero-photo" style="display:none">
+        <img src="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
         <div class="photo-icon">👩🏻</div>
-        <span class="photo-label">Photo coming soon</span>
+        <span class="photo-label">Loading…</span>
       </div>
     </div>
   </div>
@@ -1311,8 +1216,8 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="work-cards reveal">
       <div class="work-card">
         <span class="work-card-tag">Market Strategy</span>
-        <div class="work-card-desc">Advised Da Milano against tier-2 India expansion after financial modelling showed unviable unit economics.</div>
-        <span class="work-card-result">Saved misdirected capex</span>
+        <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion — recommended against it before capital was committed.</div>
+        <span class="work-card-result">£20K capex protected</span>
       </div>
       <div class="work-card">
         <span class="work-card-tag green">D2C Growth</span>

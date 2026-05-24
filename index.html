@@ -121,8 +121,8 @@ nav {
 
 .hero-eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase;
   color: var(--yellow);
   margin-bottom: 24px;
   opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
@@ -161,16 +161,13 @@ nav {
 
 .tag {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
+  font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   padding: 5px 12px; border-radius: 3px;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.6);
-}
-.tag-yellow {
   background: var(--yellow); color: var(--navy);
-  border-color: var(--yellow); font-weight: 600;
+  border: 1px solid var(--yellow);
 }
+.tag-yellow { background: var(--yellow); color: var(--navy); border-color: var(--yellow); }
 
 .hero-ctas {
   display: flex; gap: 14px; flex-wrap: wrap;
@@ -295,8 +292,8 @@ section { padding: 100px 48px; }
 
 .section-eyebrow {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--yellow2);
   margin-bottom: 14px;
   display: flex; align-items: center; gap: 12px;
@@ -1038,17 +1035,14 @@ footer {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 8px 16px; border-radius: 40px;
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
+  font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
-  background: var(--white); color: var(--navy);
-  border: 1px solid var(--border);
+  background: rgba(200,146,58,0.14); color: var(--navy);
+  border: 1.5px solid rgba(200,146,58,0.45);
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: default;
 }
-.industry-tag:hover {
-  background: var(--navy); color: var(--white);
-  border-color: var(--navy);
-}
+.industry-tag:hover { background: var(--yellow); border-color: var(--yellow); }
 .ind-icon { font-size: 12px; line-height: 1; }
 
 /* ─── CONDENSED SECTIONS ────────────────────────────────────────── */
@@ -1058,19 +1052,18 @@ section.condensed .section-title { margin-bottom: 10px; }
 .skill-pills { display: flex; flex-wrap: wrap; gap: 10px; }
 .skill-pill {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
+  font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
   padding: 8px 18px; border-radius: 6px;
-  background: var(--white); color: var(--navy);
-  border: 1.5px solid var(--border);
-  box-shadow: 0 2px 6px rgba(28,58,46,0.06);
+  background: rgba(200,146,58,0.14); color: var(--navy);
+  border: 1.5px solid rgba(200,146,58,0.45);
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
   cursor: default;
 }
-.skill-pill:hover { background: var(--navy); color: var(--white); border-color: var(--navy); transform: translateY(-2px); }
-.skill-pill.hl-green { background: rgba(74,124,90,0.1); border-color: rgba(74,124,90,0.45); color: var(--green); }
-.skill-pill.hl-amber { background: rgba(200,146,58,0.1); border-color: rgba(200,146,58,0.5); color: var(--yellow2); }
-.skill-pill.hl-navy  { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.skill-pill:hover { background: var(--yellow); border-color: var(--yellow); transform: translateY(-2px); }
+.skill-pill.hl-green, .skill-pill.hl-amber, .skill-pill.hl-navy {
+  background: rgba(200,146,58,0.14); color: var(--navy); border-color: rgba(200,146,58,0.45);
+}
 
 /* ─── CAPABILITIES TWO-COLUMN ───────────────────────────────────── */
 .cap-two-col {
@@ -1104,11 +1097,11 @@ section.condensed .section-title { margin-bottom: 10px; }
   font-size: 9px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 9px; border-radius: 3px;
-  background: var(--sand); color: var(--navy);
+  background: rgba(200,146,58,0.15); color: var(--navy);
+  border: 1px solid rgba(200,146,58,0.4);
   display: inline-block; margin-bottom: 10px;
 }
-.work-card-tag.green { background: rgba(74,124,90,0.12); color: var(--green); }
-.work-card-tag.amber { background: rgba(200,146,58,0.12); color: var(--yellow2); }
+.work-card-tag.green, .work-card-tag.amber { background: rgba(200,146,58,0.15); color: var(--navy); border-color: rgba(200,146,58,0.4); }
 .work-card-desc { font-size: 13px; color: var(--text); line-height: 1.55; margin-bottom: 12px; }
 .work-card-result {
   font-family: 'DM Mono', monospace;
@@ -1214,6 +1207,18 @@ section.condensed .section-title { margin-bottom: 10px; }
           <div class="brand-logo-icon" style="background:#4A7C59;">PHL<img class="brand-real-logo" src="https://www.purehomeandliving.com/cdn/shop/files/1_f61ea0c6-94ab-483a-8d82-8b04832e135e.png?v=1773398664" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
           <div class="brand-logo-name">Pure Home &amp; Living</div>
         </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#2C2C2C;">ON<img class="brand-real-logo" src="https://logo.clearbit.com/only.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Only</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#E85D26;">RA<img class="brand-real-logo" src="https://mir-s3-cdn-cf.behance.net/projects/404/26f2a4184151691.654c72131690b.png" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Ranveer Allahbadia</div>
+        </div>
+        <div class="brand-logo-card">
+          <div class="brand-logo-icon" style="background:#1A1A1A;">C&amp;K<img class="brand-real-logo" src="https://logo.clearbit.com/charleskeith.com" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
+          <div class="brand-logo-name">Charles &amp; Keith</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1221,49 +1226,8 @@ section.condensed .section-title { margin-bottom: 10px; }
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg-decos" aria-hidden="true">
-    <!-- Leaf 1 – top right -->
-    <svg class="bg-deco" style="top:12%;right:12%;width:72px;height:72px;--r:-25deg;--op:0.08;animation-delay:0s;animation-duration:14s;" viewBox="0 0 50 50" fill="none">
-      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.45)" stroke="rgba(74,124,90,0.7)" stroke-width="1.5"/>
-      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.5)" stroke-width="1"/>
-    </svg>
-    <!-- Leaf 2 – bottom left -->
-    <svg class="bg-deco" style="bottom:18%;left:6%;width:55px;height:55px;--r:40deg;--op:0.06;animation-delay:3s;animation-duration:18s;" viewBox="0 0 50 50" fill="none">
-      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.40)" stroke="rgba(74,124,90,0.6)" stroke-width="1.5"/>
-      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.4)" stroke-width="1"/>
-    </svg>
-    <!-- Leaf 3 – mid right -->
-    <svg class="bg-deco" style="top:50%;right:5%;width:44px;height:44px;--r:-10deg;--op:0.05;animation-delay:6s;animation-duration:20s;" viewBox="0 0 50 50" fill="none">
-      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.35)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
-      <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
-    </svg>
-    <!-- Small leaf – top centre-left -->
-    <svg class="bg-deco" style="top:30%;left:28%;width:30px;height:30px;--r:55deg;--op:0.05;animation-delay:4s;animation-duration:22s;" viewBox="0 0 50 50" fill="none">
-      <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.50)" stroke-width="1.5"/>
-    </svg>
-    <!-- Shopping bag 1 – upper left area -->
-    <svg class="bg-deco" style="top:20%;left:16%;width:50px;height:50px;--r:10deg;--op:0.06;animation-delay:1.5s;animation-duration:16s;" viewBox="0 0 40 44" fill="none">
-      <path d="M6 14 L2 42 L38 42 L34 14 Z" fill="rgba(200,146,58,0.15)" stroke="rgba(200,146,58,0.4)" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M14 14 C14 9 17 2 20 2 C23 2 26 9 26 14" stroke="rgba(200,146,58,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    </svg>
-    <!-- Shopping bag 2 – lower right -->
-    <svg class="bg-deco" style="bottom:25%;right:15%;width:42px;height:42px;--r:-15deg;--op:0.05;animation-delay:8s;animation-duration:13s;" viewBox="0 0 40 44" fill="none">
-      <path d="M6 14 L2 42 L38 42 L34 14 Z" fill="rgba(200,146,58,0.12)" stroke="rgba(200,146,58,0.35)" stroke-width="1.5" stroke-linejoin="round"/>
-      <path d="M14 14 C14 9 17 2 20 2 C23 2 26 9 26 14" stroke="rgba(200,146,58,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    </svg>
-  </div>
-  <div class="hero-shapes" aria-hidden="true">
-    <div class="hs hs-ring" style="width:280px;height:280px;top:-40px;right:80px;animation-duration:12s;animation-delay:0s;"></div>
-    <div class="hs hs-ring" style="width:160px;height:160px;bottom:100px;left:40px;animation-duration:9s;animation-delay:2s;border-color:rgba(255,255,255,0.06);"></div>
-    <div class="hs hs-ring" style="width:440px;height:440px;top:50%;left:38%;transform:translate(-50%,-50%);animation-duration:16s;animation-delay:1s;border-color:rgba(200,146,58,0.06);"></div>
-    <div class="hs hs-dot" style="width:7px;height:7px;top:29%;left:43%;opacity:0.4;animation-duration:6s;animation-delay:0s;"></div>
-    <div class="hs hs-dot" style="width:5px;height:5px;top:64%;right:28%;opacity:0.2;animation-duration:8s;animation-delay:3s;"></div>
-    <div class="hs hs-dot" style="width:10px;height:10px;bottom:26%;left:15%;background:rgba(255,255,255,0.1);animation-duration:7s;animation-delay:5s;"></div>
-    <div class="hs hs-cross" style="width:20px;height:20px;top:42%;right:22%;animation-duration:10s;animation-delay:2s;"></div>
-    <div class="hs hs-cross" style="width:14px;height:14px;bottom:32%;left:33%;animation-duration:13s;animation-delay:4s;opacity:0.5;"></div>
-  </div>
   <div class="hero-left">
-    <div class="hero-eyebrow">MBA · University of Bath · Full Scholarship</div>
+    <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Growth</h1>
     <p class="hero-desc">
       I help organisations turn data into strategy and strategy into sustainable growth.
@@ -1283,25 +1247,6 @@ section.condensed .section-title { margin-bottom: 10px; }
     </div>
   </div>
   <div class="hero-right">
-    <!-- Doodle decorations -->
-    <div class="hero-doodles" aria-hidden="true">
-      <!-- Sparkle stars -->
-      <svg class="doodle-spark" style="top:8%;left:6%;animation-delay:0s;animation-duration:10s;" viewBox="0 0 36 36" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 1 L20.5 15.5 L35 18 L20.5 20.5 L18 35 L15.5 20.5 L1 18 L15.5 15.5Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.65)" stroke-width="1.5" stroke-linejoin="round"/>
-      </svg>
-      <svg class="doodle-spark" style="top:18%;right:6%;animation-delay:2.5s;animation-duration:8s;" viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 1 L13.5 10.5 L23 12 L13.5 13.5 L12 23 L10.5 13.5 L1 12 L10.5 10.5Z" fill="rgba(200,146,58,0.28)" stroke="rgba(200,146,58,0.75)" stroke-width="1.5" stroke-linejoin="round"/>
-      </svg>
-      <svg class="doodle-spark" style="bottom:32%;right:10%;animation-delay:4.5s;animation-duration:11s;" viewBox="0 0 28 28" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 1 L16 12 L27 14 L16 16 L14 27 L12 16 L1 14 L12 12Z" fill="rgba(200,146,58,0.15)" stroke="rgba(200,146,58,0.55)" stroke-width="1.5" stroke-linejoin="round"/>
-      </svg>
-      <svg class="doodle-spark" style="top:55%;left:12%;animation-delay:1.5s;animation-duration:13s;" viewBox="0 0 16 16" width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 1 L9 7 L15 8 L9 9 L8 15 L7 9 L1 8 L7 7Z" fill="rgba(200,146,58,0.5)"/>
-      </svg>
-      <svg class="doodle-spark" style="top:35%;left:50%;animation-delay:6s;animation-duration:7s;" viewBox="0 0 14 14" width="11" height="11" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 1 L8 6 L13 7 L8 8 L7 13 L6 8 L1 7 L6 6Z" fill="rgba(255,255,255,0.25)"/>
-      </svg>
-    </div>
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
         <!-- PHOTO: replace the src below with your hosted image URL -->
@@ -1405,7 +1350,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="cap-text-col">
         <div class="section-eyebrow reveal">What I work on</div>
         <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-        <p class="section-intro reveal">Full-funnel commercial growth — brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
+        <p class="section-intro reveal">Full-funnel commercial growth: brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
       </div>
       <div class="cap-pills-col reveal">
         <span class="skill-pill hl-navy">Brand Awareness</span>
@@ -1433,8 +1378,8 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="sustainability" class="condensed">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Sustainability focus</div>
-    <h2 class="section-title reveal">Growth that <em>means</em><br>something</h2>
-    <p class="section-intro reveal">Currently building at UrbanChain in renewable energy. I want to work on problems that matter — climate tech, purpose-led consumer brands, and companies where commercial rigour and mission point in the same direction.</p>
+    <h2 class="section-title reveal">Growth that <em>means</em> something</h2>
+    <p class="section-intro reveal">Currently building at UrbanChain in renewable energy. I want to work on problems that matter: climate tech, purpose-led consumer brands, and companies where commercial rigour and mission point in the same direction.</p>
   </div>
 </section>
 
@@ -1442,7 +1387,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="experience">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Career</div>
-    <h2 class="section-title reveal">Five years <em>building</em><br>commercial things</h2>
+    <h2 class="section-title reveal">Five years <em>building</em> commercial things</h2>
 
     <div class="timeline reveal">
 
@@ -1480,7 +1425,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="tl-date">Nov 2023 – Aug 2024</div>
         <div class="tl-role">Assistant Manager, Digital Marketing</div>
         <div class="tl-company">Green Honchos · India</div>
-        <div class="tl-desc">Managed commercial and marketing strategy for 10+ global brands including Forever New, Da Milano, and Ray-Ban. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as main senior client contact for financial planning and strategy. Contributed to a 133% increase in daily portfolio revenue.</div>
+        <div class="tl-desc">Managed commercial and marketing strategy for 10+ global brands including Forever New, Da Milano, and Ray-Ban. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as main senior client contact for financial planning and strategy. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
         <div class="tl-tags">
           <span class="tl-tag">£170K Media Budget</span>
           <span class="tl-tag">Team Leadership</span>
@@ -1522,7 +1467,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="mba">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Education</div>
-    <h2 class="section-title reveal">MBA · University of Bath<br><em>Full scholarship, 2025-2026</em></h2>
+    <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
     <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
 
     <div class="mba-grid reveal">
@@ -1585,7 +1530,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             <img src="assets/certs/best-pitch.webp" alt="Best Pitch Award certificate">
           </div>
           <div class="cert-meta">
-            <div class="cert-name">Best Pitch Award — FreshTrack</div>
+            <div class="cert-name">Best Pitch Award · FreshTrack</div>
             <div class="cert-issuer">University of Bath · 2026</div>
           </div>
         </div>
@@ -1616,7 +1561,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="contact">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Get in touch</div>
-    <h2 class="section-title reveal">Open to the right<br><em>conversation</em></h2>
+    <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
     <p class="section-intro reveal">Looking for roles in commercial strategy, growth, or consulting, ideally in sustainability, consumer, or climate tech, in the UK or Dubai. If that sounds like a fit, get in touch.</p>
     <div class="contact-links reveal">
       <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
@@ -1645,68 +1590,12 @@ section.condensed .section-title { margin-bottom: 10px; }
   </a>
 </div>
 
-<!-- SIDE DECORATIONS (left side, wide screens only) -->
-<div class="side-deco" aria-hidden="true">
-  <div class="deco-line"></div>
-  <div class="deco-dot"></div>
-  <div class="deco-sym">✦</div>
-  <div class="deco-dot"></div>
-  <div class="deco-line"></div>
-  <div class="deco-dot"></div>
-  <div class="deco-sym navy">◆</div>
-  <div class="deco-dot"></div>
-  <div class="deco-line"></div>
-  <div class="deco-dot"></div>
-  <div class="deco-sym">✦</div>
-  <div class="deco-dot"></div>
-  <div class="deco-line"></div>
-</div>
-
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview">
   <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
   <img class="lightbox-img" id="lightbox-img" src="" alt="">
 </div>
 
-<!-- PAGE SIDE LEAF DECORATIONS -->
-<div class="page-leaf-left" aria-hidden="true">
-  <svg class="page-leaf-svg" style="top:12%;left:4px;width:56px;height:56px;--r:30deg;--op:0.12;animation-delay:0s;animation-duration:14s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
-    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:34%;left:-4px;width:48px;height:48px;--r:-22deg;--op:0.10;animation-delay:4s;animation-duration:20s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.24)" stroke="rgba(74,124,90,0.45)" stroke-width="1.5"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:56%;left:8px;width:42px;height:42px;--r:50deg;--op:0.09;animation-delay:9s;animation-duration:17s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.26)" stroke="rgba(74,124,90,0.48)" stroke-width="1.5"/>
-    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.28)" stroke-width="1"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:76%;left:2px;width:36px;height:36px;--r:-38deg;--op:0.08;animation-delay:13s;animation-duration:22s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.20)" stroke="rgba(200,146,58,0.38)" stroke-width="1.5"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:23%;left:14px;width:28px;height:28px;--r:65deg;--op:0.08;animation-delay:6s;animation-duration:24s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.32)" stroke-width="1.5"/>
-  </svg>
-</div>
-<div class="page-leaf-right" aria-hidden="true">
-  <svg class="page-leaf-svg" style="top:18%;left:6px;width:56px;height:56px;--r:-28deg;--op:0.12;animation-delay:2s;animation-duration:16s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.30)" stroke="rgba(74,124,90,0.55)" stroke-width="1.5"/>
-    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.35)" stroke-width="1"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:42%;left:10px;width:48px;height:48px;--r:20deg;--op:0.10;animation-delay:7s;animation-duration:19s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.24)" stroke="rgba(74,124,90,0.45)" stroke-width="1.5"/>
-    <line x1="25" y1="5" x2="25" y2="44" stroke="rgba(74,124,90,0.28)" stroke-width="1"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:64%;left:4px;width:40px;height:40px;--r:-55deg;--op:0.09;animation-delay:11s;animation-duration:15s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(74,124,90,0.22)" stroke="rgba(74,124,90,0.42)" stroke-width="1.5"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:82%;left:14px;width:34px;height:34px;--r:40deg;--op:0.08;animation-delay:15s;animation-duration:21s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.18)" stroke="rgba(200,146,58,0.34)" stroke-width="1.5"/>
-  </svg>
-  <svg class="page-leaf-svg" style="top:30%;left:2px;width:30px;height:30px;--r:-12deg;--op:0.08;animation-delay:5s;animation-duration:26s;" viewBox="0 0 50 50" fill="none">
-    <path d="M25 44 C25 44 6 30 6 16 C6 8 14 3 25 5 C36 3 44 8 44 16 C44 30 25 44 25 44Z" fill="rgba(200,146,58,0.16)" stroke="rgba(200,146,58,0.30)" stroke-width="1.5"/>
-  </svg>
-</div>
 
 <script>
 // Clone brand items into same track for seamless infinite marquee

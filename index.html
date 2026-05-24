@@ -1040,16 +1040,25 @@ section.condensed .section-title { margin-bottom: 10px; }
   .work-cards { grid-template-columns: 1fr; }
 }
 
+/* ─── MBA INTRO TWO-COL ─────────────────────────────────────────────── */
+.mba-intro-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  margin-bottom: 48px;
+}
+.mba-intro-text .section-title { font-size: clamp(22px, 2.8vw, 36px); }
+.mba-intro-text .section-intro { margin-bottom: 0; }
+
 /* ─── MBA PRESENTING PHOTO ──────────────────────────────────────────── */
 .mba-presenting {
-  margin: 32px 0 40px;
   border-radius: 10px;
   overflow: hidden;
-  max-width: 640px;
 }
 .mba-presenting img {
   width: 100%; display: block;
-  max-height: 380px;
+  max-height: 420px;
   object-fit: cover; object-position: center 65%;
   border-radius: 10px;
 }
@@ -1058,6 +1067,9 @@ section.condensed .section-title { margin-bottom: 10px; }
   font-size: 10px; color: var(--muted);
   letter-spacing: 0.08em; text-transform: uppercase;
   margin-top: 8px;
+}
+@media (max-width: 900px) {
+  .mba-intro-col { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* ─── CONTACT TWO-COL ───────────────────────────────────────────────── */
@@ -1413,13 +1425,16 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- MBA -->
 <section id="mba">
   <div class="section-inner">
-    <div class="section-eyebrow reveal">Education</div>
-    <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
-    <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
-
-    <div class="mba-presenting reveal">
-      <img src="https://i.ibb.co/YThLsr7M/image.png" alt="Nikita presenting at University of Bath">
-      <div class="mba-photo-caption">Presenting at University of Bath · MBA 2026</div>
+    <div class="mba-intro-col">
+      <div class="mba-intro-text">
+        <div class="section-eyebrow reveal">Education</div>
+        <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
+        <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
+      </div>
+      <div class="mba-presenting reveal">
+        <img src="https://i.ibb.co/YThLsr7M/image.png" alt="Nikita presenting at University of Bath">
+        <div class="mba-photo-caption">Presenting at University of Bath · MBA 2026</div>
+      </div>
     </div>
 
     <div class="mba-grid reveal">

@@ -834,6 +834,36 @@ footer {
   font-size: 10px; color: var(--muted); letter-spacing: 0.06em;
 }
 
+/* ─── LIGHTBOX ──────────────────────────────────────────────────── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(17,35,24,0.92);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-img {
+  max-width: min(90vw, 900px);
+  max-height: 88vh;
+  border-radius: 10px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+  transform: scale(0.92);
+  transition: transform 0.25s ease;
+  object-fit: contain;
+}
+.lightbox.open .lightbox-img { transform: scale(1); }
+.lightbox-close {
+  position: absolute; top: 20px; right: 24px;
+  font-size: 32px; color: rgba(255,255,255,0.65);
+  cursor: pointer; background: none; border: none;
+  line-height: 1; transition: color 0.2s, transform 0.2s;
+}
+.lightbox-close:hover { color: white; transform: scale(1.15); }
+.cert-card { cursor: pointer; }
+
 .reveal {
   opacity: 0; transform: translateY(24px);
   transition: opacity 0.65s ease, transform 0.65s ease;
@@ -1541,7 +1571,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="certs-section reveal">
       <div class="certs-label">Certificates &amp; Awards</div>
       <div class="certs-grid">
-        <div class="cert-card">
+        <div class="cert-card" data-cert="assets/certs/claude-code.png" data-cert-alt="Claude Code in Action certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/claude-code.png" alt="Claude Code in Action certificate">
           </div>
@@ -1550,7 +1580,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             <div class="cert-issuer">Anthropic · 2026</div>
           </div>
         </div>
-        <div class="cert-card">
+        <div class="cert-card" data-cert="assets/certs/best-pitch.webp" data-cert-alt="Best Pitch Award certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/best-pitch.webp" alt="Best Pitch Award certificate">
           </div>
@@ -1559,7 +1589,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             <div class="cert-issuer">University of Bath · 2026</div>
           </div>
         </div>
-        <div class="cert-card">
+        <div class="cert-card" data-cert="assets/certs/sustainability-sim.webp" data-cert-alt="SustainabilitySim certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/sustainability-sim.webp" alt="SustainabilitySim certificate">
           </div>
@@ -1568,7 +1598,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             <div class="cert-issuer">SustainabilitySim · 2026</div>
           </div>
         </div>
-        <div class="cert-card">
+        <div class="cert-card" data-cert="assets/certs/loreal-brandstorm.webp" data-cert-alt="L'Oréal Brandstorm 2026 certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/loreal-brandstorm.webp" alt="L'Oréal Brandstorm 2026 certificate">
           </div>
@@ -1630,6 +1660,12 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="deco-sym">✦</div>
   <div class="deco-dot"></div>
   <div class="deco-line"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
 </div>
 
 <!-- PAGE SIDE LEAF DECORATIONS -->
@@ -1702,6 +1738,29 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
 reveals.forEach(el => io.observe(el));
+
+// Certificate lightbox
+const lightbox     = document.getElementById('lightbox');
+const lightboxImg  = document.getElementById('lightbox-img');
+const lightboxClose = document.getElementById('lightbox-close');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.cert-card[data-cert]').forEach(card => {
+  card.addEventListener('click', () => openLightbox(card.dataset.cert, card.dataset.certAlt));
+});
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 // Smooth nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {

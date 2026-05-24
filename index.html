@@ -486,60 +486,55 @@ section { padding: 100px 48px; }
   background-size: 26px 26px;
 }
 
-.timeline { position: relative; padding-left: 32px; }
-.timeline::before {
-  content: '';
-  position: absolute; left: 8px; top: 8px; bottom: 8px;
-  width: 2px; background: var(--border);
-}
+.timeline { display: flex; flex-direction: column; gap: 14px; margin-top: 40px; }
 
 .tl-item {
-  position: relative; margin-bottom: 48px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 10px; padding: 24px 28px;
+  transition: box-shadow 0.2s, transform 0.2s, border-left-color 0.2s;
 }
-.tl-item:last-child { margin-bottom: 0; }
+.tl-item:hover {
+  box-shadow: 0 6px 24px rgba(28,58,46,0.08);
+  transform: translateX(4px);
+}
+.tl-item.current-role { border-left-color: var(--yellow); }
 
-.tl-dot {
-  position: absolute; left: -28px; top: 6px;
-  width: 12px; height: 12px; border-radius: 50%;
-  background: var(--navy); border: 2px solid var(--cream);
-  box-shadow: 0 0 0 2px var(--border);
+.tl-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 16px; margin-bottom: 12px;
 }
-.tl-dot.current {
-  background: var(--yellow);
-  box-shadow: 0 0 0 2px var(--yellow), 0 0 0 4px var(--cream);
+.tl-company {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
 }
-
+.tl-location {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px; font-weight: 400; color: var(--muted);
+}
+.tl-role { font-size: 14px; font-weight: 600; color: var(--muted); margin-top: 3px; }
 .tl-date {
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 6px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--navy); padding: 4px 10px;
+  background: var(--sand); border-radius: 3px;
+  white-space: nowrap; flex-shrink: 0;
 }
+.tl-item.current-role .tl-date { background: var(--yellow); color: var(--navy); }
 
-.tl-role {
-  font-family: 'Fraunces', serif;
-  font-size: 20px; font-weight: 700;
-  color: var(--navy); letter-spacing: -0.01em;
-  margin-bottom: 2px;
-}
+.tl-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
 
-.tl-company {
-  font-size: 14px; color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.tl-desc {
-  font-size: 14px; color: var(--text);
-  line-height: 1.65; max-width: 620px;
-}
-
-.tl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tl-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .tl-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
   padding: 3px 9px; border-radius: 3px;
   background: var(--sand); color: var(--muted);
+  border: 1px solid var(--border);
 }
 
 /* ─── MBA SECTION ──────────────────────────────────────────────────── */
@@ -1008,15 +1003,13 @@ section.condensed .section-title { margin-bottom: 10px; }
 }
 .work-card:hover { box-shadow: 0 6px 20px rgba(28,58,46,0.09); border-color: var(--navy); transform: translateY(-2px); }
 .work-card-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 3px 9px; border-radius: 3px;
-  background: rgba(200,146,58,0.15); color: var(--navy);
-  border: 1px solid rgba(200,146,58,0.4);
-  display: inline-block; margin-bottom: 10px;
+  font-family: 'Fraunces', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--navy); letter-spacing: -0.01em;
+  display: block; margin-bottom: 10px;
+  background: none; border: none; padding: 0;
 }
-.work-card-tag.green, .work-card-tag.amber { background: rgba(200,146,58,0.15); color: var(--navy); border-color: rgba(200,146,58,0.4); }
+.work-card-tag.green, .work-card-tag.amber { background: none; color: var(--navy); border: none; }
 .work-card-desc { font-size: 13px; color: var(--text); line-height: 1.55; margin-bottom: 12px; }
 .work-card-result {
   font-family: 'DM Mono', monospace;
@@ -1102,8 +1095,8 @@ section.condensed .section-title { margin-bottom: 10px; }
   <a href="#" class="nav-logo">Nikita <span>Bahri</span></a>
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
-    <li><a href="#sustainability">Sustainability</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#mba">MBA</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
@@ -1228,7 +1221,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="stat-label">Monthly media managed</div>
   </div>
   <div class="stat">
-    <div class="stat-num">10+</div>
+    <div class="stat-num">16+</div>
     <div class="stat-label">Global brands</div>
   </div>
   <div class="stat">
@@ -1236,6 +1229,176 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="stat-label">Revenue uplift delivered</div>
   </div>
 </div>
+
+<!-- WORK / CASE STUDIES -->
+<section id="work" class="condensed">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Selected work</div>
+    <h2 class="section-title reveal">Work that <em>changed</em> the direction</h2>
+    <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C.</p>
+    <div class="work-cards reveal">
+      <div class="work-card">
+        <span class="work-card-tag">Market Strategy</span>
+        <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion — recommended against it before capital was committed.</div>
+        <span class="work-card-result">£20K capex protected</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">D2C Growth</span>
+        <div class="work-card-desc">Took multiple brands from £0 to £30K MRR on Google &amp; Meta in under five months.</div>
+        <span class="work-card-result">2–3× ROAS · 40% spend saved</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">Market Entry</span>
+        <div class="work-card-desc">India → UAE GTM for multiple brands: financial models, target audience definition, website briefs, and full brand stories.</div>
+        <span class="work-card-result">End-to-end GTM delivered</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">Brand Launch</span>
+        <div class="work-card-desc">Led end-to-end launches for new brands: audience identification, brand positioning, creative direction, website builds, and budget planning from scratch.</div>
+        <span class="work-card-result">Multiple brands live from zero</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">Inventory &amp; Growth</span>
+        <div class="work-card-desc">Cleared prior-season stock while launching new season simultaneously for Forever New.</div>
+        <span class="work-card-result">30% ROAS uplift · All targets hit</span>
+      </div>
+      <div class="work-card">
+        <span class="work-card-tag">Portfolio Management</span>
+        <div class="work-card-desc">Managed £170K+/month media across 16+ global brands at Green Honchos as top-performing manager.</div>
+        <span class="work-card-result">133% daily revenue uplift</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow reveal">Career</div>
+    <h2 class="section-title reveal">Five years <em>building</em> commercial things</h2>
+
+    <div class="timeline reveal">
+
+      <div class="tl-item current-role">
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">UrbanChain <span class="tl-location">· Renewable Energy · Remote</span></div>
+            <div class="tl-role">Growth Associate</div>
+          </div>
+          <div class="tl-date">Apr 2026 – Present</div>
+        </div>
+        <div class="tl-desc">Building the commercial growth function from scratch. HubSpot CRM setup, lead acquisition strategy, website conversion, PR strategy, and AI automation workflows. Also delivered UrbanChain's go-to-market plan as part of my MBA Consultancy Project.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">HubSpot</span>
+          <span class="tl-tag">Lead Gen</span>
+          <span class="tl-tag">CRO</span>
+          <span class="tl-tag">PR Strategy</span>
+          <span class="tl-tag">Claude Code</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">ScaleX <span class="tl-location">· Remote</span></div>
+            <div class="tl-role">Performance Strategist</div>
+          </div>
+          <div class="tl-date">Dec 2024 – Sep 2025</div>
+        </div>
+        <div class="tl-desc">Led end-to-end brand launches for D2C clients — audience definition, brand positioning, creative direction, website briefs, and media budget planning. Ran paid growth on Google and Meta, taking multiple brands from zero to £30K MRR in under five months with 2 to 3x campaign performance improvement and 40% reduction in wasted spend.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Brand Launch</span>
+          <span class="tl-tag">Google Ads</span>
+          <span class="tl-tag">Meta Ads</span>
+          <span class="tl-tag">D2C</span>
+          <span class="tl-tag">Performance Marketing</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Green Honchos <span class="tl-location">· India</span></div>
+            <div class="tl-role">Assistant Manager, Digital Marketing</div>
+          </div>
+          <div class="tl-date">Nov 2023 – Aug 2024</div>
+        </div>
+        <div class="tl-desc">Managed commercial and marketing strategy for 16+ global brands including Forever New, Da Milano, and Ray-Ban. Led end-to-end brand launches: identifying target customers, developing brand stories, directing creatives, building websites, and planning media budgets from zero. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as senior client contact for financial planning and strategy. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Brand Launch</span>
+          <span class="tl-tag">£170K Media Budget</span>
+          <span class="tl-tag">Team Leadership</span>
+          <span class="tl-tag">Client Strategy</span>
+          <span class="tl-tag">Financial Planning</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Sociowash <span class="tl-location">· New Delhi</span></div>
+            <div class="tl-role">Key Account Manager</div>
+          </div>
+          <div class="tl-date">Oct 2022 – Oct 2023</div>
+        </div>
+        <div class="tl-desc">Managed key client accounts across performance marketing and brand strategy at a digital-first agency.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Account Management</span>
+          <span class="tl-tag">Brand Strategy</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-header">
+          <div>
+            <div class="tl-company">Globalbees · ANS Commerce <span class="tl-location">· Gurgaon</span></div>
+            <div class="tl-role">Associate / Digital Marketer</div>
+          </div>
+          <div class="tl-date">Sep 2020 – Jun 2022</div>
+        </div>
+        <div class="tl-desc">Started in digital marketing at ANS Commerce running paid and organic channels for e-commerce clients, then moved into growth and commercial operations at Globalbees supporting a D2C brand portfolio.</div>
+        <div class="tl-tags">
+          <span class="tl-tag">E-commerce</span>
+          <span class="tl-tag">Paid + Organic</span>
+          <span class="tl-tag">D2C</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="condensed">
+  <div class="section-inner">
+    <div class="cap-two-col">
+      <div class="cap-text-col">
+        <div class="section-eyebrow reveal">What I work on</div>
+        <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
+        <p class="section-intro reveal">Full-funnel commercial growth: brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
+      </div>
+      <div class="cap-pills-col reveal">
+        <span class="skill-pill hl-navy">Brand Awareness</span>
+        <span class="skill-pill hl-green">Lead Generation</span>
+        <span class="skill-pill hl-amber">CRO</span>
+        <span class="skill-pill hl-green">CPL Optimisation</span>
+        <span class="skill-pill hl-navy">Ecommerce Campaigns</span>
+        <span class="skill-pill hl-amber">Performance Strategy</span>
+        <span class="skill-pill">Brand Launch</span>
+        <span class="skill-pill">Google Ads</span>
+        <span class="skill-pill">Meta Ads</span>
+        <span class="skill-pill">HubSpot CRM</span>
+        <span class="skill-pill">LinkedIn Ads</span>
+        <span class="skill-pill">Google Shopping</span>
+        <span class="skill-pill">Financial Modelling</span>
+        <span class="skill-pill">Market Research</span>
+        <span class="skill-pill">GTM Strategy</span>
+        <span class="skill-pill">D2C Strategy</span>
+        <span class="skill-pill">Audience Segmentation</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- INDUSTRIES -->
 <section id="industries">
@@ -1257,167 +1420,6 @@ section.condensed .section-title { margin-bottom: 10px; }
       <span class="industry-tag"><span class="ind-icon">💻</span>Software &amp; Technology</span>
       <span class="industry-tag"><span class="ind-icon">🎵</span>Concert Bookings</span>
       <span class="industry-tag"><span class="ind-icon">🏦</span>Banking</span>
-    </div>
-  </div>
-</section>
-
-<!-- WORK / CASE STUDIES -->
-<section id="work" class="condensed">
-  <div class="section-inner">
-    <div class="section-eyebrow reveal">Selected work</div>
-    <h2 class="section-title reveal">Work that <em>changed</em> the direction</h2>
-    <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C.</p>
-    <div class="work-cards reveal">
-      <div class="work-card">
-        <span class="work-card-tag">Market Strategy</span>
-        <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion — recommended against it before capital was committed.</div>
-        <span class="work-card-result">£20K capex protected</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-tag green">D2C Growth</span>
-        <div class="work-card-desc">Took multiple brands from £0 to £30K MRR on Google &amp; Meta in under five months.</div>
-        <span class="work-card-result">2–3× ROAS · 40% spend saved</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-tag amber">Market Entry</span>
-        <div class="work-card-desc">India → UAE GTM for multiple brands; financial models, audience strategy, and website briefs.</div>
-        <span class="work-card-result">Full GTM packages delivered</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-tag green">Inventory &amp; Growth</span>
-        <div class="work-card-desc">Cleared prior-season stock while launching new season simultaneously for Forever New.</div>
-        <span class="work-card-result">30% ROAS uplift · All targets hit</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-tag">Brand Relaunch</span>
-        <div class="work-card-desc">Sequenced a UAE premium brand relaunch: six months awareness-first, then conversion.</div>
-        <span class="work-card-result">Right sequence, right result</span>
-      </div>
-      <div class="work-card">
-        <span class="work-card-tag amber">Portfolio Management</span>
-        <div class="work-card-desc">Managed £170K+/month media across 10+ global brands at Green Honchos.</div>
-        <span class="work-card-result">133% daily revenue uplift</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section id="capabilities" class="condensed">
-  <div class="section-inner">
-    <div class="cap-two-col">
-      <div class="cap-text-col">
-        <div class="section-eyebrow reveal">What I work on</div>
-        <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-        <p class="section-intro reveal">Full-funnel commercial growth: brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
-      </div>
-      <div class="cap-pills-col reveal">
-        <span class="skill-pill hl-navy">Brand Awareness</span>
-        <span class="skill-pill hl-green">Lead Generation</span>
-        <span class="skill-pill hl-amber">CRO</span>
-        <span class="skill-pill hl-green">CPL Optimisation</span>
-        <span class="skill-pill hl-navy">Ecommerce Campaigns</span>
-        <span class="skill-pill hl-amber">Performance Strategy</span>
-        <span class="skill-pill">Google Ads</span>
-        <span class="skill-pill">Meta Ads</span>
-        <span class="skill-pill">HubSpot CRM</span>
-        <span class="skill-pill">LinkedIn Ads</span>
-        <span class="skill-pill">Google Shopping</span>
-        <span class="skill-pill">Financial Modelling</span>
-        <span class="skill-pill">Market Research</span>
-        <span class="skill-pill">GTM Strategy</span>
-        <span class="skill-pill">D2C Strategy</span>
-        <span class="skill-pill">Audience Segmentation</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SUSTAINABILITY -->
-<section id="sustainability" class="condensed">
-  <div class="section-inner">
-    <div class="section-eyebrow reveal">Sustainability focus</div>
-    <h2 class="section-title reveal">Growth that <em>means</em> something</h2>
-    <p class="section-intro reveal">Currently building at UrbanChain in renewable energy. I want to work on problems that matter: climate tech, purpose-led consumer brands, and companies where commercial rigour and mission point in the same direction.</p>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-eyebrow reveal">Career</div>
-    <h2 class="section-title reveal">Five years <em>building</em> commercial things</h2>
-
-    <div class="timeline reveal">
-
-      <div class="tl-item">
-        <div class="tl-dot current"></div>
-        <div class="tl-date">Apr 2026 – Present</div>
-        <div class="tl-role">Growth Associate</div>
-        <div class="tl-company">UrbanChain · Renewable Energy · Remote</div>
-        <div class="tl-desc">Building the commercial growth function from scratch. HubSpot CRM setup, lead acquisition strategy, website conversion, PR strategy, and AI automation workflows. Also delivered UrbanChain's go-to-market plan as part of my MBA Consultancy Project.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">HubSpot</span>
-          <span class="tl-tag">Lead Gen</span>
-          <span class="tl-tag">CRO</span>
-          <span class="tl-tag">PR Strategy</span>
-          <span class="tl-tag">Claude Code</span>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Dec 2024 – Sep 2025</div>
-        <div class="tl-role">Performance Strategist</div>
-        <div class="tl-company">ScaleX · Remote</div>
-        <div class="tl-desc">Paid growth strategy on Google and Meta for a portfolio of D2C brands. Improved campaign performance by 2 to 3x, cut wasted spend by 40%, and took multiple brands from zero to £30K monthly revenue in under five months.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">Google Ads</span>
-          <span class="tl-tag">Meta Ads</span>
-          <span class="tl-tag">D2C</span>
-          <span class="tl-tag">Performance Marketing</span>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Nov 2023 – Aug 2024</div>
-        <div class="tl-role">Assistant Manager, Digital Marketing</div>
-        <div class="tl-company">Green Honchos · India</div>
-        <div class="tl-desc">Managed commercial and marketing strategy for 10+ global brands including Forever New, Da Milano, and Ray-Ban. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as main senior client contact for financial planning and strategy. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">£170K Media Budget</span>
-          <span class="tl-tag">Team Leadership</span>
-          <span class="tl-tag">Client Strategy</span>
-          <span class="tl-tag">Financial Planning</span>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Oct 2022 – Oct 2023</div>
-        <div class="tl-role">Key Account Manager</div>
-        <div class="tl-company">Sociowash · New Delhi</div>
-        <div class="tl-desc">Managed key client accounts across performance marketing and brand strategy at a digital-first agency.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">Account Management</span>
-          <span class="tl-tag">Brand Strategy</span>
-        </div>
-      </div>
-
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-date">Sep 2020 – Jun 2022</div>
-        <div class="tl-role">Associate / Digital Marketer</div>
-        <div class="tl-company">Globalbees · ANS Commerce · Gurgaon</div>
-        <div class="tl-desc">Started in digital marketing at ANS Commerce running paid and organic channels for e-commerce clients, then moved into growth and commercial operations at Globalbees supporting a D2C brand portfolio.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">E-commerce</span>
-          <span class="tl-tag">Paid + Organic</span>
-          <span class="tl-tag">D2C</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1531,7 +1533,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="contact-content">
         <div class="section-eyebrow reveal">Get in touch</div>
         <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
-        <p class="section-intro reveal">Looking for roles in commercial strategy, growth, or consulting, ideally in sustainability, consumer, or climate tech, in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+        <p class="section-intro reveal">I want to work on problems that matter — climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK or Dubai. If that sounds like a fit, get in touch.</p>
         <div class="contact-links reveal">
           <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
             ✉ nikkibahri99@gmail.com

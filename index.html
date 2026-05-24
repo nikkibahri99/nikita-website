@@ -10,11 +10,11 @@
 <meta property="og:url" content="https://nikita-website-chi.vercel.app/">
 <meta property="og:title" content="Nikita Bahri · Commercial Strategy & Growth">
 <meta property="og:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
-<meta property="og:image" content="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg">
+<meta property="og:image" content="https://i.ibb.co/60Kcv5DS/image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nikita Bahri · Commercial Strategy & Growth">
 <meta name="twitter:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
-<meta name="twitter:image" content="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg">
+<meta name="twitter:image" content="https://i.ibb.co/60Kcv5DS/image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1039,6 +1039,48 @@ section.condensed .section-title { margin-bottom: 10px; }
 @media (max-width: 600px) {
   .work-cards { grid-template-columns: 1fr; }
 }
+
+/* ─── MBA PRESENTING PHOTO ──────────────────────────────────────────── */
+.mba-presenting {
+  margin: 32px 0 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 640px;
+}
+.mba-presenting img {
+  width: 100%; display: block;
+  max-height: 340px;
+  object-fit: cover; object-position: center top;
+  border-radius: 10px;
+}
+.mba-photo-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ─── CONTACT TWO-COL ───────────────────────────────────────────────── */
+.contact-two-col {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: center;
+}
+.contact-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(28,58,46,0.14);
+}
+.contact-photo img {
+  width: 100%; display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+@media (max-width: 900px) {
+  .contact-two-col { grid-template-columns: 1fr; }
+  .contact-photo { max-width: 320px; }
+}
 </style>
 </head>
 <body>
@@ -1155,7 +1197,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="hero-right">
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <img src="https://i.ibb.co/B9g1f2h/Blenheim-Palace.jpg" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
+        <img src="https://i.ibb.co/60Kcv5DS/image.png" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
         <div class="photo-icon">👩🏻</div>
         <span class="photo-label">Loading…</span>
       </div>
@@ -1375,6 +1417,11 @@ section.condensed .section-title { margin-bottom: 10px; }
     <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
     <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
 
+    <div class="mba-presenting reveal">
+      <img src="https://i.ibb.co/YThLsr7M/image.png" alt="Nikita presenting at University of Bath">
+      <div class="mba-photo-caption">Presenting at University of Bath · MBA 2026</div>
+    </div>
+
     <div class="mba-grid reveal">
       <div class="mba-card award">
         <div class="mba-label">Entrepreneurship Project</div>
@@ -1465,18 +1512,25 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
-    <div class="section-eyebrow reveal">Get in touch</div>
-    <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
-    <p class="section-intro reveal">Looking for roles in commercial strategy, growth, or consulting, ideally in sustainability, consumer, or climate tech, in the UK or Dubai. If that sounds like a fit, get in touch.</p>
-    <div class="contact-links reveal">
-      <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
-        ✉ nikkibahri99@gmail.com
-      </a>
-      <a href="https://linkedin.com/in/nikitabahri" target="_blank" class="contact-link linkedin">
-        in linkedin.com/in/nikitabahri
-      </a>
+    <div class="contact-two-col">
+      <div class="contact-content">
+        <div class="section-eyebrow reveal">Get in touch</div>
+        <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
+        <p class="section-intro reveal">Looking for roles in commercial strategy, growth, or consulting, ideally in sustainability, consumer, or climate tech, in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+        <div class="contact-links reveal">
+          <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
+            ✉ nikkibahri99@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/nikitabahri" target="_blank" class="contact-link linkedin">
+            in linkedin.com/in/nikitabahri
+          </a>
+        </div>
+        <div class="contact-note reveal">Bath, UK · Open to Dubai · Available from September 2026</div>
+      </div>
+      <div class="contact-photo reveal">
+        <img src="https://i.ibb.co/Wv9rMfMN/image.png" alt="Nikita at Wimbledon">
+      </div>
     </div>
-    <div class="contact-note reveal">Bath, UK · Open to Dubai · Available from September 2026</div>
   </div>
 </section>
 

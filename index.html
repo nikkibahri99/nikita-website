@@ -803,14 +803,28 @@ footer {
   gap: 14px;
 }
 .cert-card {
-  border: 2px dashed var(--border);
-  border-radius: 10px; padding: 24px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px; overflow: hidden;
   display: flex; flex-direction: column;
-  align-items: center; text-align: center; gap: 8px;
-  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+  cursor: default;
 }
-.cert-card:hover { border-color: var(--navy); background: var(--sand); transform: translateY(-2px); }
-.cert-icon { font-size: 26px; }
+.cert-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(28,58,46,0.12); }
+.cert-img-wrap {
+  width: 100%; aspect-ratio: 16/10; overflow: hidden;
+  background: var(--sand);
+}
+.cert-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+  transition: transform 0.3s;
+}
+.cert-card:hover .cert-img-wrap img { transform: scale(1.03); }
+.cert-meta {
+  padding: 12px 14px;
+  display: flex; flex-direction: column; gap: 3px;
+}
 .cert-name {
   font-family: 'Fraunces', serif;
   font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.3;
@@ -819,8 +833,6 @@ footer {
   font-family: 'DM Mono', monospace;
   font-size: 10px; color: var(--muted); letter-spacing: 0.06em;
 }
-.cert-placeholder .cert-icon { opacity: 0.25; }
-.cert-placeholder .cert-name { color: var(--muted); font-style: italic; font-weight: 400; }
 
 .reveal {
   opacity: 0; transform: translateY(24px);
@@ -1530,24 +1542,40 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="certs-label">Certificates &amp; Awards</div>
       <div class="certs-grid">
         <div class="cert-card">
-          <div class="cert-icon">🤖</div>
-          <div class="cert-name">Claude Code in Action</div>
-          <div class="cert-issuer">Anthropic · 2026</div>
+          <div class="cert-img-wrap">
+            <img src="assets/certs/claude-code.png" alt="Claude Code in Action certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">Claude Code in Action</div>
+            <div class="cert-issuer">Anthropic · 2026</div>
+          </div>
         </div>
         <div class="cert-card">
-          <div class="cert-icon">🏆</div>
-          <div class="cert-name">Best Pitch Award — FreshTrack</div>
-          <div class="cert-issuer">University of Bath · 2026</div>
+          <div class="cert-img-wrap">
+            <img src="assets/certs/best-pitch.webp" alt="Best Pitch Award certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">Best Pitch Award — FreshTrack</div>
+            <div class="cert-issuer">University of Bath · 2026</div>
+          </div>
         </div>
         <div class="cert-card">
-          <div class="cert-icon">🌱</div>
-          <div class="cert-name">SustainabilitySim</div>
-          <div class="cert-issuer">SustainabilitySim · 2026</div>
+          <div class="cert-img-wrap">
+            <img src="assets/certs/sustainability-sim.webp" alt="SustainabilitySim certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">SustainabilitySim</div>
+            <div class="cert-issuer">SustainabilitySim · 2026</div>
+          </div>
         </div>
         <div class="cert-card">
-          <div class="cert-icon">💄</div>
-          <div class="cert-name">L'Oréal Brandstorm 2026</div>
-          <div class="cert-issuer">L'Oréal · 2026</div>
+          <div class="cert-img-wrap">
+            <img src="assets/certs/loreal-brandstorm.webp" alt="L'Oréal Brandstorm 2026 certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">L'Oréal Brandstorm 2026</div>
+            <div class="cert-issuer">L'Oréal · 2026</div>
+          </div>
         </div>
       </div>
     </div>

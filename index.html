@@ -22,8 +22,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --navy:   #0F2218;
-  --navy2:  #060F0A;
+  --navy:   #1C3A2E;
+  --navy2:  #112318;
   --yellow: #C9A035;
   --yellow2:#A88829;
   --cream:  #F7F4EE;
@@ -203,97 +203,86 @@ nav {
 .btn-ghost:hover { border-color: white; color: white; }
 
 .hero-right {
-  display: flex; align-items: center; justify-content: center;
-  padding: 100px 64px 80px 32px;
-  position: relative; z-index: 1;
-  opacity: 0; animation: fadeIn 0.9s 0.5s forwards;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0; animation: fadeIn 1.1s 0.4s forwards;
+}
+
+/* Left-edge gradient so text bleeds cleanly into the photo */
+.hero-right::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--navy) 0%, transparent 36%);
+  z-index: 2; pointer-events: none;
+}
+/* Bottom fade into stats strip */
+.hero-right::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 160px;
+  background: linear-gradient(to bottom, transparent, var(--navy2));
+  z-index: 2; pointer-events: none;
 }
 
 .photo-frame {
-  position: relative;
-  width: 340px; height: 420px;
-}
-
-.photo-frame::before {
-  content: '';
-  position: absolute;
-  top: 16px; left: 16px;
-  right: -16px; bottom: -16px;
-  border: 2px solid var(--yellow);
-  border-radius: 4px;
-  opacity: 0.4;
+  position: absolute; inset: 0;
 }
 
 .photo-placeholder {
   width: 100%; height: 100%;
-  background: rgba(255,255,255,0.06);
-  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
   position: relative; overflow: hidden;
 }
 
-.photo-placeholder::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(200,146,58,0.05) 0%, transparent 60%);
-}
-
-.photo-icon {
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  background: rgba(200,146,58,0.15);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px;
-}
-
-.photo-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(255,255,255,0.3);
-}
-
-/* photo when added */
+/* photo when loaded */
 .photo-placeholder img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; border-radius: 4px;
+  object-fit: cover; object-position: center top;
 }
 
 /* ─── STATS STRIP ──────────────────────────────────────────────────── */
 .stats-strip {
-  background: var(--yellow);
-  padding: 28px 48px;
+  background: var(--navy2);
+  padding: 32px 48px;
   display: flex; justify-content: center; gap: 80px;
   flex-wrap: wrap;
   position: relative; overflow: hidden;
+  border-top: 1px solid rgba(200,160,53,0.18);
 }
 .stats-strip::before {
   content: '';
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
 .stats-strip > * { position: relative; z-index: 1; }
 
-.stat { text-align: center; }
+.stat { text-align: center; position: relative; }
+.stat + .stat::before {
+  content: '';
+  position: absolute; left: -40px; top: 50%;
+  transform: translateY(-50%);
+  width: 1px; height: 36px;
+  background: rgba(200,160,53,0.22);
+}
 .stat-num {
   font-family: 'Fraunces', serif;
-  font-size: 36px; font-weight: 900;
-  color: var(--navy); line-height: 1;
+  font-size: 38px; font-weight: 900;
+  color: var(--yellow); line-height: 1;
   letter-spacing: -0.02em;
 }
 .stat-label {
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 500;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(28,58,46,0.65);
-  margin-top: 4px;
+  color: rgba(255,255,255,0.38);
+  margin-top: 6px;
 }
 
 /* ─── SECTION BASE ─────────────────────────────────────────────────── */
@@ -526,6 +515,7 @@ section { padding: 100px 48px; }
 .tl-item.current-role .tl-date { background: var(--yellow); color: var(--navy); }
 
 .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
+.tl-desc em { font-style: italic; color: var(--text); font-weight: 600; }
 
 .tl-tags { display: flex; gap: 6px; flex-wrap: wrap; }
 .tl-quote {
@@ -1267,7 +1257,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Growth</h1>
     <p class="hero-desc">
-      From zero-revenue D2C launches to £170K/month media portfolios — five years of commercial strategy across global retail, India, and the UAE. Now building growth in renewable energy at UrbanChain.
+      Five years of commercial strategy across global retail, India, and the UAE: from zero-revenue D2C launches to £170K/month media portfolios. Now building growth in renewable energy at UrbanChain.
     </p>
     <div class="hero-tags">
       <span class="tag tag-yellow">UrbanChain</span>
@@ -1286,9 +1276,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="hero-right">
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <img src="assets/photos/hero.jpg" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
-        <div class="photo-icon">👩🏻</div>
-        <span class="photo-label">Loading…</span>
+        <img src="assets/photos/hero.jpg" alt="Nikita Bahri" id="hero-photo">
       </div>
     </div>
   </div>
@@ -1323,7 +1311,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="work-cards reveal">
       <div class="work-card">
         <span class="work-card-tag">Market Strategy</span>
-        <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion — recommended against it before capital was committed.</div>
+        <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion. Recommended against it before capital was committed.</div>
         <span class="work-card-result">£20K capex protected</span>
       </div>
       <div class="work-card">
@@ -1371,7 +1359,7 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Apr 2026 – Present</div>
         </div>
-        <div class="tl-desc">Building the commercial growth function from scratch. HubSpot CRM setup, lead acquisition strategy, website conversion, PR strategy, and AI automation workflows. Also delivered UrbanChain's go-to-market plan as part of my MBA Consultancy Project.</div>
+        <div class="tl-desc">Building the commercial growth function <em>from scratch</em>. HubSpot CRM setup, lead acquisition strategy, website conversion, PR strategy, and AI automation workflows. Also delivered UrbanChain's go-to-market plan as part of my MBA Consultancy Project.</div>
         <div class="tl-tags">
           <span class="tl-tag">HubSpot</span>
           <span class="tl-tag">Lead Gen</span>
@@ -1389,7 +1377,7 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Dec 2024 – Sep 2025</div>
         </div>
-        <div class="tl-desc">Led end-to-end brand launches for D2C clients — audience definition, brand positioning, creative direction, website briefs, and media budget planning. Ran paid growth on Google and Meta, taking multiple brands from zero to £30K MRR in under five months with 2 to 3x campaign performance improvement and 40% reduction in wasted spend.</div>
+        <div class="tl-desc">Led end-to-end brand launches for D2C clients: audience definition, brand positioning, creative direction, website briefs, and media budget planning. Ran paid growth on Google and Meta, taking multiple brands from zero to <em>£30K MRR</em> in under five months with <em>2 to 3x campaign performance improvement</em> and <em>40% reduction in wasted spend</em>.</div>
         <div class="tl-tags">
           <span class="tl-tag">Brand Launch</span>
           <span class="tl-tag">Google Ads</span>
@@ -1407,9 +1395,9 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Nov 2023 – Aug 2024</div>
         </div>
-        <div class="tl-desc">Managed commercial and marketing strategy for 16+ global brands including Forever New, Da Milano, and Ray-Ban. Led end-to-end brand launches — identifying target customers, developing brand stories, directing creatives, building websites, and planning media budgets from zero. Ran detailed inventory analysis: identifying top-performing products, pivoting spend strategy based on stock levels and sell-through data, and coordinating clearance campaigns alongside new-season launches. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as senior client contact for financial planning. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
+        <div class="tl-desc">Managed commercial and marketing strategy for <em>16+ global brands</em> including Forever New, Da Milano, and Ray-Ban. Led end-to-end brand launches: identifying target customers, developing brand stories, directing creatives, building websites, and planning media budgets from zero. Ran detailed inventory analysis: identifying top-performing products, pivoting spend strategy based on stock levels and sell-through data, and coordinating clearance campaigns alongside new-season launches. Oversaw <em>£170K+/month</em> in media spend, led a team of 5 to 7, and served as senior client contact for financial planning. <em>Recognised as top-performing manager for 3 to 4 consecutive months.</em> Contributed to a <em>133% increase</em> in daily portfolio revenue.</div>
         <blockquote class="tl-quote">
-          "Fast-track manager — I expect more from you in terms of work and analysis."
+          "Nikita is a fast-track manager."
           <cite>CEO, Green Honchos</cite>
         </blockquote>
         <div class="tl-tags" style="margin-top:14px;">
@@ -1430,7 +1418,7 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Oct 2022 – Oct 2023</div>
         </div>
-        <div class="tl-desc">Ran lead generation campaigns for multiple brands, reducing CPL while simultaneously improving lead quality. Balanced volume and qualification — not just more leads, but better ones converting further down the funnel.</div>
+        <div class="tl-desc">Ran lead generation campaigns for multiple brands, <em>reducing CPL while simultaneously improving lead quality</em>. Balanced volume and qualification: not just more leads, but better ones converting further down the funnel.</div>
         <div class="tl-tags">
           <span class="tl-tag">Lead Generation</span>
           <span class="tl-tag">CPL Optimisation</span>
@@ -1520,7 +1508,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="mba-intro-text">
         <div class="section-eyebrow reveal">Education</div>
         <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
-        <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
+        <p class="section-intro reveal"><em>£15,000 scholarship</em>, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
       </div>
       <div class="mba-presenting reveal">
         <img src="assets/photos/presenting.jpg" alt="Nikita presenting at University of Bath">
@@ -1622,7 +1610,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="contact-content">
         <div class="section-eyebrow reveal">Get in touch</div>
         <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
-        <p class="section-intro reveal">I want to work on problems that matter — climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+        <p class="section-intro reveal">I want to work on problems that matter: climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK or Dubai. If that sounds like a fit, get in touch.</p>
         <div class="contact-links reveal">
           <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
             ✉ nikkibahri99@gmail.com

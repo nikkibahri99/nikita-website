@@ -10,11 +10,11 @@
 <meta property="og:url" content="https://nikita-website-chi.vercel.app/">
 <meta property="og:title" content="Nikita Bahri · Commercial Strategy & Growth">
 <meta property="og:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
-<meta property="og:image" content="https://i.ibb.co/60Kcv5DS/image.png">
+<meta property="og:image" content="https://nikita-website-chi.vercel.app/assets/photos/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nikita Bahri · Commercial Strategy & Growth">
 <meta name="twitter:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
-<meta name="twitter:image" content="https://i.ibb.co/60Kcv5DS/image.png">
+<meta name="twitter:image" content="https://nikita-website-chi.vercel.app/assets/photos/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -528,6 +528,22 @@ section { padding: 100px 48px; }
 .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 14px; }
 
 .tl-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tl-quote {
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  margin: 14px 0 0;
+  font-style: italic; font-size: 13px;
+  color: var(--text); line-height: 1.6;
+  background: rgba(200,146,58,0.06);
+  border-radius: 0 6px 6px 0;
+}
+.tl-quote cite {
+  display: block; font-style: normal;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-top: 5px;
+}
 .tl-tag {
   font-family: 'DM Mono', monospace;
   font-size: 9px; font-weight: 600;
@@ -1142,6 +1158,12 @@ section.condensed .section-title { margin-bottom: 10px; }
   object-fit: cover;
   border-radius: 12px;
 }
+.contact-photo-caption {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-top: 8px; text-align: center;
+}
 @media (max-width: 900px) {
   .contact-two-col { grid-template-columns: 1fr; }
   .contact-photo { max-width: 320px; }
@@ -1264,7 +1286,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="hero-right">
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <img src="https://i.ibb.co/60Kcv5DS/image.png" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
+        <img src="assets/photos/hero.jpg" alt="Nikita Bahri" id="hero-photo" style="display:none" onload="this.style.display='block'">
         <div class="photo-icon">👩🏻</div>
         <span class="photo-label">Loading…</span>
       </div>
@@ -1385,9 +1407,14 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Nov 2023 – Aug 2024</div>
         </div>
-        <div class="tl-desc">Managed commercial and marketing strategy for 16+ global brands including Forever New, Da Milano, and Ray-Ban. Led end-to-end brand launches: identifying target customers, developing brand stories, directing creatives, building websites, and planning media budgets from zero. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as senior client contact for financial planning and strategy. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
-        <div class="tl-tags">
+        <div class="tl-desc">Managed commercial and marketing strategy for 16+ global brands including Forever New, Da Milano, and Ray-Ban. Led end-to-end brand launches — identifying target customers, developing brand stories, directing creatives, building websites, and planning media budgets from zero. Ran detailed inventory analysis: identifying top-performing products, pivoting spend strategy based on stock levels and sell-through data, and coordinating clearance campaigns alongside new-season launches. Oversaw £170K+/month in media spend, led a team of 5 to 7, and served as senior client contact for financial planning. Recognised as top-performing manager for 3 to 4 consecutive months. Contributed to a 133% increase in daily portfolio revenue.</div>
+        <blockquote class="tl-quote">
+          "Fast-track manager — I expect more from you in terms of work and analysis."
+          <cite>CEO, Green Honchos</cite>
+        </blockquote>
+        <div class="tl-tags" style="margin-top:14px;">
           <span class="tl-tag">Brand Launch</span>
+          <span class="tl-tag">Inventory Analysis</span>
           <span class="tl-tag">£170K Media Budget</span>
           <span class="tl-tag">Team Leadership</span>
           <span class="tl-tag">Client Strategy</span>
@@ -1496,7 +1523,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <p class="section-intro reveal">£15,000 scholarship, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
       </div>
       <div class="mba-presenting reveal">
-        <img src="https://i.ibb.co/YThLsr7M/image.png" alt="Nikita presenting at University of Bath">
+        <img src="assets/photos/presenting.jpg" alt="Nikita presenting at University of Bath">
         <div class="mba-photo-caption">Presenting at University of Bath · MBA 2026</div>
       </div>
     </div>
@@ -1607,7 +1634,8 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="contact-note reveal">Bath, UK · Open to Dubai · Available from September 2026</div>
       </div>
       <div class="contact-photo reveal">
-        <img src="https://i.ibb.co/Wv9rMfMN/image.png" alt="Nikita at Wimbledon">
+        <img src="assets/photos/wimbledon.jpg" alt="Nikita at Wimbledon">
+        <div class="contact-photo-caption">Wimbledon · MBA 2026</div>
       </div>
     </div>
   </div>

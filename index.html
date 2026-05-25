@@ -728,10 +728,26 @@ img.brand-real-logo {
   pointer-events: none;
 }
 #contact .section-title { color: white; }
-#contact .section-eyebrow { justify-content: center; color: var(--yellow); }
-#contact .section-eyebrow::after { display: none; }
-#contact .section-eyebrow::before { content: ''; flex: 0 0 40px; height: 1px; background: var(--yellow); }
-#contact .section-intro { color: rgba(255,255,255,0.55); margin: 0 auto 40px; }
+#contact .section-eyebrow { color: var(--yellow); }
+#contact .section-intro { color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+.contact-content { text-align: left; }
+.contact-content .section-eyebrow { justify-content: flex-start; }
+.contact-content .section-eyebrow::before { display: none; }
+.contact-content .section-eyebrow::after { display: block; background: var(--yellow); }
+.contact-links { justify-content: flex-start; }
+.contact-quick-facts {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 28px;
+}
+.contact-fact {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 40px;
+  background: rgba(200,160,53,0.12);
+  color: var(--yellow);
+  border: 1px solid rgba(200,160,53,0.25);
+}
 
 .contact-links {
   display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
@@ -1079,9 +1095,11 @@ section.condensed .section-title { margin-bottom: 10px; }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 22px 24px;
+  cursor: pointer;
   transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
 }
 .work-card:hover { box-shadow: 0 6px 20px rgba(28,58,46,0.09); border-color: var(--navy); transform: translateY(-2px); }
+.work-card.open { border-color: var(--navy); box-shadow: 0 6px 20px rgba(28,58,46,0.09); transform: none; }
 .work-card-tag {
   font-family: 'Fraunces', serif;
   font-size: 16px; font-weight: 700;
@@ -1098,6 +1116,53 @@ section.condensed .section-title { margin-bottom: 10px; }
   padding: 5px 10px; border-radius: 3px;
   background: var(--yellow); display: inline-block;
 }
+.work-card-more {
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease, margin 0.3s ease;
+  font-size: 13px; color: var(--muted); line-height: 1.65;
+  margin-top: 0; border-top: 0px solid var(--border);
+}
+.work-card.open .work-card-more {
+  max-height: 240px; opacity: 1; margin-top: 14px;
+  padding-top: 14px; border-top-width: 1px;
+}
+.work-card-hint {
+  display: flex; align-items: center; gap: 5px;
+  margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--yellow2); transition: color 0.2s;
+  user-select: none;
+}
+.work-card:hover .work-card-hint { color: var(--navy); }
+.work-card.open .work-card-hint { color: var(--muted); }
+.hint-open { display: block; }
+.hint-close { display: none; }
+.work-card.open .hint-open { display: none; }
+.work-card.open .hint-close { display: block; }
+
+/* ─── HERO SCROLL NUDGE ──────────────────────────────────────────── */
+.hero-scroll-nudge {
+  position: absolute; bottom: 36px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  color: rgba(255,255,255,0.3); text-decoration: none;
+  opacity: 0; animation: fadeIn 1s 2s forwards;
+  transition: color 0.25s;
+}
+.hero-scroll-nudge:hover { color: rgba(255,255,255,0.7); }
+.scroll-nudge-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+}
+.hero-scroll-nudge svg { animation: nudgeBounce 2.2s ease-in-out infinite; }
+@keyframes nudgeBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+@media (max-width: 900px) { .hero-scroll-nudge { display: none; } }
 
 
 @media (max-width: 1100px) {
@@ -1422,6 +1487,12 @@ section.condensed .section-title { margin-bottom: 10px; }
       </div>
     </div>
   </div>
+  <a class="hero-scroll-nudge" href="#work" aria-label="Scroll to work">
+    <span class="scroll-nudge-label">scroll</span>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 3.5v11M4.5 10l4.5 4.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
 </section>
 
 <!-- STATS STRIP -->
@@ -1451,36 +1522,55 @@ section.condensed .section-title { margin-bottom: 10px; }
     <h2 class="section-title reveal">Work that <em>changed</em> the direction</h2>
     <p class="section-intro reveal">Five years of commercial strategy across global retail and D2C.</p>
     <div class="work-cards reveal">
+
       <div class="work-card">
         <span class="work-card-tag">Market Strategy</span>
         <div class="work-card-desc">Financial modelling exposed unviable unit economics in Da Milano's tier-2 India expansion. Recommended against it before capital was committed.</div>
         <span class="work-card-result">£20K capex protected</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Built a full unit economics model covering customer acquisition costs, average order values, and expected margins across tier-2 cities. The numbers showed the expansion wouldn't reach breakeven within a viable window. Presented findings directly to the client and recommended against proceeding before any capital was deployed.</div>
       </div>
+
       <div class="work-card">
         <span class="work-card-tag">D2C Growth</span>
         <div class="work-card-desc">Took multiple brands from £0 to £30K MRR on Google &amp; Meta in under five months.</div>
         <span class="work-card-result">2–3× ROAS · 40% spend saved</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Built full-funnel campaigns on Google Search, Shopping, and Meta from scratch. Defined audience segments, wrote creative briefs, and ran weekly budget optimisation. Scaled to £30K MRR within five months while maintaining 2–3x ROAS and cutting wasted spend by 40% through continuous testing and reallocation.</div>
       </div>
+
       <div class="work-card">
         <span class="work-card-tag">Market Entry</span>
         <div class="work-card-desc">India → UAE GTM for multiple brands: financial models, target audience definition, website briefs, and full brand stories.</div>
         <span class="work-card-result">End-to-end GTM delivered</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Scoped and delivered complete go-to-market plans covering customer segmentation, competitive positioning, pricing strategy, website copy briefs, and media channel recommendations. Worked across fashion, footwear, and jewellery brands making their first move into the UAE from India.</div>
       </div>
+
       <div class="work-card">
         <span class="work-card-tag">Brand Launch</span>
         <div class="work-card-desc">Led end-to-end launches for new brands: audience identification, brand positioning, creative direction, website builds, and budget planning from scratch.</div>
         <span class="work-card-result">Multiple brands live from zero</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Worked across Green Honchos and ScaleX to take brands from zero to live. Identified target customers, wrote brand stories, briefed creative teams, oversaw website builds, and planned media spend — all before the first pound was spent in market. Most brands were live and generating revenue within 90 days.</div>
       </div>
+
       <div class="work-card">
         <span class="work-card-tag">Inventory &amp; Growth</span>
         <div class="work-card-desc">Cleared prior-season stock while launching new season simultaneously for Forever New.</div>
         <span class="work-card-result">30% ROAS uplift · All targets hit</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Managed two competing campaign objectives at once: clearance activity on prior-season inventory and full new-season launch. Split budgets and audiences carefully to avoid cannibalisation, coordinated creative across both tracks, and hit all clearance targets while delivering a 30% ROAS uplift on the new-season campaigns.</div>
       </div>
+
       <div class="work-card">
         <span class="work-card-tag">Portfolio Management</span>
         <div class="work-card-desc">Managed £170K+/month media across 16+ global brands at Green Honchos as top-performing manager.</div>
         <span class="work-card-result">133% daily revenue uplift</span>
+        <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
+        <div class="work-card-more">Brands included Ray-Ban, Forever New, Da Milano, Bath &amp; Body Works, ASICS, and Onitsuka Tiger. Led a team of 5–7, chaired weekly client calls for financial planning, and held direct accountability for £170K+/month in spend. Named top-performing manager for 3–4 consecutive months and contributed to a 133% increase in daily portfolio revenue.</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1753,6 +1843,12 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="section-eyebrow reveal">Get in touch</div>
         <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
         <p class="section-intro reveal">I want to work on problems that matter: climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+        <div class="contact-quick-facts reveal">
+          <span class="contact-fact">5 years commercial strategy</span>
+          <span class="contact-fact">MBA · University of Bath</span>
+          <span class="contact-fact">UK or Dubai</span>
+          <span class="contact-fact">Available Sep 2026</span>
+        </div>
         <div class="contact-links reveal">
           <a href="mailto:nikkibahri99@gmail.com" class="contact-link email">
             ✉ nikkibahri99@gmail.com
@@ -1869,6 +1965,11 @@ document.querySelectorAll('.cert-card[data-cert]').forEach(card => {
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// Expandable work cards
+document.querySelectorAll('.work-card').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('open'));
+});
 
 // Smooth nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {

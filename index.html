@@ -815,7 +815,7 @@ footer {
 .certs-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--yellow2); }
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 14px;
 }
 .cert-card {
@@ -825,11 +825,16 @@ footer {
   transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
   cursor: default;
 }
+.cert-card.featured {
+  grid-column: span 2;
+}
 .cert-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(28,58,46,0.12); }
+.cert-card.featured:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(28,58,46,0.14); }
 .cert-img-wrap {
   width: 100%; aspect-ratio: 16/10; overflow: hidden;
   background: var(--sand);
 }
+.cert-card.featured .cert-img-wrap { aspect-ratio: 16/8; }
 .cert-img-wrap img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
@@ -841,10 +846,12 @@ footer {
   padding: 12px 14px;
   display: flex; flex-direction: column; gap: 3px;
 }
+.cert-card.featured .cert-meta { padding: 16px 18px; }
 .cert-name {
   font-family: 'Fraunces', serif;
   font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.3;
 }
+.cert-card.featured .cert-name { font-size: 16px; }
 .cert-issuer {
   font-family: 'DM Mono', monospace;
   font-size: 10px; color: var(--muted); letter-spacing: 0.06em;
@@ -1794,6 +1801,28 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="certs-section reveal">
       <div class="certs-label">Certificates &amp; Awards</div>
       <div class="certs-grid">
+
+        <!-- Featured hero cards — row 1 -->
+        <div class="cert-card featured" data-cert="assets/certs/bcg-climate-forage.jpg" data-cert-alt="BCG Climate &amp; Sustainability Job Simulation certificate">
+          <div class="cert-img-wrap">
+            <img src="assets/certs/bcg-climate-forage.jpg" alt="BCG Climate &amp; Sustainability Job Simulation certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">BCG Climate &amp; Sustainability Simulation</div>
+            <div class="cert-issuer">BCG · Forage · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card featured" data-cert="assets/certs/best-pitch.webp" data-cert-alt="Best Pitch Award certificate">
+          <div class="cert-img-wrap">
+            <img src="assets/certs/best-pitch.webp" alt="Best Pitch Award certificate">
+          </div>
+          <div class="cert-meta">
+            <div class="cert-name">Best Pitch Award · FreshTrack</div>
+            <div class="cert-issuer">University of Bath · 2026</div>
+          </div>
+        </div>
+
+        <!-- Regular cards — row 2 -->
         <div class="cert-card" data-cert="assets/certs/claude-code.png" data-cert-alt="Claude Code in Action certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/claude-code.png" alt="Claude Code in Action certificate">
@@ -1801,15 +1830,6 @@ section.condensed .section-title { margin-bottom: 10px; }
           <div class="cert-meta">
             <div class="cert-name">Claude Code in Action</div>
             <div class="cert-issuer">Anthropic · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card" data-cert="assets/certs/best-pitch.webp" data-cert-alt="Best Pitch Award certificate">
-          <div class="cert-img-wrap">
-            <img src="assets/certs/best-pitch.webp" alt="Best Pitch Award certificate">
-          </div>
-          <div class="cert-meta">
-            <div class="cert-name">Best Pitch Award · FreshTrack</div>
-            <div class="cert-issuer">University of Bath · 2026</div>
           </div>
         </div>
         <div class="cert-card" data-cert="assets/certs/sustainability-sim.webp" data-cert-alt="SustainabilitySim certificate">
@@ -1830,15 +1850,16 @@ section.condensed .section-title { margin-bottom: 10px; }
             <div class="cert-issuer">L'Oréal · 2026</div>
           </div>
         </div>
-        <div class="cert-card" data-cert="assets/certs/bcg-climate-forage.jpg" data-cert-alt="BCG Climate &amp; Sustainability Job Simulation certificate">
+        <div class="cert-card" data-cert="assets/certs/linkedin-pm-foundations.jpg" data-cert-alt="LinkedIn Learning Project Management Foundations certificate">
           <div class="cert-img-wrap">
-            <img src="assets/certs/bcg-climate-forage.jpg" alt="BCG Climate &amp; Sustainability Job Simulation certificate">
+            <img src="assets/certs/linkedin-pm-foundations.jpg" alt="LinkedIn Learning Project Management Foundations certificate">
           </div>
           <div class="cert-meta">
-            <div class="cert-name">BCG Climate &amp; Sustainability Simulation</div>
-            <div class="cert-issuer">BCG · Forage · 2026</div>
+            <div class="cert-name">Project Management Foundations</div>
+            <div class="cert-issuer">LinkedIn Learning · PMI · 2026</div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

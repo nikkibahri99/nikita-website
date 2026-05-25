@@ -1372,15 +1372,17 @@ section.condensed .section-title { margin-bottom: 10px; }
 }
 
 /* ─── AVATAR SIDE DECORATION ───────────────────────────────────── */
-#side-avatar {
+.side-avatar {
   position: fixed;
-  right: 0;
   bottom: 0;
-  z-index: 8888;
+  z-index: 10;          /* below sticky buttons (z-index 90) */
   pointer-events: none;
-  width: 180px;
+  width: 150px;
+  display: none;        /* hidden until viewport wide enough */
 }
-@media (max-width: 900px) { #side-avatar { display: none; } }
+.side-avatar-left  { left: 0; }
+.side-avatar-right { right: 0; }
+@media (min-width: 1440px) { .side-avatar { display: block; } }
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1942,7 +1944,8 @@ section.condensed .section-title { margin-bottom: 10px; }
 </div>
 
 
-<img id="side-avatar" src="assets/avatar.png" alt="" aria-hidden="true">
+<img class="side-avatar side-avatar-left"  src="assets/avatar-left.png"  alt="" aria-hidden="true">
+<img class="side-avatar side-avatar-right" src="assets/avatar-right.png" alt="" aria-hidden="true">
 
 <script>
 // Clone brand items into same track for seamless infinite marquee

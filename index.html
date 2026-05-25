@@ -1374,14 +1374,13 @@ section.condensed .section-title { margin-bottom: 10px; }
 /* ─── AVATAR SIDE DECORATION ───────────────────────────────────── */
 .side-avatar {
   position: fixed;
-  bottom: 0;
   z-index: 10;          /* below sticky buttons (z-index 90) */
   pointer-events: none;
-  width: 150px;
+  width: 160px;
   display: none;        /* hidden until viewport wide enough */
 }
-.side-avatar-left  { left: 0; }
-.side-avatar-right { right: 0; }
+.side-avatar-left  { left: 0; top: 28%; }
+.side-avatar-right { right: 0; bottom: 0; }
 @media (min-width: 1440px) { .side-avatar { display: block; } }
 </style>
 <script type="text/javascript">

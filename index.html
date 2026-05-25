@@ -202,6 +202,21 @@ nav {
 }
 .btn-ghost:hover { border-color: white; color: white; }
 
+.btn-cv {
+  background: #FFFFFF; color: var(--navy);
+  padding: 14px 28px; border-radius: 4px;
+  font-weight: 700; font-size: 14px;
+  text-decoration: none; display: inline-block;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(255,255,255,0.15);
+}
+.btn-cv:hover {
+  background: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255,255,255,0.2);
+}
+
 .hero-right {
   display: flex; align-items: center; justify-content: center;
   padding: 100px 64px 80px 32px;
@@ -918,17 +933,17 @@ footer {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 10px 18px; border-radius: 40px;
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 13px; font-weight: 600;
+  font-size: 13px; font-weight: 700;
   text-decoration: none; white-space: nowrap;
-  background: var(--yellow); color: var(--navy);
-  border: 1.5px solid var(--yellow);
+  background: #FFFFFF; color: var(--navy);
+  border: 1.5px solid rgba(255,255,255,0.8);
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
 .sticky-cv-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(0,0,0,0.22);
-  background: var(--yellow2); border-color: var(--yellow2);
+  background: var(--cream);
 }
 
 /* ─── NAV HAMBURGER ─────────────────────────────────────────────────── */
@@ -1130,6 +1145,127 @@ section.condensed .section-title { margin-bottom: 10px; }
   .mba-intro-col { grid-template-columns: 1fr; gap: 28px; }
 }
 
+/* ─── CV FORM MODAL ─────────────────────────────────────────────────── */
+.cv-modal {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.cv-modal.open { opacity: 1; pointer-events: all; }
+
+.cv-modal-overlay {
+  position: absolute; inset: 0;
+  background: rgba(11,22,16,0.9);
+  backdrop-filter: blur(8px);
+}
+
+.cv-modal-box {
+  position: relative; z-index: 1;
+  background: var(--navy);
+  border: 1px solid rgba(200,160,53,0.22);
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 520px; width: 100%;
+  transform: translateY(28px);
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.55), 0 0 0 1px rgba(200,160,53,0.08);
+}
+.cv-modal.open .cv-modal-box { transform: translateY(0); }
+
+.cv-modal-close {
+  position: absolute; top: 18px; right: 20px;
+  background: none; border: none;
+  color: rgba(255,255,255,0.35); font-size: 20px;
+  cursor: pointer; line-height: 1;
+  transition: color 0.2s, transform 0.2s;
+  padding: 4px;
+}
+.cv-modal-close:hover { color: white; transform: scale(1.15); }
+
+.cv-modal-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--yellow); margin-bottom: 14px;
+}
+.cv-modal-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px; font-weight: 900;
+  color: white; line-height: 1.1;
+  letter-spacing: -0.02em; margin-bottom: 10px;
+}
+.cv-modal-desc {
+  font-size: 14px; color: rgba(255,255,255,0.45);
+  line-height: 1.65; margin-bottom: 28px;
+}
+
+.cv-form-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 12px;
+}
+.cv-form-input {
+  width: 100%; display: block;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 7px;
+  padding: 13px 16px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px; color: white;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 12px;
+}
+.cv-form-input::placeholder { color: rgba(255,255,255,0.28); }
+.cv-form-input:focus {
+  border-color: var(--yellow);
+  background: rgba(255,255,255,0.1);
+}
+.cv-form-textarea {
+  resize: vertical; min-height: 88px;
+  font-family: 'Instrument Sans', sans-serif;
+  line-height: 1.5;
+}
+.cv-form-submit {
+  width: 100%;
+  background: var(--yellow); color: var(--navy);
+  border: none; border-radius: 7px;
+  padding: 15px; font-size: 15px; font-weight: 700;
+  cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+  letter-spacing: -0.01em;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 4px;
+}
+.cv-form-submit:hover { background: var(--yellow2); transform: translateY(-2px); }
+.cv-form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.cv-form-success {
+  text-align: center; padding: 28px 0 8px;
+}
+.cv-success-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(200,160,53,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin: 0 auto 20px;
+  border: 1px solid rgba(200,160,53,0.3);
+}
+.cv-success-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px; font-weight: 900;
+  color: white; margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.cv-success-desc {
+  font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .cv-modal-box { padding: 32px 24px; }
+  .cv-form-row { grid-template-columns: 1fr; gap: 0; }
+}
+
 /* ─── CONTACT TWO-COL ───────────────────────────────────────────────── */
 .contact-two-col {
   display: grid;
@@ -1275,7 +1411,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     </div>
     <div class="hero-ctas">
       <a href="#work" class="btn-primary">See my work</a>
-      <a href="assets/Nikita_Bahri_CV_May26.pdf" download class="btn-primary">↓ Download CV</a>
+      <a href="assets/Nikita_Bahri_CV_May26.pdf" download class="btn-cv">↓ CV</a>
       <a href="#contact" class="btn-ghost">Get in touch</a>
     </div>
   </div>
@@ -1643,7 +1779,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- STICKY CV (left side) -->
 <div class="sticky-cv">
   <a href="assets/Nikita_Bahri_CV_May26.pdf" download class="sticky-cv-btn">
-    ↓ <span class="sticky-cv-label">Download CV</span>
+    ↓ <span class="sticky-cv-label">CV</span>
   </a>
 </div>
 

@@ -1371,67 +1371,16 @@ section.condensed .section-title { margin-bottom: 10px; }
   .contact-photo { max-width: 320px; }
 }
 
-/* ─── WANDERING AVATAR ─────────────────────────────────────────── */
-#wander-wrap {
+/* ─── AVATAR SIDE DECORATION ───────────────────────────────────── */
+#side-avatar {
   position: fixed;
-  left: 0; top: 0;
+  right: 0;
+  bottom: 0;
   z-index: 8888;
   pointer-events: none;
-  will-change: transform;
-  transform: translate(calc(100vw + 10px), 60vh);
+  width: 180px;
 }
-@media (max-width: 900px) { #wander-wrap { display: none; } }
-
-#wander-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: bottom center;
-}
-
-#wander-img {
-  width: 110px;
-  height: 110px;
-  object-fit: contain;
-  object-position: center bottom;
-  filter: drop-shadow(0 6px 10px rgba(28,58,46,0.18));
-  display: block;
-}
-
-#wander-shadow {
-  width: 48px;
-  height: 10px;
-  background: rgba(28,58,46,0.15);
-  border-radius: 50%;
-  margin-top: -14px;
-  filter: blur(4px);
-}
-
-@keyframes avatarWalk {
-  0%   { transform: translateY(0px)  rotate(-0.8deg); }
-  25%  { transform: translateY(-5px) rotate(0deg); }
-  50%  { transform: translateY(-1px) rotate(0.8deg); }
-  75%  { transform: translateY(-5px) rotate(0deg); }
-  100% { transform: translateY(0px)  rotate(-0.8deg); }
-}
-@keyframes avatarIdle {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  40%      { transform: translateY(-3px) rotate(0.5deg); }
-  60%      { transform: translateY(-3px) rotate(-0.5deg); }
-}
-@keyframes shadowWalk {
-  0%, 100% { transform: scaleX(1);   opacity: 1; }
-  50%      { transform: scaleX(0.65); opacity: 0.55; }
-}
-@keyframes shadowIdle {
-  0%, 100% { transform: scaleX(1);   opacity: 1; }
-  50%      { transform: scaleX(0.88); opacity: 0.75; }
-}
-
-#wander-inner.walking #wander-img    { animation: avatarWalk 0.42s ease-in-out infinite; }
-#wander-inner.idle    #wander-img    { animation: avatarIdle 2.8s ease-in-out infinite; }
-#wander-inner.walking #wander-shadow { animation: shadowWalk 0.42s ease-in-out infinite; }
-#wander-inner.idle    #wander-shadow { animation: shadowIdle 2.8s ease-in-out infinite; }
+@media (max-width: 900px) { #side-avatar { display: none; } }
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1993,13 +1942,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 </div>
 
 
-<!-- Wandering avatar -->
-<div id="wander-wrap" aria-hidden="true">
-  <div id="wander-inner">
-    <img id="wander-img" src="assets/avatar.png" alt="">
-    <div id="wander-shadow"></div>
-  </div>
-</div>
+<img id="side-avatar" src="assets/avatar.png" alt="" aria-hidden="true">
 
 <script>
 // Clone brand items into same track for seamless infinite marquee
@@ -2079,88 +2022,6 @@ document.querySelectorAll('.work-card').forEach(card => {
   });
 });
 
-// Wandering avatar
-(function() {
-  const wrap  = document.getElementById('wander-wrap');
-  const inner = document.getElementById('wander-inner');
-  if (!wrap || window.innerWidth <= 900) return;
-
-  let cx = window.innerWidth + 10;
-  let cy = window.innerHeight * 0.6;
-  let moveTimer, arrivalTimer;
-
-  function face(dx) {
-    inner.style.transform = dx < 0 ? 'scaleX(-1)' : 'scaleX(1)';
-  }
-
-  function setWalking(on) {
-    if (on) { inner.classList.add('walking');  inner.classList.remove('idle'); }
-    else    { inner.classList.remove('walking'); inner.classList.add('idle'); }
-  }
-
-  function moveTo(tx, ty, onDone) {
-    const dx   = tx - cx, dy = ty - cy;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    const dur  = Math.max(1400, dist * 13);
-
-    face(dx);
-    setWalking(true);
-
-    wrap.style.transition = `transform ${dur}ms linear`;
-    wrap.style.transform  = `translate(${tx}px, ${ty}px)`;
-    cx = tx; cy = ty;
-
-    clearTimeout(arrivalTimer);
-    arrivalTimer = setTimeout(() => {
-      setWalking(false);
-      if (onDone) onDone();
-    }, dur + 60);
-  }
-
-  function randomSpot() {
-    const m = 100;
-    return {
-      x: m + Math.random() * (window.innerWidth  - m * 2 - 110),
-      y: 80 + Math.random() * (window.innerHeight - 200)
-    };
-  }
-
-  function wander() {
-    const spot = randomSpot();
-    moveTo(spot.x, spot.y, () => {
-      moveTimer = setTimeout(wander, 900 + Math.random() * 4500);
-    });
-  }
-
-  // Walk onto screen after 2.5s
-  inner.classList.add('idle');
-  moveTimer = setTimeout(() => {
-    const entry = randomSpot();
-    moveTo(entry.x, entry.y, () => {
-      moveTimer = setTimeout(wander, 1200 + Math.random() * 3000);
-    });
-  }, 2500);
-
-  // Shy: run away if cursor gets within 110px
-  let lastFlee = 0;
-  document.addEventListener('mousemove', (e) => {
-    const now = Date.now();
-    if (now - lastFlee < 600) return;
-    const dx = e.clientX - (cx + 55);
-    const dy = e.clientY - (cy + 55);
-    if (Math.sqrt(dx * dx + dy * dy) > 110) return;
-
-    lastFlee = now;
-    clearTimeout(moveTimer); clearTimeout(arrivalTimer);
-
-    const angle = Math.atan2(dy, dx);
-    const tx = Math.max(80, Math.min(window.innerWidth  - 190, cx - Math.cos(angle) * 220));
-    const ty = Math.max(80, Math.min(window.innerHeight - 160, cy - Math.sin(angle) * 160));
-    moveTo(tx, ty, () => {
-      moveTimer = setTimeout(wander, 1000 + Math.random() * 2000);
-    });
-  });
-})();
 
 // Smooth nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {

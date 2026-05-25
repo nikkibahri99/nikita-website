@@ -16,7 +16,11 @@
 <meta name="twitter:description" content="5+ years in commercial strategy, D2C growth and market entry. Currently at UrbanChain. MBA at University of Bath.">
 <meta name="twitter:image" content="https://nikita-website-chi.vercel.app/assets/photos/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/photos/hero.jpg" fetchpriority="high">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap"></noscript>
 <style>
 /* ─── RESET & ROOT ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1491,7 +1495,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="hero-right">
     <div class="photo-frame">
       <div class="photo-placeholder" id="photo-area">
-        <img src="assets/photos/hero.jpg" alt="Nikita Bahri" id="hero-photo">
+        <img src="assets/photos/hero.jpg" alt="Nikita Bahri" id="hero-photo" fetchpriority="high" loading="eager">
       </div>
     </div>
   </div>
@@ -1999,7 +2003,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 // Expandable work cards
 document.querySelectorAll('.work-card').forEach(card => {
-  card.addEventListener('click', () => card.classList.toggle('open'));
+  card.addEventListener('click', (e) => {
+    if (e.target.closest('.work-card-more')) return; // don't collapse when reading
+    card.classList.toggle('open');
+  });
 });
 
 // Smooth nav links

@@ -1465,7 +1465,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <li><a href="#experience">Experience</a></li>
     <li><a href="#capabilities">Capabilities</a></li>
     <li><a href="#mba">MBA</a></li>
-    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    <li><a href="#contact" class="nav-cta open-contact-form">Get in touch</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
     <span></span><span></span><span></span>
@@ -1565,7 +1565,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="hero-ctas">
       <a href="#work" class="btn-primary">See my work</a>
       <a href="assets/Nikita_Bahri_CV_May26.pdf" download class="btn-cv">↓ CV</a>
-      <a href="#contact" class="btn-ghost">Get in touch</a>
+      <a href="#contact" class="btn-ghost open-contact-form">Get in touch</a>
     </div>
   </div>
   <div class="hero-right">
@@ -1967,6 +1967,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             in linkedin.com/in/nikitabahri
           </a>
         </div>
+        <button class="btn-primary open-contact-form reveal" style="margin-top:28px;border:none;">Send a message →</button>
       </div>
       <div class="contact-photo reveal">
         <img src="assets/photos/wimbledon.jpg" alt="Nikita at Wimbledon">
@@ -1996,6 +1997,41 @@ section.condensed .section-title { margin-bottom: 10px; }
   <a href="https://linkedin.com/in/nikitabahri" target="_blank" class="sticky-contact-btn sc-linkedin">
     in <span class="sc-label">LinkedIn</span>
   </a>
+</div>
+
+<!-- CONTACT FORM MODAL -->
+<div class="cv-modal" id="contact-modal" role="dialog" aria-modal="true" aria-label="Contact form">
+  <div class="cv-modal-overlay" id="contact-overlay"></div>
+  <div class="cv-modal-box">
+    <button class="cv-modal-close" id="contact-modal-close" aria-label="Close">×</button>
+
+    <div id="contact-form-wrap">
+      <div class="cv-modal-eyebrow">Get in touch</div>
+      <h2 class="cv-modal-title">Let's talk</h2>
+      <p class="cv-modal-desc">I'll respond within 24 hours.</p>
+
+      <form id="contact-form" novalidate>
+        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="New message from portfolio — nikita-website">
+        <input type="hidden" name="from_name" value="Nikita Bahri Portfolio">
+        <input type="checkbox" name="botcheck" style="display:none">
+
+        <div class="cv-form-row">
+          <input type="text"  name="name"    placeholder="Your name *"  required class="cv-form-input">
+          <input type="email" name="email"   placeholder="Your email *" required class="cv-form-input">
+        </div>
+        <input type="text" name="company" placeholder="Company / Role" class="cv-form-input">
+        <textarea name="message" placeholder="Message *" required class="cv-form-input cv-form-textarea"></textarea>
+        <button type="submit" class="cv-form-submit" id="contact-submit">Send message →</button>
+      </form>
+    </div>
+
+    <div class="cv-form-success" id="contact-success" style="display:none;">
+      <div class="cv-success-icon">✓</div>
+      <div class="cv-success-title">Message sent</div>
+      <p class="cv-success-desc">Thanks for reaching out. I'll be in touch within 24 hours.</p>
+    </div>
+  </div>
 </div>
 
 <!-- LIGHTBOX -->
@@ -2145,6 +2181,57 @@ document.querySelectorAll('.work-card').forEach(card => {
   });
 });
 
+
+// Contact form modal
+(function() {
+  const modal   = document.getElementById('contact-modal');
+  const overlay = document.getElementById('contact-overlay');
+  const closeBtn= document.getElementById('contact-modal-close');
+  const form    = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('contact-submit');
+  const formWrap  = document.getElementById('contact-form-wrap');
+  const successEl = document.getElementById('contact-success');
+
+  function open() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-contact-form').forEach(el =>
+    el.addEventListener('click', e => { e.preventDefault(); open(); })
+  );
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) close();
+  });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      const json = await res.json();
+      if (json.success) {
+        formWrap.style.display = 'none';
+        successEl.style.display = 'block';
+      } else { throw new Error(); }
+    } catch {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Something went wrong — try again';
+    }
+  });
+})();
 
 // Smooth nav links
 document.querySelectorAll('a[href^="#"]').forEach(a => {

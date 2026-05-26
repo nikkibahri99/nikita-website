@@ -2281,10 +2281,13 @@ document.querySelectorAll('.work-card').forEach(card => {
       if (json.success) {
         formWrap.style.display = 'none';
         successEl.style.display = 'block';
-      } else { throw new Error(); }
-    } catch {
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Error ' + res.status + (json.resend ? ': ' + (json.resend.message || JSON.stringify(json.resend)) : ' — ' + (json.error || 'try again'));
+      }
+    } catch(err) {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Something went wrong — try again';
+      submitBtn.textContent = 'Network error — ' + err.message;
     }
   });
 })();

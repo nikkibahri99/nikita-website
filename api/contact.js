@@ -1,22 +1,20 @@
 module.exports = async function handler(req, res) {
-  console.log('[contact] method:', req.method);
-
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { name, email, company, message } = req.body || {};
-  console.log('[contact] body fields — name:', !!name, 'email:', !!email, 'message:', !!message);
 
+  // 400 = missing fields
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  console.log('[contact] key present:', !!RESEND_API_KEY, 'key prefix:', RESEND_API_KEY ? RESEND_API_KEY.slice(0, 5) : 'NONE');
 
+  // 503 = key not configured
   if (!RESEND_API_KEY) {
-    return res.status(500).json({ error: 'Email service not configured' });
+    return res.status(503).json({ error: 'Email service not configured' });
   }
 
   const html = `
@@ -32,9 +30,9 @@ module.exports = async function handler(req, res) {
     </div>
   `;
 
+  let response;
   try {
-    console.log('[contact] calling Resend API...');
-    const response = await fetch('https://api.resend.com/emails', {
+    response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
@@ -48,19 +46,19 @@ module.exports = async function handler(req, res) {
         html,
       }),
     });
-
-    const data = await response.json();
-    console.log('[contact] Resend status:', response.status, 'body:', JSON.stringify(data));
-
-    if (response.ok) {
-      return res.status(200).json({ success: true });
-    }
-
-    return res.status(500).json({ error: 'Failed to send email' });
   } catch (err) {
-    console.error('[contact] fetch error:', err.message);
-    return res.status(500).json({ error: 'Internal server error' });
+    // 504 = couldn't reach Resend at all (network error)
+    return res.status(504).json({ error: 'Could not reach email provider', detail: err.message });
   }
+
+  const data = await response.json();
+
+  if (response.ok) {
+    return res.status(200).json({ success: true });
+  }
+
+  // 502 = Resend reachable but rejected the request — include their error message
+  return res.status(502).json({ error: 'Resend rejected request', resend: data });
 };
 
 function escapeHtml(str) {

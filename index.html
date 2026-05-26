@@ -603,6 +603,7 @@ section { padding: 100px 48px; }
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+.mba-grid-more { margin-top: 20px; }
 
 .mba-card {
   border: 1px solid var(--border);
@@ -1155,19 +1156,29 @@ footer {
 
 .brand-svg-icon { display: block; flex-shrink: 0; }
 
-/* ─── INDUSTRIES ────────────────────────────────────────────────── */
-#industries {
-  background: var(--sand);
-  padding: 52px 48px;
+/* ─── INDUSTRIES (merged into capabilities) ─────────────────────── */
+.cap-industries {
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
-.industries-inner { max-width: 1100px; margin: 0 auto; }
+.cap-industries-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--yellow2);
+  margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.cap-industries-label::after {
+  content: ''; flex: 0 0 36px; height: 1px; background: var(--yellow2);
+}
 .industry-tags {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  margin-top: 20px;
+  display: flex; flex-wrap: wrap; gap: 8px;
 }
 .industry-tag {
   display: inline-flex; align-items: center;
-  padding: 8px 16px; border-radius: 40px;
+  padding: 7px 14px; border-radius: 40px;
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
@@ -1309,7 +1320,6 @@ section.condensed .section-title { margin-bottom: 10px; }
   .work-cards  { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
-  #industries { padding: 44px 24px; }
   section.condensed { padding: 48px 24px; }
   .work-cards { grid-template-columns: 1fr; }
 }
@@ -1617,6 +1627,25 @@ section.condensed .section-title { margin-bottom: 10px; }
 .reveal.visible .section-eyebrow::after { width: 36px; }
 .section-eyebrow.visible::after { width: 36px; }
 
+/* ─── SHOW MORE TOGGLES ─────────────────────────────────────────── */
+.show-more-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 24px;
+  background: none; border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 20px; border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.show-more-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: rgba(28,58,46,0.04);
+}
+
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1916,38 +1945,42 @@ section.condensed .section-title { margin-bottom: 10px; }
         </div>
       </div>
 
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">Sociowash <span class="tl-location">· New Delhi</span></div>
-            <div class="tl-role">Key Account Manager</div>
+      <div id="tl-older" hidden>
+        <div class="tl-item reveal">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company">Sociowash <span class="tl-location">· New Delhi</span></div>
+              <div class="tl-role">Key Account Manager</div>
+            </div>
+            <div class="tl-date">Oct 2022 – Oct 2023</div>
           </div>
-          <div class="tl-date">Oct 2022 – Oct 2023</div>
+          <div class="tl-desc">Ran lead generation campaigns for multiple brands, <em>reducing CPL while simultaneously improving lead quality</em>. Balanced volume and qualification: not just more leads, but better ones converting further down the funnel.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">Lead Generation</span>
+            <span class="tl-tag">CPL Optimisation</span>
+            <span class="tl-tag">B2B Strategy</span>
+            <span class="tl-tag">Account Management</span>
+          </div>
         </div>
-        <div class="tl-desc">Ran lead generation campaigns for multiple brands, <em>reducing CPL while simultaneously improving lead quality</em>. Balanced volume and qualification: not just more leads, but better ones converting further down the funnel.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">Lead Generation</span>
-          <span class="tl-tag">CPL Optimisation</span>
-          <span class="tl-tag">B2B Strategy</span>
-          <span class="tl-tag">Account Management</span>
+
+        <div class="tl-item reveal">
+          <div class="tl-header">
+            <div>
+              <div class="tl-company">Globalbees · ANS Commerce <span class="tl-location">· Gurgaon</span></div>
+              <div class="tl-role">Associate / Digital Marketer</div>
+            </div>
+            <div class="tl-date">Sep 2020 – Jun 2022</div>
+          </div>
+          <div class="tl-desc">Started in digital marketing at ANS Commerce running paid and organic channels for e-commerce clients, then moved into growth and commercial operations at Globalbees supporting a D2C brand portfolio.</div>
+          <div class="tl-tags">
+            <span class="tl-tag">E-commerce</span>
+            <span class="tl-tag">Paid + Organic</span>
+            <span class="tl-tag">D2C</span>
+          </div>
         </div>
       </div>
 
-      <div class="tl-item reveal">
-        <div class="tl-header">
-          <div>
-            <div class="tl-company">Globalbees · ANS Commerce <span class="tl-location">· Gurgaon</span></div>
-            <div class="tl-role">Associate / Digital Marketer</div>
-          </div>
-          <div class="tl-date">Sep 2020 – Jun 2022</div>
-        </div>
-        <div class="tl-desc">Started in digital marketing at ANS Commerce running paid and organic channels for e-commerce clients, then moved into growth and commercial operations at Globalbees supporting a D2C brand portfolio.</div>
-        <div class="tl-tags">
-          <span class="tl-tag">E-commerce</span>
-          <span class="tl-tag">Paid + Organic</span>
-          <span class="tl-tag">D2C</span>
-        </div>
-      </div>
+      <button class="show-more-btn" id="tl-toggle">+ Show earlier roles</button>
 
     </div>
   </div>
@@ -1991,28 +2024,23 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">HubSpot CRM</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- INDUSTRIES -->
-<section id="industries">
-  <div class="industries-inner">
-    <div class="section-eyebrow reveal">Sectors</div>
-    <h2 class="section-title reveal">Industries <em>I've worked in</em></h2>
-    <div class="industry-tags reveal">
-      <span class="industry-tag">Retail</span>
-      <span class="industry-tag">Jewellery</span>
-      <span class="industry-tag">Footwear</span>
-      <span class="industry-tag">Food &amp; Beverage</span>
-      <span class="industry-tag">Makeup &amp; Skincare</span>
-      <span class="industry-tag">Home Decor</span>
-      <span class="industry-tag">Handbags</span>
-      <span class="industry-tag">Healthcare</span>
-      <span class="industry-tag">Energy &amp; Climate Tech</span>
-      <span class="industry-tag">Software &amp; Technology</span>
-      <span class="industry-tag">Concert Bookings</span>
-      <span class="industry-tag">Banking</span>
+      <div class="cap-industries reveal">
+        <div class="cap-industries-label">Sectors</div>
+        <div class="industry-tags">
+          <span class="industry-tag">Retail</span>
+          <span class="industry-tag">Jewellery</span>
+          <span class="industry-tag">Footwear</span>
+          <span class="industry-tag">Food &amp; Beverage</span>
+          <span class="industry-tag">Makeup &amp; Skincare</span>
+          <span class="industry-tag">Home Decor</span>
+          <span class="industry-tag">Handbags</span>
+          <span class="industry-tag">Healthcare</span>
+          <span class="industry-tag">Energy &amp; Climate Tech</span>
+          <span class="industry-tag">Software &amp; Technology</span>
+          <span class="industry-tag">Concert Bookings</span>
+          <span class="industry-tag">Banking</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2058,22 +2086,28 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="mba-title">Raising the Baa</div>
         <div class="mba-desc">Pro bono strategy project supporting a purpose-led organisation. Working on growth, visibility and commercial development as part of the MBA pro bono programme.</div>
       </div>
-      <div class="mba-card">
-        <div class="mba-label">Brand Competition</div>
-        <div class="mba-title">L'Oréal Brandstorm</div>
-        <div class="mba-desc">Participated in L'Oréal's global business competition, developing brand strategy, consumer insight, and go-to-market thinking under real competitive conditions.</div>
-      </div>
-      <div class="mba-card">
-        <div class="mba-label">Hackathon</div>
-        <div class="mba-title">App Build &amp; GTM Sprint</div>
-        <div class="mba-desc">Built and pitched an app concept in a time-pressured hackathon, covering product design, market sizing, and a full go-to-market strategy from scratch within 24 hours.</div>
-      </div>
-      <div class="mba-card sustain">
-        <div class="mba-label">Sustainability Sprint</div>
-        <div class="mba-title">Sustainability Challenge</div>
-        <div class="mba-desc">Fast-track project at the intersection of commercial strategy and environmental impact, developing solutions to real sustainability challenges faced by businesses.</div>
+    </div>
+
+    <div id="mba-more" hidden>
+      <div class="mba-grid mba-grid-more">
+        <div class="mba-card">
+          <div class="mba-label">Brand Competition</div>
+          <div class="mba-title">L'Oréal Brandstorm</div>
+          <div class="mba-desc">Participated in L'Oréal's global business competition, developing brand strategy, consumer insight, and go-to-market thinking under real competitive conditions.</div>
+        </div>
+        <div class="mba-card">
+          <div class="mba-label">Hackathon</div>
+          <div class="mba-title">App Build &amp; GTM Sprint</div>
+          <div class="mba-desc">Built and pitched an app concept in a time-pressured hackathon, covering product design, market sizing, and a full go-to-market strategy from scratch within 24 hours.</div>
+        </div>
+        <div class="mba-card sustain">
+          <div class="mba-label">Sustainability Sprint</div>
+          <div class="mba-title">Sustainability Challenge</div>
+          <div class="mba-desc">Fast-track project at the intersection of commercial strategy and environmental impact, developing solutions to real sustainability challenges faced by businesses.</div>
+        </div>
       </div>
     </div>
+    <button class="show-more-btn" id="mba-toggle">+ Show more projects</button>
 
     <div class="certs-section reveal">
       <div class="certs-label">Certificates &amp; Awards</div>
@@ -2432,6 +2466,22 @@ document.querySelectorAll('.cert-card[data-cert]').forEach(card => {
 lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// Show-more toggles
+(function() {
+  function makeToggle(btnId, targetId, showLabel, hideLabel) {
+    const btn = document.getElementById(btnId);
+    const target = document.getElementById(targetId);
+    if (!btn || !target) return;
+    btn.addEventListener('click', function() {
+      const open = !target.hidden;
+      target.hidden = open;
+      btn.textContent = open ? showLabel : hideLabel;
+    });
+  }
+  makeToggle('tl-toggle',  'tl-older',  '+ Show earlier roles',   '− Hide earlier roles');
+  makeToggle('mba-toggle', 'mba-more',  '+ Show more projects',   '− Show fewer projects');
+})();
 
 // Expandable work cards
 document.querySelectorAll('.work-card').forEach(card => {

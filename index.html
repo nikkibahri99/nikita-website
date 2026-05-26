@@ -133,18 +133,17 @@ nav {
   position: relative; z-index: 1;
 }
 
-/* Open to work badge */
-.open-to-work {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.4);
-  border-radius: 40px;
-  padding: 7px 16px 7px 11px;
-  margin-bottom: 20px;
+/* Availability bar */
+.availability-bar {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.25);
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 10px 24px;
   font-family: 'DM Mono', monospace;
   font-size: 11px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
 }
 .open-to-work-dot {
   width: 8px; height: 8px; border-radius: 50%;
@@ -282,7 +281,7 @@ nav {
 .photo-placeholder img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
+  object-fit: cover; object-position: center 30%;
   border-radius: 8px;
 }
 
@@ -1657,13 +1656,15 @@ section.condensed .section-title { margin-bottom: 10px; }
   </div>
 </div>
 
+<!-- AVAILABILITY BAR -->
+<div class="availability-bar">
+  <span class="open-to-work-dot"></span>
+  Open to opportunities &nbsp;·&nbsp; Management Consulting &amp; Marketing Strategy &nbsp;·&nbsp; Available Sep 2026 &nbsp;·&nbsp; UK or Dubai
+</div>
+
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
-    <div class="open-to-work">
-      <span class="open-to-work-dot"></span>
-      Open to opportunities · Management Consulting &amp; Marketing Strategy · Sep 2026
-    </div>
     <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Advisory</h1>
     <p class="hero-desc">

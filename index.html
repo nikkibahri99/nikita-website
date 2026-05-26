@@ -943,15 +943,63 @@ footer {
 }
 .lightbox-close:hover { color: white; background: rgba(255,255,255,0.2); transform: scale(1.1); }
 .cert-card[data-cert] { cursor: pointer; }
-.cert-li-placeholder {
-  width: 100%; height: 100%;
+/* ─── LINKEDIN LEARNING COMPACT SUB-SECTION ─── */
+.li-learning-section {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.li-learning-header {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.11em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.li-learning-header svg { flex-shrink: 0; }
+.li-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.li-cert-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 9px 11px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--cream);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.li-cert-item:hover {
+  border-color: #0077B5;
+  box-shadow: 0 2px 10px rgba(0,119,181,0.08);
+}
+.li-cert-badge {
+  flex-shrink: 0;
+  width: 20px; height: 20px; border-radius: 3px;
+  background: #0077B5;
   display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(135deg, #0077B5 0%, #005585 100%);
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 38px; font-weight: 800;
-  color: rgba(255,255,255,0.9);
-  letter-spacing: -0.03em;
-  user-select: none;
+  font-size: 10px; font-weight: 800;
+  color: #fff; line-height: 1;
+  margin-top: 1px;
+}
+.li-cert-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11.5px; font-weight: 600;
+  color: var(--navy); line-height: 1.3;
+}
+.li-cert-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px; color: var(--muted);
+  margin-top: 2px;
+}
+@media (max-width: 768px) {
+  .li-learning-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .li-learning-grid { grid-template-columns: 1fr; }
 }
 
 .reveal {
@@ -2084,57 +2132,69 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
         </div>
 
-        <!-- LinkedIn Learning — rows 3 & 4 -->
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Advanced Excel for FP&amp;A</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">CRM Basics: Business Growth through Relationships</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Securing Software as a Service (SaaS)</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Introduction to ESG</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Turning Data into Strategies</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Advanced Google Tag Manager</div>
-            <div class="cert-issuer">LinkedIn Learning · 2026</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
-          <div class="cert-meta">
-            <div class="cert-name">Financial Accounting Foundations</div>
-            <div class="cert-issuer">LinkedIn Learning · 2025</div>
-          </div>
-        </div>
 
+      </div>
+
+      <!-- LinkedIn Learning compact sub-section -->
+      <div class="li-learning-section">
+        <div class="li-learning-header">
+          <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="16" height="16" rx="2" fill="#0077B5"/>
+            <text x="8" y="12" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="10" font-weight="bold">in</text>
+          </svg>
+          LinkedIn Learning
+        </div>
+        <div class="li-learning-grid">
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Advanced Excel for FP&amp;A</div>
+              <div class="li-cert-date">Mar 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">CRM Basics: Business Growth</div>
+              <div class="li-cert-date">Mar 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Securing Software as a Service (SaaS)</div>
+              <div class="li-cert-date">Mar 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Introduction to ESG</div>
+              <div class="li-cert-date">Feb 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Turning Data into Strategies</div>
+              <div class="li-cert-date">Feb 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Advanced Google Tag Manager</div>
+              <div class="li-cert-date">Jan 2026</div>
+            </div>
+          </div>
+          <div class="li-cert-item">
+            <div class="li-cert-badge">in</div>
+            <div>
+              <div class="li-cert-name">Financial Accounting Foundations</div>
+              <div class="li-cert-date">Dec 2025</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

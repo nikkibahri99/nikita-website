@@ -932,12 +932,16 @@ footer {
 }
 .lightbox.open .lightbox-img { transform: scale(1); }
 .lightbox-close {
-  position: absolute; top: 20px; right: 24px;
-  font-size: 32px; color: rgba(255,255,255,0.65);
-  cursor: pointer; background: none; border: none;
-  line-height: 1; transition: color 0.2s, transform 0.2s;
+  position: absolute; top: 16px; right: 16px;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; color: rgba(255,255,255,0.75);
+  cursor: pointer;
+  background: rgba(255,255,255,0.1); border: none;
+  border-radius: 50%;
+  line-height: 1; transition: color 0.2s, background 0.2s, transform 0.2s;
 }
-.lightbox-close:hover { color: white; transform: scale(1.15); }
+.lightbox-close:hover { color: white; background: rgba(255,255,255,0.2); transform: scale(1.1); }
 .cert-card { cursor: pointer; }
 
 .reveal {
@@ -1008,14 +1012,15 @@ footer {
 }
 .sticky-cv-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 18px; border-radius: 40px;
+  padding: 13px 22px; border-radius: 40px;
   font-family: 'Instrument Sans', sans-serif;
-  font-size: 13px; font-weight: 700;
+  font-size: 14px; font-weight: 700;
   text-decoration: none; white-space: nowrap;
   background: #FFFFFF; color: var(--navy);
   border: 1.5px solid rgba(255,255,255,0.8);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  min-height: 48px;
 }
 .sticky-cv-btn:hover {
   transform: translateY(-2px);
@@ -2081,11 +2086,11 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="contact-content">
         <div class="section-eyebrow reveal">Get in touch</div>
         <h2 class="section-title reveal">Open to the right <em>conversation</em></h2>
-        <p class="section-intro reveal">I want to work on problems that matter: climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK or Dubai. If that sounds like a fit, get in touch.</p>
+        <p class="section-intro reveal">I want to work on problems that matter: climate tech, purpose-led consumer brands, companies where commercial rigour and mission point in the same direction. Open to roles in commercial strategy, growth, or consulting in the UK. If that sounds like a fit, get in touch.</p>
         <div class="contact-quick-facts reveal">
           <span class="contact-fact">5 years commercial strategy</span>
           <span class="contact-fact">MBA · University of Bath</span>
-          <span class="contact-fact">UK or Dubai</span>
+          <span class="contact-fact">UK</span>
           <span class="contact-fact">Available Sep 2026</span>
         </div>
         <div class="contact-links reveal">

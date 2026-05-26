@@ -1118,6 +1118,17 @@ section.condensed .section-title { margin-bottom: 10px; }
 .cap-text-col .section-title   { margin-bottom: 14px; font-size: clamp(28px,3.5vw,44px); }
 .cap-text-col .section-intro   { margin-bottom: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
 .cap-pills-col { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 6px; }
+.pill-group { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+.pill-group-label {
+  width: 100%;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--yellow);
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(201,160,53,0.2);
+  margin-bottom: 2px;
+}
 
 /* ─── WORK MINI-CARDS ───────────────────────────────────────────── */
 .work-cards {
@@ -1627,7 +1638,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Advisory</h1>
     <p class="hero-desc">
-      I help businesses make better commercial decisions — which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years across global retail, D2C, and market entry. Currently at UrbanChain.
+      I help businesses make better commercial decisions — which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years in commercial strategy and marketing advisory, across global retail, D2C, and market entry. Currently at UrbanChain.
     </p>
     <div class="hero-tags">
       <span class="tag tag-yellow">UrbanChain</span>
@@ -1847,27 +1858,37 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="cap-two-col">
       <div class="cap-text-col">
         <div class="section-eyebrow reveal">What I work on</div>
-        <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-        <p class="section-intro reveal">The analytical and commercial toolkit — from financial modelling and market sizing to channel strategy and revenue architecture.</p>
+        <h2 class="section-title reveal">Skills &amp; <em>Expertise</em></h2>
+        <p class="section-intro reveal">Two areas of expertise — commercial strategy and marketing advisory — applied across five years and 16+ global brands.</p>
       </div>
       <div class="cap-pills-col reveal">
-        <span class="skill-pill hl-navy">Brand Awareness</span>
-        <span class="skill-pill hl-green">Lead Generation</span>
-        <span class="skill-pill hl-amber">CRO</span>
-        <span class="skill-pill hl-green">CPL Optimisation</span>
-        <span class="skill-pill hl-navy">Ecommerce Campaigns</span>
-        <span class="skill-pill hl-amber">Performance Strategy</span>
-        <span class="skill-pill">Brand Launch</span>
-        <span class="skill-pill">Google Ads</span>
-        <span class="skill-pill">Meta Ads</span>
-        <span class="skill-pill">HubSpot CRM</span>
-        <span class="skill-pill">LinkedIn Ads</span>
-        <span class="skill-pill">Google Shopping</span>
-        <span class="skill-pill">Financial Modelling</span>
-        <span class="skill-pill">Market Research</span>
-        <span class="skill-pill">GTM Strategy</span>
-        <span class="skill-pill">D2C Strategy</span>
-        <span class="skill-pill">Audience Segmentation</span>
+        <div class="pill-group">
+          <div class="pill-group-label">Strategy &amp; Advisory</div>
+          <span class="skill-pill hl-navy">Financial Modelling</span>
+          <span class="skill-pill hl-navy">Market Sizing</span>
+          <span class="skill-pill hl-navy">Unit Economics</span>
+          <span class="skill-pill hl-navy">Commercial Due Diligence</span>
+          <span class="skill-pill hl-amber">GTM Strategy</span>
+          <span class="skill-pill hl-amber">Market Entry Strategy</span>
+          <span class="skill-pill hl-amber">Revenue Architecture</span>
+          <span class="skill-pill hl-amber">Business Case Development</span>
+          <span class="skill-pill">Competitive Analysis</span>
+          <span class="skill-pill">D2C Strategy</span>
+        </div>
+        <div class="pill-group" style="margin-top:18px;">
+          <div class="pill-group-label">Marketing &amp; Brand Strategy</div>
+          <span class="skill-pill hl-navy">Brand Strategy</span>
+          <span class="skill-pill hl-navy">Brand Launch</span>
+          <span class="skill-pill hl-amber">Campaign Strategy</span>
+          <span class="skill-pill hl-amber">Performance Strategy</span>
+          <span class="skill-pill">Audience Segmentation</span>
+          <span class="skill-pill">CRO</span>
+          <span class="skill-pill">Lead Generation</span>
+          <span class="skill-pill">Google Ads</span>
+          <span class="skill-pill">Meta Ads</span>
+          <span class="skill-pill">LinkedIn Ads</span>
+          <span class="skill-pill">HubSpot CRM</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1978,15 +1999,6 @@ section.condensed .section-title { margin-bottom: 10px; }
         </div>
 
         <!-- Regular cards — row 2 -->
-        <div class="cert-card" data-cert="assets/certs/claude-code.png" data-cert-alt="Claude Code in Action certificate">
-          <div class="cert-img-wrap">
-            <img src="assets/certs/claude-code.png" alt="Claude Code in Action certificate">
-          </div>
-          <div class="cert-meta">
-            <div class="cert-name">Claude Code in Action</div>
-            <div class="cert-issuer">Anthropic · 2026</div>
-          </div>
-        </div>
         <div class="cert-card" data-cert="assets/certs/sustainability-sim.webp" data-cert-alt="SustainabilitySim certificate">
           <div class="cert-img-wrap">
             <img src="assets/certs/sustainability-sim.webp" alt="SustainabilitySim certificate">

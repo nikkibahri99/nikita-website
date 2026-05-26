@@ -2011,10 +2011,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <p class="cv-modal-desc">I'll respond within 24 hours.</p>
 
       <form id="contact-form" novalidate>
-        <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_KEY">
-        <input type="hidden" name="subject" value="New message from portfolio — nikita-website">
-        <input type="hidden" name="from_name" value="Nikita Bahri Portfolio">
-        <input type="checkbox" name="botcheck" style="display:none">
+
 
         <div class="cv-form-row">
           <input type="text"  name="name"    placeholder="Your name *"  required class="cv-form-input">
@@ -2216,10 +2213,16 @@ document.querySelectorAll('.work-card').forEach(card => {
     submitBtn.textContent = 'Sending…';
 
     try {
-      const res  = await fetch('https://api.web3forms.com/submit', {
+      const fd = new FormData(form);
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name:    fd.get('name'),
+          email:   fd.get('email'),
+          company: fd.get('company') || '',
+          message: fd.get('message'),
+        }),
       });
       const json = await res.json();
       if (json.success) {

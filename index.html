@@ -942,7 +942,17 @@ footer {
   line-height: 1; transition: color 0.2s, background 0.2s, transform 0.2s;
 }
 .lightbox-close:hover { color: white; background: rgba(255,255,255,0.2); transform: scale(1.1); }
-.cert-card { cursor: pointer; }
+.cert-card[data-cert] { cursor: pointer; }
+.cert-li-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #0077B5 0%, #005585 100%);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 38px; font-weight: 800;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: -0.03em;
+  user-select: none;
+}
 
 .reveal {
   opacity: 0; transform: translateY(36px);
@@ -2071,6 +2081,57 @@ section.condensed .section-title { margin-bottom: 10px; }
           <div class="cert-meta">
             <div class="cert-name">Project Management Foundations</div>
             <div class="cert-issuer">LinkedIn Learning · PMI · 2026</div>
+          </div>
+        </div>
+
+        <!-- LinkedIn Learning — rows 3 & 4 -->
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Advanced Excel for FP&amp;A</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">CRM Basics: Business Growth through Relationships</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Securing Software as a Service (SaaS)</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Introduction to ESG</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Turning Data into Strategies</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Advanced Google Tag Manager</div>
+            <div class="cert-issuer">LinkedIn Learning · 2026</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-img-wrap"><div class="cert-li-placeholder">in</div></div>
+          <div class="cert-meta">
+            <div class="cert-name">Financial Accounting Foundations</div>
+            <div class="cert-issuer">LinkedIn Learning · 2025</div>
           </div>
         </div>
 

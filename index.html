@@ -352,8 +352,8 @@ section { padding: 100px 48px; }
 
 .section-title {
   font-family: 'Fraunces', serif;
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 900; line-height: 1.05;
+  font-size: 36px;
+  font-weight: 900; line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--navy); margin-bottom: 16px;
 }
@@ -641,7 +641,7 @@ section { padding: 100px 48px; }
 }
 
 .mba-desc {
-  font-size: 13px; color: var(--muted);
+  font-size: 14px; color: var(--muted);
   line-height: 1.6;
 }
 
@@ -674,7 +674,28 @@ section { padding: 100px 48px; }
   display: block; margin-top: 10px;
 }
 
+/* ─── NAV SUB LABELS ────────────────────────────────────────────────── */
+.nav-sub {
+  display: block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px; font-weight: 400;
+  letter-spacing: 0.03em; text-transform: none;
+  color: var(--muted); opacity: 0.65;
+  line-height: 1; margin-top: 3px;
+}
+.nav-links a { display: flex; flex-direction: column; align-items: flex-start; }
+
 /* ─── BRANDS STICKY TICKER ─────────────────────────────────────────── */
+.brands-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  padding: 8px 24px 4px;
+}
+.brands-marquee { cursor: grab; }
+.brands-marquee:active { cursor: grabbing; }
 #brands {
   position: relative;
   z-index: 90;
@@ -1174,10 +1195,8 @@ footer {
   letter-spacing: 0.08em; text-transform: uppercase;
   background: rgba(200,146,58,0.14); color: var(--navy);
   border: 1.5px solid rgba(200,146,58,0.45);
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: default;
 }
-.industry-tag:hover { background: var(--yellow); border-color: var(--yellow); }
 .ind-icon { font-size: 12px; line-height: 1; }
 
 /* ─── CONDENSED SECTIONS ────────────────────────────────────────── */
@@ -1192,10 +1211,9 @@ section.condensed .section-title { margin-bottom: 10px; }
   padding: 8px 18px; border-radius: 6px;
   background: rgba(200,146,58,0.14); color: var(--navy);
   border: 1.5px solid rgba(200,146,58,0.45);
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
   cursor: default;
 }
-.skill-pill:hover { background: var(--yellow); border-color: var(--yellow); transform: translateY(-2px); }
+.skill-pill:hover { background: rgba(200,146,58,0.14); border-color: rgba(200,146,58,0.45); }
 .skill-pill.hl-green, .skill-pill.hl-amber, .skill-pill.hl-navy {
   background: rgba(200,146,58,0.14); color: var(--navy); border-color: rgba(200,146,58,0.45);
 }
@@ -1208,7 +1226,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   align-items: start;
 }
 .cap-text-col .section-eyebrow { margin-bottom: 14px; }
-.cap-text-col .section-title   { margin-bottom: 14px; font-size: clamp(28px,3.5vw,44px); }
+.cap-text-col .section-title   { margin-bottom: 14px; }
 .cap-text-col .section-intro   { margin-bottom: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
 .cap-pills-col { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 6px; }
 .pill-group { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
@@ -1248,7 +1266,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   background: none; border: none; padding: 0;
 }
 .work-card-tag.green, .work-card-tag.amber { background: none; color: var(--navy); border: none; }
-.work-card-desc { font-size: 13px; color: var(--text); line-height: 1.55; margin-bottom: 12px; }
+.work-card-desc { font-size: 14px; color: var(--text); line-height: 1.6; margin-bottom: 12px; }
 .work-card-result {
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 600;
@@ -1326,7 +1344,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   align-items: center;
   margin-bottom: 48px;
 }
-.mba-intro-text .section-title { font-size: clamp(22px, 2.8vw, 36px); }
+.mba-intro-text .section-title { font-size: 36px; }
 .mba-intro-text .section-intro { margin-bottom: 0; }
 
 /* ─── MBA PRESENTING PHOTO ──────────────────────────────────────────── */
@@ -1343,7 +1361,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 .mba-photo-caption {
   font-family: 'DM Mono', monospace;
   font-size: 10px; color: var(--muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin-top: 8px;
 }
 @media (max-width: 900px) {
@@ -1659,10 +1677,10 @@ section.condensed .section-title { margin-bottom: 10px; }
 <nav id="nav">
   <a href="#" class="nav-logo">Nikita <span>Bahri</span></a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#work">Work</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#capabilities">Capabilities</a></li>
-    <li><a href="#mba">MBA</a></li>
+    <li><a href="#work">Work<span class="nav-sub">Case studies</span></a></li>
+    <li><a href="#experience">Experience<span class="nav-sub">Career timeline</span></a></li>
+    <li><a href="#capabilities">Capabilities<span class="nav-sub">Skills &amp; sectors</span></a></li>
+    <li><a href="#mba">MBA<span class="nav-sub">Projects &amp; awards</span></a></li>
     <li><a href="#contact" class="nav-cta open-contact-form">Get in touch</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
@@ -1685,7 +1703,7 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="hero-eyebrow">MBA · University of Bath <span class="eyebrow-award">· £15,000 Merit Scholarship</span></div>
     <h1>Commercial<br><em>Strategy</em><br>& Growth</h1>
     <p class="hero-desc">
-      I help businesses make better commercial decisions — which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years in commercial strategy and marketing advisory, across global retail, D2C, and market entry. Currently at UrbanChain.
+      I help businesses make better commercial decisions: which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years in commercial strategy and marketing advisory, across global retail, D2C, and market entry. Currently at UrbanChain.
     </p>
     <div class="hero-tags">
       <span class="tag tag-yellow">UrbanChain</span>
@@ -1738,8 +1756,9 @@ section.condensed .section-title { margin-bottom: 10px; }
 
 <!-- BRANDS TICKER — social proof after hero -->
 <div id="brands">
+  <div class="brands-label">Brands I have worked with</div>
   <div class="brands-inner">
-    <div class="brands-marquee">
+    <div class="brands-marquee" id="brands-marquee">
       <div class="brands-track" id="brands-track">
         <div class="brand-logo-card">
           <div class="brand-logo-icon" style="background:#D4728A;">FN<img class="brand-real-logo" src="https://www.forevernew.co.uk/static/version1778473565/frontend/ForeverNew/International/en_GB/images/logo.svg" alt="" onload="this.parentElement.classList.add('logo-loaded')" onerror="this.remove()"></div>
@@ -1815,12 +1834,12 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="section-inner">
     <div class="section-eyebrow reveal">Selected work</div>
     <h2 class="section-title reveal">Work that <em>shaped</em> the decision</h2>
-    <p class="section-intro reveal">The decisions that shaped strategy — and a few that stopped it.</p>
+    <p class="section-intro reveal">The decisions that shaped strategy, and a few that stopped it.</p>
     <div class="work-cards">
 
       <div class="work-card reveal">
         <span class="work-card-tag">Strategic Advisory</span>
-        <div class="work-card-desc">Built the unit economics case for Da Milano's tier-2 India expansion — and recommended against it. Saved the client from committing capital to a model that didn't work.</div>
+        <div class="work-card-desc">Built the unit economics case for Da Milano's tier-2 India expansion, and recommended against it. Saved the client from committing capital to a model that didn't work.</div>
         <span class="work-card-result">Expansion halted · £20K protected</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
         <div class="work-card-more">Modelled customer acquisition costs, average order values, and expected margins across tier-2 cities. The analysis showed the expansion wouldn't reach breakeven within any viable window. Presented the findings directly to the client and made the case to stop before capital was deployed. The recommendation was accepted.</div>
@@ -1828,26 +1847,26 @@ section.condensed .section-title { margin-bottom: 10px; }
 
       <div class="work-card reveal">
         <span class="work-card-tag">Revenue Strategy</span>
-        <div class="work-card-desc">Diagnosed the channel mix and built the commercial model for multiple brands scaling from zero — without burning budget on unvalidated assumptions.</div>
+        <div class="work-card-desc">Diagnosed the channel mix and built the commercial model for multiple brands scaling from zero, without burning budget on unvalidated assumptions.</div>
         <span class="work-card-result">£30K MRR · 40% efficiency gain</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
-        <div class="work-card-more">Started from a blank slate — no existing audiences, no channel history, no benchmark data. Mapped the most defensible path to revenue for each brand, prioritised channels by unit economics, and built the commercial framework that guided spend decisions. £30K MRR in five months while cutting wasted spend by 40%.</div>
+        <div class="work-card-more">Started from a blank slate: no existing audiences, no channel history, no benchmark data. Mapped the most defensible path to revenue for each brand, prioritised channels by unit economics, and built the commercial framework that guided spend decisions. £30K MRR in five months while cutting wasted spend by 40%.</div>
       </div>
 
       <div class="work-card reveal">
         <span class="work-card-tag">Market Entry Advisory</span>
-        <div class="work-card-desc">Advised multiple fashion and jewellery brands on their first move from India into the UAE — market sizing, customer definition, competitive positioning, and commercial readiness.</div>
+        <div class="work-card-desc">Advised multiple fashion and jewellery brands on their first move from India into the UAE: market sizing, customer definition, competitive positioning, and commercial readiness.</div>
         <span class="work-card-result">3 brands entered market</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
-        <div class="work-card-more">Conducted market analysis across the UAE retail landscape, defined customer segments and competitive positioning for each brand, and built the financial and strategic framework for entry. Delivered end-to-end market entry playbooks covering pricing architecture, channel strategy, and brand narrative — from the first client briefing through to go-live.</div>
+        <div class="work-card-more">Conducted market analysis across the UAE retail landscape, defined customer segments and competitive positioning for each brand, and built the financial and strategic framework for entry. Delivered end-to-end market entry playbooks covering pricing architecture, channel strategy, and brand narrative, from the first client briefing through to go-live.</div>
       </div>
 
       <div class="work-card reveal">
         <span class="work-card-tag">Go-to-Market Design</span>
-        <div class="work-card-desc">Designed the commercial foundations for new brand launches — positioning, customer definition, and business model — before a penny was committed to market.</div>
+        <div class="work-card-desc">Designed the commercial foundations for new brand launches: positioning, customer definition, and business model. All before a penny was committed to market.</div>
         <span class="work-card-result">Revenue within 90 days</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
-        <div class="work-card-more">The work started upstream of execution: defining who the customer was, what the brand stood for, and whether the unit economics made sense. Only then was anything built or spent. Worked across Green Honchos and ScaleX to take brands from brief to live — most generating revenue within 90 days of the first strategic session.</div>
+        <div class="work-card-more">The work started upstream of execution: defining who the customer was, what the brand stood for, and whether the unit economics made sense. Only then was anything built or spent. Worked across Green Honchos and ScaleX to take brands from brief to live, with most generating revenue within 90 days of the first strategic session.</div>
       </div>
 
       <div class="work-card reveal">
@@ -1855,15 +1874,15 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-desc">Solved a structural commercial problem for Forever New: clear prior-season inventory without cannibalising a simultaneous new-season launch.</div>
         <span class="work-card-result">All targets hit · 30% revenue uplift</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
-        <div class="work-card-more">The challenge was structural — two commercial objectives pulling in opposite directions, competing for the same audiences and budget. Built a segmentation and resource-allocation framework to separate the two tracks and prevent cannibalisation. Hit all clearance targets while delivering a 30% uplift on new-season performance. The framework was adopted for future seasonal planning.</div>
+        <div class="work-card-more">The challenge was structural: two commercial objectives pulling in opposite directions, competing for the same audiences and budget. Built a segmentation and resource-allocation framework to separate the two tracks and prevent cannibalisation. Hit all clearance targets while delivering a 30% uplift on new-season performance. The framework was adopted for future seasonal planning.</div>
       </div>
 
       <div class="work-card reveal">
         <span class="work-card-tag">Client Portfolio Leadership</span>
-        <div class="work-card-desc">Led commercial strategy across a global brand portfolio simultaneously — chaired client financial planning sessions and built the team that delivered the portfolio's best-ever revenue performance.</div>
-        <span class="work-card-result">Named top performer · Team of 7</span>
+        <div class="work-card-desc">Led commercial strategy across a global brand portfolio simultaneously, chairing client financial planning sessions and building the team that delivered the portfolio's best-ever revenue performance.</div>
+        <span class="work-card-result">Named top performer · Managed a team of 7</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
-        <div class="work-card-more">Brands included Ray-Ban, Forever New, Da Milano, Bath &amp; Body Works, ASICS, and Onitsuka Tiger. Accountable for strategic direction across the full portfolio, with direct client relationships and weekly commercial planning sessions. Named top-performing manager for 3–4 consecutive months. The output was consistent revenue growth — driven by commercial rigour applied across very different businesses.</div>
+        <div class="work-card-more">Brands included Ray-Ban, Forever New, Da Milano, Bath &amp; Body Works, ASICS, and Onitsuka Tiger. Accountable for strategic direction across the full portfolio, with direct client relationships and weekly commercial planning sessions. Named top-performing manager for 3–4 consecutive months. The output was consistent revenue growth, driven by commercial rigour applied across very different businesses.</div>
       </div>
 
     </div>
@@ -1874,7 +1893,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <section id="experience">
   <div class="section-inner">
     <div class="section-eyebrow reveal">Career</div>
-    <h2 class="section-title reveal">From execution to <em>strategy</em> — the full arc</h2>
+    <h2 class="section-title reveal">From execution to <em>strategy</em>: the full arc</h2>
 
     <div class="timeline">
 
@@ -1984,7 +2003,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="cap-text-col">
         <div class="section-eyebrow reveal">What I work on</div>
         <h2 class="section-title reveal">Skills &amp; <em>Expertise</em></h2>
-        <p class="section-intro reveal">Two areas of expertise — commercial strategy and marketing advisory — applied across five years and 16+ global brands.</p>
+        <p class="section-intro reveal">Two areas of expertise: commercial strategy and marketing advisory, applied across five years and 16+ global brands.</p>
       </div>
       <div class="cap-pills-col reveal">
         <div class="pill-group">
@@ -2463,6 +2482,41 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
+// Brands drag-to-scroll
+(function() {
+  const marquee = document.getElementById('brands-marquee');
+  const track   = document.getElementById('brands-track');
+  if (!marquee || !track) return;
+  let dragging = false, startX = 0, startTX = 0;
+  function getTX() {
+    const m = new DOMMatrix(getComputedStyle(track).transform);
+    return m.m41;
+  }
+  marquee.addEventListener('mousedown', e => {
+    dragging = true;
+    startX   = e.clientX;
+    startTX  = getTX();
+    track.style.animationPlayState = 'paused';
+    track.style.transform = 'translateX(' + startTX + 'px)';
+    track.style.animation = 'none';
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    track.style.transform = 'translateX(' + (startTX + e.clientX - startX) + 'px)';
+  });
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    const tx = getTX();
+    const half = track.scrollWidth / 2;
+    const progress = Math.abs(tx % half) / half;
+    track.style.animation = '';
+    track.style.animationDelay = '-' + (progress * 55) + 's';
+    track.style.transform = '';
+  });
+})();
+
 // Show-more toggles
 (function() {
   function makeToggle(btnId, targetId, showLabel, hideLabel) {
@@ -2534,7 +2588,7 @@ document.querySelectorAll('.work-card').forEach(card => {
       } else { throw new Error(); }
     } catch {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Something went wrong — try again';
+      submitBtn.textContent = 'Something went wrong. Try again.';
     }
   });
 })();

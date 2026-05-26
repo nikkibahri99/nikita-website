@@ -136,8 +136,9 @@ nav {
 /* Availability bar */
 .availability-bar {
   background: #22c55e;
-  position: relative;
-  z-index: 100;
+  position: sticky;
+  top: 64px;
+  z-index: 95;
   display: flex; align-items: center; justify-content: center; gap: 10px;
   padding: 11px 24px;
   font-family: 'DM Mono', monospace;
@@ -670,8 +671,7 @@ section { padding: 100px 48px; }
 
 /* ─── BRANDS STICKY TICKER ─────────────────────────────────────────── */
 #brands {
-  position: sticky;
-  top: 64px;
+  position: relative;
   z-index: 90;
   margin-top: 64px;
   background: var(--cream);

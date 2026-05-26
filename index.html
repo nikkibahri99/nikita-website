@@ -734,6 +734,29 @@ img.brand-real-logo {
 #contact .section-title { color: white; }
 #contact .section-eyebrow { color: var(--yellow); }
 #contact .section-intro { color: rgba(255,255,255,0.55); margin-bottom: 32px; }
+
+.btn-contact-cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 15px 32px;
+  background: #ffffff;
+  color: var(--navy);
+  border: none;
+  border-radius: 6px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.25s, color 0.25s;
+}
+.btn-contact-cta:hover {
+  transform: translateY(-3px);
+  color: var(--yellow);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.3);
+}
 .contact-content { text-align: left; }
 .contact-content .section-eyebrow { justify-content: flex-start; }
 .contact-content .section-eyebrow::before { display: none; }
@@ -2019,7 +2042,7 @@ section.condensed .section-title { margin-bottom: 10px; }
             in linkedin.com/in/nikitabahri
           </a>
         </div>
-        <button class="btn-primary open-contact-form reveal" style="margin-top:28px;border:none;">Send a message →</button>
+        <button class="btn-contact-cta open-contact-form reveal">Send a message →</button>
       </div>
       <div class="contact-photo reveal">
         <img src="assets/photos/wimbledon.jpg" alt="Nikita at Wimbledon">

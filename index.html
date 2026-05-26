@@ -1156,9 +1156,19 @@ footer {
 
 .brand-svg-icon { display: block; flex-shrink: 0; }
 
+/* ─── INDUSTRIES ────────────────────────────────────────────────── */
+#industries {
+  background: var(--sand);
+  padding: 52px 48px;
+}
+.industries-inner { max-width: 1100px; margin: 0 auto; }
+.industry-tags {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 20px;
+}
 .industry-tag {
-  display: inline-flex; align-items: center;
-  padding: 7px 14px; border-radius: 40px;
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 16px; border-radius: 40px;
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
@@ -1300,6 +1310,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   .work-cards  { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
+  #industries { padding: 44px 24px; }
   section.condensed { padding: 48px 24px; }
   .work-cards { grid-template-columns: 1fr; }
 }
@@ -2003,22 +2014,29 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">LinkedIn Ads</span>
           <span class="skill-pill">HubSpot CRM</span>
         </div>
-        <div class="pill-group" style="margin-top:18px;">
-          <div class="pill-group-label">Sectors</div>
-          <span class="skill-pill">Retail</span>
-          <span class="skill-pill">Jewellery</span>
-          <span class="skill-pill">Footwear</span>
-          <span class="skill-pill">Food &amp; Beverage</span>
-          <span class="skill-pill">Makeup &amp; Skincare</span>
-          <span class="skill-pill">Home Decor</span>
-          <span class="skill-pill">Handbags</span>
-          <span class="skill-pill">Healthcare</span>
-          <span class="skill-pill">Energy &amp; Climate Tech</span>
-          <span class="skill-pill">Software &amp; Technology</span>
-          <span class="skill-pill">Concert Bookings</span>
-          <span class="skill-pill">Banking</span>
-        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="industries-inner">
+    <div class="section-eyebrow reveal">Sectors</div>
+    <h2 class="section-title reveal">Industries <em>I've worked in</em></h2>
+    <div class="industry-tags reveal">
+      <span class="industry-tag"><span class="ind-icon">🛍️</span>Retail</span>
+      <span class="industry-tag"><span class="ind-icon">💎</span>Jewellery</span>
+      <span class="industry-tag"><span class="ind-icon">👟</span>Footwear</span>
+      <span class="industry-tag"><span class="ind-icon">🍽️</span>Food &amp; Beverage</span>
+      <span class="industry-tag"><span class="ind-icon">💄</span>Makeup &amp; Skincare</span>
+      <span class="industry-tag"><span class="ind-icon">🏡</span>Home Decor</span>
+      <span class="industry-tag"><span class="ind-icon">👜</span>Handbags</span>
+      <span class="industry-tag"><span class="ind-icon">🏥</span>Healthcare</span>
+      <span class="industry-tag"><span class="ind-icon">⚡</span>Energy &amp; Climate Tech</span>
+      <span class="industry-tag"><span class="ind-icon">💻</span>Software &amp; Technology</span>
+      <span class="industry-tag"><span class="ind-icon">🎵</span>Concert Bookings</span>
+      <span class="industry-tag"><span class="ind-icon">🏦</span>Banking</span>
     </div>
   </div>
 </section>

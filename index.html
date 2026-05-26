@@ -2064,7 +2064,10 @@ section.condensed .section-title { margin-bottom: 10px; }
       <p class="cv-modal-desc">I'll respond within 24 hours.</p>
 
       <form id="contact-form" novalidate>
-
+        <input type="hidden" name="access_key" value="34e8b6e1-c2b7-4b3e-b8f7-7d9bc43e9658">
+        <input type="hidden" name="subject" value="New message from portfolio — nikita-website">
+        <input type="hidden" name="from_name" value="Nikita Bahri Portfolio">
+        <input type="checkbox" name="botcheck" style="display:none">
 
         <div class="cv-form-row">
           <input type="text"  name="name"    placeholder="Your name *"  required class="cv-form-input">
@@ -2266,28 +2269,19 @@ document.querySelectorAll('.work-card').forEach(card => {
     submitBtn.textContent = 'Sending…';
 
     try {
-      const fd = new FormData(form);
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name:    fd.get('name'),
-          email:   fd.get('email'),
-          company: fd.get('company') || '',
-          message: fd.get('message'),
-        }),
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
       const json = await res.json();
       if (json.success) {
         formWrap.style.display = 'none';
         successEl.style.display = 'block';
-      } else {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Error ' + res.status + (json.resend ? ': ' + (json.resend.message || JSON.stringify(json.resend)) : ' — ' + (json.error || 'try again'));
-      }
-    } catch(err) {
+      } else { throw new Error(); }
+    } catch {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Network error — ' + err.message;
+      submitBtn.textContent = 'Something went wrong — try again';
     }
   });
 })();

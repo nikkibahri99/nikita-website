@@ -133,6 +133,32 @@ nav {
   position: relative; z-index: 1;
 }
 
+/* Open to work badge */
+.open-to-work {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  border-radius: 40px;
+  padding: 6px 14px 6px 10px;
+  margin-bottom: 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #22c55e;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0s forwards;
+}
+.open-to-work-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c55e; flex-shrink: 0;
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+  100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+}
+
 .hero-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 13px; font-weight: 500;
@@ -1635,6 +1661,10 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-left">
+    <div class="open-to-work">
+      <span class="open-to-work-dot"></span>
+      Open to opportunities · Management Consulting &amp; Marketing Strategy · Sep 2026
+    </div>
     <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Advisory</h1>
     <p class="hero-desc">

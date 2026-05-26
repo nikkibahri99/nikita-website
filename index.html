@@ -1262,6 +1262,56 @@ section.condensed .section-title { margin-bottom: 10px; }
 }
 .cv-modal-close:hover { color: white; transform: scale(1.15); }
 
+/* Floating contact button — left edge */
+.float-contact-btn {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9000;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  rotate: 180deg;
+  background: var(--navy);
+  color: var(--yellow);
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 18px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  box-shadow: 3px 0 20px rgba(0,0,0,0.25);
+  transition: padding 0.3s cubic-bezier(0.16,1,0.3,1),
+              background 0.25s, box-shadow 0.25s;
+  outline: none;
+}
+.float-contact-btn::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--yellow);
+  flex-shrink: 0;
+  opacity: 0.7;
+  transition: opacity 0.25s;
+}
+.float-contact-btn:hover {
+  padding: 18px 14px;
+  background: #243f33;
+  box-shadow: 4px 0 28px rgba(0,0,0,0.35);
+}
+.float-contact-btn:hover::before { opacity: 1; }
+@media (max-width: 600px) {
+  .float-contact-btn { display: none; }
+}
+
 .cv-modal-eyebrow {
   font-family: 'DM Mono', monospace;
   font-size: 11px; font-weight: 500;
@@ -1452,6 +1502,9 @@ section.condensed .section-title { margin-bottom: 10px; }
 </script>
 </head>
 <body>
+
+<!-- Floating contact button -->
+<button class="float-contact-btn open-contact-form" aria-label="Open contact form">Get in touch</button>
 
 <!-- Custom cursor -->
 <div id="cursor-dot"></div>

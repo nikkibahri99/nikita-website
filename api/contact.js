@@ -1,15 +1,20 @@
 module.exports = async function handler(req, res) {
+  console.log('[contact] method:', req.method);
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { name, email, company, message } = req.body || {};
+  console.log('[contact] body fields — name:', !!name, 'email:', !!email, 'message:', !!message);
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  console.log('[contact] key present:', !!RESEND_API_KEY, 'key prefix:', RESEND_API_KEY ? RESEND_API_KEY.slice(0, 5) : 'NONE');
+
   if (!RESEND_API_KEY) {
     return res.status(500).json({ error: 'Email service not configured' });
   }
@@ -28,6 +33,7 @@ module.exports = async function handler(req, res) {
   `;
 
   try {
+    console.log('[contact] calling Resend API...');
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -43,15 +49,16 @@ module.exports = async function handler(req, res) {
       }),
     });
 
+    const data = await response.json();
+    console.log('[contact] Resend status:', response.status, 'body:', JSON.stringify(data));
+
     if (response.ok) {
       return res.status(200).json({ success: true });
     }
 
-    const data = await response.json();
-    console.error('Resend error:', data);
     return res.status(500).json({ error: 'Failed to send email' });
   } catch (err) {
-    console.error('Handler error:', err);
+    console.error('[contact] fetch error:', err.message);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };

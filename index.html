@@ -139,7 +139,7 @@ nav {
   letter-spacing: 0.15em; text-transform: uppercase;
   color: var(--yellow);
   margin-bottom: 24px;
-  opacity: 0; animation: fadeUp 0.7s 0.1s forwards;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
 }
 
 .hero h1 {
@@ -150,7 +150,7 @@ nav {
   color: var(--white);
   letter-spacing: -0.02em;
   margin-bottom: 28px;
-  opacity: 0; animation: fadeUp 0.7s 0.25s forwards;
+  opacity: 0; animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
 }
 
 .hero h1 em {
@@ -164,13 +164,13 @@ nav {
   color: rgba(255,255,255,0.65);
   max-width: 440px;
   margin-bottom: 40px;
-  opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+  opacity: 0; animation: fadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;
 }
 
 .hero-tags {
   display: flex; flex-wrap: wrap; gap: 8px;
   margin-bottom: 48px;
-  opacity: 0; animation: fadeUp 0.7s 0.55s forwards;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;
 }
 
 .tag {
@@ -185,7 +185,7 @@ nav {
 
 .hero-ctas {
   display: flex; gap: 14px; flex-wrap: wrap;
-  opacity: 0; animation: fadeUp 0.7s 0.7s forwards;
+  opacity: 0; animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.9s forwards;
 }
 
 .btn-primary {
@@ -796,7 +796,7 @@ footer {
 
 /* ─── ANIMATIONS ───────────────────────────────────────────────────── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(32px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn {
@@ -893,8 +893,9 @@ footer {
 .cert-card { cursor: pointer; }
 
 .reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+              transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -1371,6 +1372,76 @@ section.condensed .section-title { margin-bottom: 10px; }
   .contact-photo { max-width: 320px; }
 }
 
+/* ─── LUXURY ENHANCEMENTS ──────────────────────────────────────── */
+
+/* Custom cursor — desktop only */
+#cursor-dot, #cursor-ring { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, .work-card, .cert-card { cursor: none !important; }
+  #cursor-dot {
+    display: block; position: fixed;
+    width: 5px; height: 5px;
+    background: var(--yellow); border-radius: 50%;
+    pointer-events: none; z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
+  }
+  #cursor-ring {
+    display: block; position: fixed;
+    width: 30px; height: 30px;
+    border: 1.5px solid rgba(201,160,53,0.4);
+    border-radius: 50%;
+    pointer-events: none; z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
+                height 0.35s cubic-bezier(0.16,1,0.3,1),
+                border-color 0.35s ease;
+    will-change: left, top;
+  }
+  #cursor-ring.enlarged { width: 52px; height: 52px; border-color: rgba(201,160,53,0.7); }
+}
+
+/* Button shimmer */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 55%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transform: skewX(-15deg);
+}
+.btn-primary:hover::after { animation: shimmer 0.65s ease forwards; }
+@keyframes shimmer { from { left: -100%; } to { left: 150%; } }
+
+/* Nav link animated underline */
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0;
+  width: 0; height: 1px; background: var(--navy);
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* Work card — richer hover */
+.work-card {
+  transition: box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.3s ease,
+              transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* Stat numbers */
+.stat-num { font-variant-numeric: tabular-nums; }
+
+/* Section eyebrow line draw */
+.section-eyebrow { display: flex; align-items: center; gap: 12px; }
+.section-eyebrow::after {
+  content: ''; display: inline-block;
+  height: 1px; background: var(--yellow); width: 0;
+  transition: width 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+.reveal.visible .section-eyebrow::after { width: 36px; }
+.section-eyebrow.visible::after { width: 36px; }
+
 </style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -1381,6 +1452,10 @@ section.condensed .section-title { margin-bottom: 10px; }
 </script>
 </head>
 <body>
+
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1477,14 +1552,14 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="hero-eyebrow">MBA · University of Bath · £15,000 Scholarship</div>
     <h1>Commercial<br><em>Strategy</em><br>& Advisory</h1>
     <p class="hero-desc">
-      I help businesses make better commercial decisions — which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years across global retail, D2C, and market entry. MBA, University of Bath. Currently at UrbanChain.
+      I help businesses make better commercial decisions — which markets to enter, which models don't hold up, and how to build revenue that lasts. Five years across global retail, D2C, and market entry. Currently at UrbanChain.
     </p>
     <div class="hero-tags">
       <span class="tag tag-yellow">UrbanChain</span>
       <span class="tag">Strategic Advisory</span>
       <span class="tag">Market Entry</span>
       <span class="tag">Climate Tech</span>
-      <span class="tag">Go-to-Market</span>
+      <span class="tag">Revenue Architecture</span>
       <span class="tag">Unit Economics</span>
     </div>
     <div class="hero-ctas">
@@ -1511,19 +1586,19 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stat">
-    <div class="stat-num">5+</div>
+    <div class="stat-num" data-count="5" data-suffix="+">5+</div>
     <div class="stat-label">Years in commercial strategy</div>
   </div>
   <div class="stat">
-    <div class="stat-num">16+</div>
+    <div class="stat-num" data-count="16" data-suffix="+">16+</div>
     <div class="stat-label">Global brands advised</div>
   </div>
   <div class="stat">
-    <div class="stat-num">3</div>
+    <div class="stat-num" data-count="3" data-suffix="">3</div>
     <div class="stat-label">Markets entered</div>
   </div>
   <div class="stat">
-    <div class="stat-num">133%</div>
+    <div class="stat-num" data-count="133" data-suffix="%">133%</div>
     <div class="stat-label">Revenue growth delivered</div>
   </div>
 </div>
@@ -1533,10 +1608,10 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="section-inner">
     <div class="section-eyebrow reveal">Selected work</div>
     <h2 class="section-title reveal">Work that <em>shaped</em> the decision</h2>
-    <p class="section-intro reveal">Five years advising brands on where to grow, when to stop, and how to build commercial models that hold up under scrutiny.</p>
-    <div class="work-cards reveal">
+    <p class="section-intro reveal">The decisions that shaped strategy — and a few that stopped it.</p>
+    <div class="work-cards">
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Strategic Advisory</span>
         <div class="work-card-desc">Built the unit economics case for Da Milano's tier-2 India expansion — and recommended against it. Saved the client from committing capital to a model that didn't work.</div>
         <span class="work-card-result">Expansion halted · £20K protected</span>
@@ -1544,7 +1619,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-more">Modelled customer acquisition costs, average order values, and expected margins across tier-2 cities. The analysis showed the expansion wouldn't reach breakeven within any viable window. Presented the findings directly to the client and made the case to stop before capital was deployed. The recommendation was accepted.</div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Revenue Strategy</span>
         <div class="work-card-desc">Diagnosed the channel mix and built the commercial model for multiple brands scaling from zero — without burning budget on unvalidated assumptions.</div>
         <span class="work-card-result">£30K MRR · 40% efficiency gain</span>
@@ -1552,7 +1627,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-more">Started from a blank slate — no existing audiences, no channel history, no benchmark data. Mapped the most defensible path to revenue for each brand, prioritised channels by unit economics, and built the commercial framework that guided spend decisions. £30K MRR in five months while cutting wasted spend by 40%.</div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Market Entry Advisory</span>
         <div class="work-card-desc">Advised multiple fashion and jewellery brands on their first move from India into the UAE — market sizing, customer definition, competitive positioning, and commercial readiness.</div>
         <span class="work-card-result">3 brands entered market</span>
@@ -1560,7 +1635,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-more">Conducted market analysis across the UAE retail landscape, defined customer segments and competitive positioning for each brand, and built the financial and strategic framework for entry. Delivered end-to-end market entry playbooks covering pricing architecture, channel strategy, and brand narrative — from the first client briefing through to go-live.</div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Go-to-Market Design</span>
         <div class="work-card-desc">Designed the commercial foundations for new brand launches — positioning, customer definition, and business model — before a penny was committed to market.</div>
         <span class="work-card-result">Revenue within 90 days</span>
@@ -1568,7 +1643,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-more">The work started upstream of execution: defining who the customer was, what the brand stood for, and whether the unit economics made sense. Only then was anything built or spent. Worked across Green Honchos and ScaleX to take brands from brief to live — most generating revenue within 90 days of the first strategic session.</div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Commercial Strategy</span>
         <div class="work-card-desc">Solved a structural commercial problem for Forever New: clear prior-season inventory without cannibalising a simultaneous new-season launch.</div>
         <span class="work-card-result">All targets hit · 30% revenue uplift</span>
@@ -1576,10 +1651,10 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="work-card-more">The challenge was structural — two commercial objectives pulling in opposite directions, competing for the same audiences and budget. Built a segmentation and resource-allocation framework to separate the two tracks and prevent cannibalisation. Hit all clearance targets while delivering a 30% uplift on new-season performance. The framework was adopted for future seasonal planning.</div>
       </div>
 
-      <div class="work-card">
+      <div class="work-card reveal">
         <span class="work-card-tag">Client Portfolio Leadership</span>
-        <div class="work-card-desc">Led commercial strategy across 16+ global brands simultaneously — chaired client financial planning sessions and built the team that delivered 133% revenue growth.</div>
-        <span class="work-card-result">133% revenue growth · Team of 7</span>
+        <div class="work-card-desc">Led commercial strategy across a global brand portfolio simultaneously — chaired client financial planning sessions and built the team that delivered the portfolio's best-ever revenue performance.</div>
+        <span class="work-card-result">Named top performer · Team of 7</span>
         <div class="work-card-hint"><span class="hint-open">+ Know more</span><span class="hint-close">− Less</span></div>
         <div class="work-card-more">Brands included Ray-Ban, Forever New, Da Milano, Bath &amp; Body Works, ASICS, and Onitsuka Tiger. Accountable for strategic direction across the full portfolio, with direct client relationships and weekly commercial planning sessions. Named top-performing manager for 3–4 consecutive months. The output was consistent revenue growth — driven by commercial rigour applied across very different businesses.</div>
       </div>
@@ -1594,9 +1669,9 @@ section.condensed .section-title { margin-bottom: 10px; }
     <div class="section-eyebrow reveal">Career</div>
     <h2 class="section-title reveal">From execution to <em>strategy</em> — the full arc</h2>
 
-    <div class="timeline reveal">
+    <div class="timeline">
 
-      <div class="tl-item current-role">
+      <div class="tl-item current-role reveal">
         <div class="tl-header">
           <div>
             <div class="tl-company">UrbanChain <span class="tl-location">· Renewable Energy · Remote</span></div>
@@ -1614,7 +1689,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         </div>
       </div>
 
-      <div class="tl-item">
+      <div class="tl-item reveal">
         <div class="tl-header">
           <div>
             <div class="tl-company">ScaleX <span class="tl-location">· Remote</span></div>
@@ -1625,14 +1700,13 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="tl-desc">Led end-to-end brand launches for D2C clients: audience definition, brand positioning, creative direction, website briefs, and media budget planning. Ran paid growth on Google and Meta, taking multiple brands from zero to <em>£30K MRR</em> in under five months with <em>2 to 3x campaign performance improvement</em> and <em>40% reduction in wasted spend</em>.</div>
         <div class="tl-tags">
           <span class="tl-tag">Brand Launch</span>
-          <span class="tl-tag">Google Ads</span>
-          <span class="tl-tag">Meta Ads</span>
+          <span class="tl-tag">Revenue Strategy</span>
           <span class="tl-tag">D2C</span>
-          <span class="tl-tag">Performance Marketing</span>
+          <span class="tl-tag">Commercial Strategy</span>
         </div>
       </div>
 
-      <div class="tl-item">
+      <div class="tl-item reveal">
         <div class="tl-header">
           <div>
             <div class="tl-company">Green Honchos <span class="tl-location">· India</span></div>
@@ -1655,7 +1729,7 @@ section.condensed .section-title { margin-bottom: 10px; }
         </div>
       </div>
 
-      <div class="tl-item">
+      <div class="tl-item reveal">
         <div class="tl-header">
           <div>
             <div class="tl-company">Sociowash <span class="tl-location">· New Delhi</span></div>
@@ -1667,12 +1741,12 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="tl-tags">
           <span class="tl-tag">Lead Generation</span>
           <span class="tl-tag">CPL Optimisation</span>
-          <span class="tl-tag">Performance Marketing</span>
+          <span class="tl-tag">B2B Strategy</span>
           <span class="tl-tag">Account Management</span>
         </div>
       </div>
 
-      <div class="tl-item">
+      <div class="tl-item reveal">
         <div class="tl-header">
           <div>
             <div class="tl-company">Globalbees · ANS Commerce <span class="tl-location">· Gurgaon</span></div>
@@ -1699,7 +1773,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="cap-text-col">
         <div class="section-eyebrow reveal">What I work on</div>
         <h2 class="section-title reveal">Channels &amp; <em>Capabilities</em></h2>
-        <p class="section-intro reveal">Full-funnel commercial growth: brand awareness to CRO, paid social to ecommerce, always strategy first.</p>
+        <p class="section-intro reveal">The analytical and commercial toolkit — from financial modelling and market sizing to channel strategy and revenue architecture.</p>
       </div>
       <div class="cap-pills-col reveal">
         <span class="skill-pill hl-navy">Brand Awareness</span>
@@ -1753,7 +1827,7 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="mba-intro-text">
         <div class="section-eyebrow reveal">Education</div>
         <h2 class="section-title reveal">MBA · University of Bath · <em>£15,000 Scholarship, 2025-2026</em></h2>
-        <p class="section-intro reveal"><em>£15,000 scholarship</em>, the highest in the cohort. Elected Academic Representative. Seven live projects running alongside coursework.</p>
+        <p class="section-intro reveal">Elected Academic Representative. Seven live consultancy projects running alongside coursework.</p>
       </div>
       <div class="mba-presenting reveal">
         <img src="assets/photos/presenting.jpg" alt="Nikita presenting at University of Bath">
@@ -1893,7 +1967,6 @@ section.condensed .section-title { margin-bottom: 10px; }
             in linkedin.com/in/nikitabahri
           </a>
         </div>
-        <div class="contact-note reveal">Bath, UK · Open to Dubai · Available from September 2026</div>
       </div>
       <div class="contact-photo reveal">
         <img src="assets/photos/wimbledon.jpg" alt="Nikita at Wimbledon">
@@ -1964,19 +2037,80 @@ if (hamburger && navLinks) {
   });
 }
 
+// Custom cursor
+(function() {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring || window.matchMedia('(hover: none)').matches) return;
+
+  let mx = -100, my = -100, rx = -100, ry = -100;
+  let rafId;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+
+  const interactives = 'a, button, .work-card, .cert-card, .nav-cta, .sticky-cv-btn, .sticky-contact-btn';
+  document.querySelectorAll(interactives).forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('enlarged'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('enlarged'));
+  });
+
+  function loop() {
+    dot.style.left  = mx + 'px';
+    dot.style.top   = my + 'px';
+    rx += (mx - rx) * 0.14;
+    ry += (my - ry) * 0.14;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    rafId = requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// Stat counter
+(function() {
+  const statNums = document.querySelectorAll('.stat-num[data-count]');
+  if (!statNums.length) return;
+
+  function animateCount(el) {
+    const target   = parseInt(el.dataset.count, 10);
+    const suffix   = el.dataset.suffix || '';
+    const duration = 1600;
+    const start    = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3); // cubic ease-out
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const statsIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        statsIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNums.forEach(el => statsIO.observe(el));
+})();
+
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
+  entries.forEach(e => {
     if (e.isIntersecting) {
-      // stagger siblings
       const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
       const idx = siblings.indexOf(e.target);
-      setTimeout(() => e.target.classList.add('visible'), idx * 80);
+      setTimeout(() => e.target.classList.add('visible'), idx * 110);
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 
 reveals.forEach(el => io.observe(el));
 

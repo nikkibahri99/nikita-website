@@ -707,21 +707,18 @@ section { padding: 100px 48px; }
 }
 .brands-inner { max-width: 100%; margin: 0; padding: 0; }
 .brands-marquee {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
+.brands-marquee::-webkit-scrollbar { display: none; }
 .brands-track {
   display: flex;
   flex-wrap: nowrap;
   gap: 6px;
   width: max-content;
-  animation: brandScroll 55s linear infinite;
-}
-.brands-track:hover { animation-play-state: paused; }
-@keyframes brandScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
 }
 .brand-logo-card {
   background: transparent;
@@ -1558,7 +1555,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 .contact-photo-caption {
   font-family: 'DM Mono', monospace;
   font-size: 10px; color: var(--muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
+  letter-spacing: 0.08em; text-transform: none;
   margin-top: 8px; text-align: center;
 }
 @media (max-width: 900px) {
@@ -2482,39 +2479,57 @@ lightboxClose.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// Brands drag-to-scroll
+// Brands drag-to-scroll (scrollLeft-based — works alongside auto-scroll RAF)
 (function() {
   const marquee = document.getElementById('brands-marquee');
   const track   = document.getElementById('brands-track');
   if (!marquee || !track) return;
-  let dragging = false, startX = 0, startTX = 0;
-  function getTX() {
-    const m = new DOMMatrix(getComputedStyle(track).transform);
-    return m.m41;
+
+  const speed = 0.45; // px per frame auto-scroll
+  let dragging = false, startX = 0, startScroll = 0;
+
+  function autoScroll() {
+    if (!dragging) {
+      marquee.scrollLeft += speed;
+      // Seamless loop: jump back by half (clone starts)
+      const half = track.scrollWidth / 2;
+      if (marquee.scrollLeft >= half) {
+        marquee.scrollLeft -= half;
+      }
+    }
+    requestAnimationFrame(autoScroll);
   }
+  requestAnimationFrame(autoScroll);
+
+  // Mouse drag
   marquee.addEventListener('mousedown', e => {
     dragging = true;
-    startX   = e.clientX;
-    startTX  = getTX();
-    track.style.animationPlayState = 'paused';
-    track.style.transform = 'translateX(' + startTX + 'px)';
-    track.style.animation = 'none';
+    startX = e.clientX;
+    startScroll = marquee.scrollLeft;
+    marquee.style.cursor = 'grabbing';
     e.preventDefault();
   });
   window.addEventListener('mousemove', e => {
     if (!dragging) return;
-    track.style.transform = 'translateX(' + (startTX + e.clientX - startX) + 'px)';
+    marquee.scrollLeft = startScroll + (startX - e.clientX);
   });
   window.addEventListener('mouseup', () => {
     if (!dragging) return;
     dragging = false;
-    const tx = getTX();
-    const half = track.scrollWidth / 2;
-    const progress = Math.abs(tx % half) / half;
-    track.style.animation = '';
-    track.style.animationDelay = '-' + (progress * 55) + 's';
-    track.style.transform = '';
+    marquee.style.cursor = 'grab';
   });
+
+  // Touch drag
+  marquee.addEventListener('touchstart', e => {
+    dragging = true;
+    startX = e.touches[0].clientX;
+    startScroll = marquee.scrollLeft;
+  }, { passive: true });
+  marquee.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    marquee.scrollLeft = startScroll + (startX - e.touches[0].clientX);
+  }, { passive: true });
+  marquee.addEventListener('touchend', () => { dragging = false; });
 })();
 
 // Show-more toggles

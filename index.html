@@ -364,6 +364,71 @@ section { padding: 100px 48px; }
   max-width: 580px; margin-bottom: 60px;
 }
 
+/* ─── ABOUT ─────────────────────────────────────────────────────────── */
+#about {
+  background: var(--sand);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 80px;
+  align-items: start;
+}
+.about-text .section-title { margin-bottom: 24px; }
+.about-para {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.about-para:last-child { margin-bottom: 0; }
+.about-para strong { color: var(--navy); font-weight: 600; }
+.about-sidebar { position: sticky; top: 120px; }
+.about-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 26px;
+  box-shadow: 0 4px 24px rgba(28,58,46,0.07);
+}
+.about-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.about-card-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.about-items { display: flex; flex-direction: column; gap: 16px; }
+.about-item {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.about-item-icon {
+  font-size: 20px; line-height: 1;
+  flex-shrink: 0; margin-top: 1px;
+}
+.about-item-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); opacity: 0.75;
+  margin-bottom: 2px;
+}
+.about-item-val {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600;
+  color: var(--navy); line-height: 1.3;
+}
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-sidebar { position: static; }
+}
+
 /* ─── WORK / CASE STUDIES ──────────────────────────────────────────── */
 #work {
   background-color: var(--white);
@@ -1674,6 +1739,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 <nav id="nav">
   <a href="#" class="nav-logo">Nikita <span>Bahri</span></a>
   <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About<span class="nav-sub">The person</span></a></li>
     <li><a href="#work">Work<span class="nav-sub">Case studies</span></a></li>
     <li><a href="#experience">Experience<span class="nav-sub">Career timeline</span></a></li>
     <li><a href="#capabilities">Capabilities<span class="nav-sub">Skills &amp; sectors</span></a></li>
@@ -1825,6 +1891,77 @@ section.condensed .section-title { margin-bottom: 10px; }
     </div>
   </div>
 </div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-eyebrow reveal">About</div>
+        <h2 class="section-title reveal">The person behind<br><em>the strategy</em></h2>
+        <p class="about-para reveal">I'm Nikita — a commercial strategist who started in performance marketing and figured out that the interesting problems sit one layer upstream: <strong>why does this model hold up, should we actually enter this market, and what does year-two revenue look like?</strong></p>
+        <p class="about-para reveal">Six years across agencies, D2C brands, and now a renewable energy startup. I've advised 16+ global brands, built go-to-market frameworks from scratch, and talked clients out of decisions that would have cost them more than they saved. Currently finishing an MBA at Bath — where I'm Academic Rep, won Best Pitch for a food-tech startup idea, and built a live commercial strategy for UrbanChain as a consultancy project.</p>
+        <p class="about-para reveal">Outside of work: Wimbledon in the summer, a borderline unhealthy interest in unit economics, and a firm belief that the best commercial outcomes happen when the mission and the money point in the same direction.</p>
+      </div>
+      <div class="about-sidebar reveal">
+        <div class="about-card">
+          <div class="about-card-label">Right now</div>
+          <div class="about-items">
+            <div class="about-item">
+              <span class="about-item-icon">📍</span>
+              <div>
+                <div class="about-item-key">Based in</div>
+                <div class="about-item-val">Bath, UK</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">🎓</span>
+              <div>
+                <div class="about-item-key">Studying</div>
+                <div class="about-item-val">MBA · University of Bath</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">⚡</span>
+              <div>
+                <div class="about-item-key">Working at</div>
+                <div class="about-item-val">UrbanChain · Climate Tech</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">✈️</span>
+              <div>
+                <div class="about-item-key">Lived &amp; worked in</div>
+                <div class="about-item-val">India · UAE · UK</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">🌱</span>
+              <div>
+                <div class="about-item-key">Cares about</div>
+                <div class="about-item-val">Climate, purpose-led brands</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">🎾</span>
+              <div>
+                <div class="about-item-key">Summer ritual</div>
+                <div class="about-item-val">Wimbledon, obviously</div>
+              </div>
+            </div>
+            <div class="about-item">
+              <span class="about-item-icon">📅</span>
+              <div>
+                <div class="about-item-key">Available from</div>
+                <div class="about-item-val">September 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WORK / CASE STUDIES -->
 <section id="work" class="condensed">

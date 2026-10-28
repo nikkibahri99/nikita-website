@@ -1671,7 +1671,7 @@ section.condensed .section-title { margin-bottom: 10px; }
 .reveal.visible .section-eyebrow::after { width: 36px; }
 .section-eyebrow.visible::after { width: 36px; }
 
-/* ─── DASHBOARD WORK CARD & MODAL ──────────────────────────────── */
+/* ─── DASHBOARD INLINE ──────────────────────────────────────────── */
 .wc-badge-claude {
   display: inline-block;
   font-family: 'DM Mono', monospace;
@@ -1681,69 +1681,47 @@ section.condensed .section-title { margin-bottom: 10px; }
   padding: 3px 8px; border-radius: 3px;
   vertical-align: middle; margin-left: 8px;
 }
-.work-card-dashboard { grid-column: 1 / -1; }
-.work-card-demo-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 14px;
-  background: var(--navy); color: var(--yellow);
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 10px 18px; border-radius: 4px; border: none;
-  cursor: pointer; transition: background 0.2s, transform 0.15s;
+.wc-dashboard {
+  grid-column: 1 / -1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 22px 24px 0;
 }
-.work-card-demo-btn:hover { background: var(--navy2); transform: translateY(-1px); }
-
-/* ── Dashboard Modal ── */
-.dm-overlay {
-  display: none; position: fixed; inset: 0; z-index: 9990;
-  background: rgba(10,20,14,0.72);
-  backdrop-filter: blur(6px);
-  align-items: flex-start; justify-content: center;
-  padding: 40px 20px; overflow-y: auto;
-}
-.dm-overlay.open { display: flex; }
-.dm-box {
-  background: #fff; border-radius: 12px;
-  width: 100%; max-width: 1260px;
-  box-shadow: 0 32px 80px rgba(0,0,0,0.35);
-  font-family: 'Instrument Sans', sans-serif;
+.wcd-intro { margin-bottom: 18px; }
+.wcd-intro .work-card-result { display: inline-block; }
+.dash-app {
+  border: 1px solid #ddd8cc;
+  border-radius: 8px;
   overflow: hidden;
+  box-shadow: 0 2px 16px rgba(28,58,46,0.08);
 }
-/* Header */
-.dm-hdr {
+
+/* App chrome header */
+.dm-app-hdr {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 24px; background: var(--navy);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 13px 20px; background: var(--navy);
 }
-.dm-hdr-left { display: flex; align-items: center; gap: 14px; }
+.dm-app-hdr-left { display: flex; align-items: center; gap: 12px; }
 .dm-brandmark {
-  width: 36px; height: 36px; border-radius: 8px;
+  width: 30px; height: 30px; border-radius: 6px;
   background: var(--yellow); color: var(--navy);
-  font-family: 'Fraunces', serif; font-weight: 900; font-size: 14px;
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 12px;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.dm-hdr-title { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.2; }
-.dm-hdr-sub {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; color: rgba(255,255,255,0.45);
-  letter-spacing: 0.06em; margin-top: 2px;
+.dm-app-title { font-size: 13px; font-weight: 600; color: #fff; }
+.dm-app-sub {
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  color: rgba(255,255,255,0.4); letter-spacing: 0.06em; margin-top: 1px;
 }
-.dm-hdr-right { display: flex; align-items: center; gap: 10px; }
+.dm-app-hdr-right { display: flex; align-items: center; gap: 8px; }
 .dm-pill {
   font-family: 'DM Mono', monospace; font-size: 9px; font-weight: 600;
   letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 4px 10px; border-radius: 20px;
+  padding: 3px 8px; border-radius: 20px;
 }
 .dm-pill-claude { background: var(--yellow); color: var(--navy); }
-.dm-pill-demo { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
-.dm-close {
-  background: rgba(255,255,255,0.1); border: none; color: rgba(255,255,255,0.7);
-  width: 32px; height: 32px; border-radius: 6px; cursor: pointer;
-  font-size: 14px; display: flex; align-items: center; justify-content: center;
-  transition: background 0.15s;
-}
-.dm-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
+.dm-pill-demo { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.45); }
 
 /* Channel tabs */
 .dm-ch-tabs {
@@ -1898,7 +1876,6 @@ section.condensed .section-title { margin-bottom: 10px; }
 @media (max-width: 640px) {
   .dm-kpi-strip { grid-template-columns: repeat(2, 1fr); }
   .dm-kpi-card:nth-child(2) { border-right: none; }
-  .dm-overlay { padding: 20px 10px; }
   .dm-ch-tab { padding: 10px 12px; font-size: 10px; }
 }
 
@@ -2164,11 +2141,92 @@ section.condensed .section-title { margin-bottom: 10px; }
     <p class="section-intro reveal">The decisions that shaped strategy, and a few that stopped it.</p>
     <div class="work-cards">
 
-      <div class="work-card work-card-dashboard reveal" id="dash-card">
-        <span class="work-card-tag">AI Marketing Dashboard <span class="wc-badge-claude">Built with Claude</span></span>
-        <div class="work-card-desc">Built a unified marketing analytics dashboard for UrbanChain that pulls live data from Google Ads, LinkedIn Ads, and HubSpot into one view. Automated weekly trend analysis, campaign learnings, and actionable insights in one place. Used every week to drive decisions on budget, keywords, and targeting.</div>
-        <span class="work-card-result">3 platforms · weekly insights · automated analysis</span>
-        <button class="work-card-demo-btn" id="open-dash-modal">View dashboard demo &rarr;</button>
+      <div class="wc-dashboard reveal">
+        <div class="wcd-intro">
+          <span class="work-card-tag">AI Marketing Dashboard <span class="wc-badge-claude">Built with Claude</span></span>
+          <div class="work-card-desc">Built a unified marketing analytics dashboard for UrbanChain pulling live data from Google Ads, LinkedIn Ads, and HubSpot into one view. Automated weekly trend analysis, campaign learnings, and actionable insights in one place. Used every week to drive decisions on budget, keywords, and targeting.</div>
+          <span class="work-card-result">3 platforms · weekly insights · automated analysis</span>
+        </div>
+        <div class="dash-app">
+          <!-- App chrome header -->
+          <div class="dm-app-hdr">
+            <div class="dm-app-hdr-left">
+              <div class="dm-brandmark">UC</div>
+              <div>
+                <div class="dm-app-title">UrbanChain · Marketing Dashboard</div>
+                <div class="dm-app-sub">24 Sept – 23 Oct 2025 &nbsp;·&nbsp; Weekly view &nbsp;·&nbsp; All campaigns</div>
+              </div>
+            </div>
+            <div class="dm-app-hdr-right">
+              <span class="dm-pill dm-pill-claude">Built with Claude</span>
+              <span class="dm-pill dm-pill-demo">Demo · dummy data</span>
+            </div>
+          </div>
+          <!-- Channel tabs -->
+          <div class="dm-ch-tabs">
+            <button class="dm-ch-tab active" data-ch="all">All Channels</button>
+            <button class="dm-ch-tab" data-ch="google">Google Ads</button>
+            <button class="dm-ch-tab" data-ch="linkedin">LinkedIn Ads</button>
+            <button class="dm-ch-tab" data-ch="hubspot">HubSpot CRM</button>
+          </div>
+          <!-- KPI strip -->
+          <div class="dm-kpi-strip" id="dm-kpi-strip"></div>
+          <!-- Body -->
+          <div class="dm-body">
+            <div class="dm-trends-panel">
+              <div class="dm-panel-title">Trends, insights and learnings</div>
+              <div class="dm-panel-sub">By week, 24 Sept – 23 Oct (latest complete week vs the one before) · follows the dates and campaigns above</div>
+              <div class="dm-section-lbl">TRENDS</div>
+              <table class="dm-tbl">
+                <thead>
+                  <tr>
+                    <th>METRIC</th>
+                    <th>BY WEEK</th>
+                    <th>LATEST WEEK</th>
+                    <th>WEEK BEFORE</th>
+                    <th>CHANGE</th>
+                    <th>OVER THE PERIOD</th>
+                  </tr>
+                </thead>
+                <tbody id="dm-tbl-body"></tbody>
+              </table>
+            </div>
+            <div class="dm-right-col">
+              <div class="dm-insights-box">
+                <div class="dm-panel-lbl">INSIGHTS</div>
+                <ol class="dm-insights-ol" id="dm-insights-list"></ol>
+              </div>
+              <div class="dm-learnings-box">
+                <div class="dm-panel-lbl">LEARNINGS FROM OUR CHANGES</div>
+                <div class="dm-learning">
+                  <div class="dm-learning-title">Thu 22 Oct: 60 negative keywords added, 3 keywords paused</div>
+                  <div class="dm-learning-note">Too soon to tell: under 3 days of data since.</div>
+                </div>
+                <div class="dm-learning">
+                  <div class="dm-learning-title">Tue 13 Oct: 53 negative keywords added, 1 keyword turned on, 1 keyword paused</div>
+                  <div class="dm-learning-note">7 days before vs 7 days after</div>
+                  <div class="dm-learning-metrics">
+                    <span>Clicks/day <span class="dm-lm-before">9.6</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">10.4</span></span>
+                    <span>CTR <span class="dm-lm-before">5.20%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">7.22%</span></span>
+                    <span>CPC <span class="dm-lm-before">£3.93</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">£3.55</span></span>
+                    <span>Impr. share <span class="dm-lm-before">27%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-down">22%</span></span>
+                  </div>
+                </div>
+                <div class="dm-learning">
+                  <div class="dm-learning-title">Tue 6 Oct: 19 negative keywords added</div>
+                  <div class="dm-learning-note">7 days before vs 7 days after</div>
+                  <div class="dm-learning-metrics">
+                    <span>Clicks/day <span class="dm-lm-before">7.1</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">9.9</span></span>
+                    <span>CTR <span class="dm-lm-before">4.13%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">5.72%</span></span>
+                    <span>CPC <span class="dm-lm-before">£6.83</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">£3.89</span></span>
+                    <span>Impr. share <span class="dm-lm-before">25%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-neut">25%</span></span>
+                  </div>
+                </div>
+                <div class="dm-disclaimer">Before and after isn't proof the change caused it (seasonality and competitors move too), but a consistent pattern is a good guide.</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="work-card reveal">
@@ -2844,28 +2902,9 @@ document.querySelectorAll('.work-card').forEach(card => {
   });
 });
 
-// Dashboard modal
+// Dashboard inline channel switcher
 (function() {
-  const overlay = document.getElementById('dm-overlay');
-  const openBtn = document.getElementById('open-dash-modal');
-  const closeBtn = document.getElementById('dm-close');
-  if (!overlay || !openBtn) return;
-
-  function openDash() {
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDash() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  openBtn.addEventListener('click', e => { e.stopPropagation(); openDash(); });
-  closeBtn.addEventListener('click', closeDash);
-  overlay.addEventListener('click', e => { if (e.target === overlay) closeDash(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeDash();
-  });
+  if (!document.getElementById('dm-kpi-strip')) return;
 
   // Channel tabs + KPI data
   const chData = {
@@ -3106,112 +3145,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 
-<!-- ── DASHBOARD MODAL ─────────────────────────────────────────── -->
-<div class="dm-overlay" id="dm-overlay" aria-modal="true" role="dialog" aria-label="Marketing Dashboard Demo">
-  <div class="dm-box">
-
-    <!-- Header -->
-    <div class="dm-hdr">
-      <div class="dm-hdr-left">
-        <div class="dm-brandmark">UC</div>
-        <div>
-          <div class="dm-hdr-title">UrbanChain · Marketing Dashboard</div>
-          <div class="dm-hdr-sub">24 Sept – 23 Oct 2025 &nbsp;·&nbsp; Weekly view &nbsp;·&nbsp; All campaigns</div>
-        </div>
-      </div>
-      <div class="dm-hdr-right">
-        <span class="dm-pill dm-pill-claude">Built with Claude</span>
-        <span class="dm-pill dm-pill-demo">Demo · dummy data</span>
-        <button class="dm-close" id="dm-close" aria-label="Close">✕</button>
-      </div>
-    </div>
-
-    <!-- Channel Tabs -->
-    <div class="dm-ch-tabs">
-      <button class="dm-ch-tab active" data-ch="all">All Channels</button>
-      <button class="dm-ch-tab" data-ch="google">Google Ads</button>
-      <button class="dm-ch-tab" data-ch="linkedin">LinkedIn Ads</button>
-      <button class="dm-ch-tab" data-ch="hubspot">HubSpot CRM</button>
-    </div>
-
-    <!-- KPI Strip -->
-    <div class="dm-kpi-strip" id="dm-kpi-strip">
-      <!-- populated by JS -->
-    </div>
-
-    <!-- Body -->
-    <div class="dm-body">
-
-      <!-- LEFT: Trends -->
-      <div class="dm-trends-panel">
-        <div class="dm-panel-title">Trends, insights and learnings</div>
-        <div class="dm-panel-sub">By week, 24 Sept – 23 Oct (latest complete week vs the one before) &nbsp;·&nbsp; follows the dates and campaigns above</div>
-        <div class="dm-section-lbl">TRENDS</div>
-        <table class="dm-tbl">
-          <thead>
-            <tr>
-              <th>METRIC</th>
-              <th>BY WEEK</th>
-              <th>LATEST WEEK</th>
-              <th>WEEK BEFORE</th>
-              <th>CHANGE</th>
-              <th>OVER THE PERIOD</th>
-            </tr>
-          </thead>
-          <tbody id="dm-tbl-body">
-            <!-- populated by JS -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- RIGHT: Insights + Learnings -->
-      <div class="dm-right-col">
-
-        <div class="dm-insights-box">
-          <div class="dm-panel-lbl">INSIGHTS</div>
-          <ol class="dm-insights-ol" id="dm-insights-list">
-            <!-- populated by JS -->
-          </ol>
-        </div>
-
-        <div class="dm-learnings-box">
-          <div class="dm-panel-lbl">LEARNINGS FROM OUR CHANGES</div>
-
-          <div class="dm-learning">
-            <div class="dm-learning-title">Thu 22 Oct: 60 negative keywords added, 3 keywords paused</div>
-            <div class="dm-learning-note">Too soon to tell: under 3 days of data since.</div>
-          </div>
-
-          <div class="dm-learning">
-            <div class="dm-learning-title">Tue 13 Oct: 53 negative keywords added, 1 keyword turned on, 1 keyword paused</div>
-            <div class="dm-learning-note">7 days before vs 7 days after</div>
-            <div class="dm-learning-metrics">
-              <span>Clicks/day <span class="dm-lm-before">9.6</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">10.4</span></span>
-              <span>CTR <span class="dm-lm-before">5.20%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">7.22%</span></span>
-              <span>CPC <span class="dm-lm-before">£3.93</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">£3.55</span></span>
-              <span>Impr. share <span class="dm-lm-before">27%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-down">22%</span></span>
-            </div>
-          </div>
-
-          <div class="dm-learning">
-            <div class="dm-learning-title">Tue 6 Oct: 19 negative keywords added</div>
-            <div class="dm-learning-note">7 days before vs 7 days after</div>
-            <div class="dm-learning-metrics">
-              <span>Clicks/day <span class="dm-lm-before">7.1</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">9.9</span></span>
-              <span>CTR <span class="dm-lm-before">4.13%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">5.72%</span></span>
-              <span>CPC <span class="dm-lm-before">£6.83</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-up">£3.89</span></span>
-              <span>Impr. share <span class="dm-lm-before">25%</span> <span class="dm-lm-arrow">→</span> <span class="dm-lm-neut">25%</span></span>
-            </div>
-          </div>
-
-          <div class="dm-disclaimer">Before and after isn't proof the change caused it (seasonality and competitors move too), but a consistent pattern is a good guide.</div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</div>
 
 </body>
 </html>

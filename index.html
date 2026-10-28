@@ -1343,7 +1343,7 @@ section.condensed .section-title { margin-bottom: 10px; }
   margin-top: 0; border-top: 0px solid var(--border);
 }
 .work-card.open .work-card-more {
-  max-height: 240px; opacity: 1; margin-top: 14px;
+  max-height: 600px; opacity: 1; margin-top: 14px;
   padding-top: 14px; border-top-width: 1px;
 }
 .work-card-hint {
@@ -1630,33 +1630,6 @@ section.condensed .section-title { margin-bottom: 10px; }
 
 /* ─── LUXURY ENHANCEMENTS ──────────────────────────────────────── */
 
-/* Custom cursor — desktop only */
-#cursor-dot, #cursor-ring { display: none; }
-@media (hover: hover) and (pointer: fine) {
-  body, a, button, .work-card, .cert-card { cursor: none !important; }
-  #cursor-dot {
-    display: block; position: fixed;
-    width: 8px; height: 8px;
-    background: var(--navy); border-radius: 2px;
-    pointer-events: none; z-index: 99999;
-    transform: translate(-50%, -50%);
-    will-change: left, top;
-  }
-  #cursor-ring {
-    display: block; position: fixed;
-    width: 38px; height: 38px;
-    border: 2px solid rgba(28,58,46,0.45);
-    border-radius: 50%;
-    pointer-events: none; z-index: 99998;
-    transform: translate(-50%, -50%);
-    transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
-                height 0.35s cubic-bezier(0.16,1,0.3,1),
-                border-color 0.35s ease;
-    will-change: left, top;
-  }
-  #cursor-ring.enlarged { width: 56px; height: 56px; border-color: rgba(28,58,46,0.7); }
-}
-
 /* Button shimmer */
 .btn-primary { position: relative; overflow: hidden; }
 .btn-primary::after {
@@ -1698,6 +1671,81 @@ section.condensed .section-title { margin-bottom: 10px; }
 .reveal.visible .section-eyebrow::after { width: 36px; }
 .section-eyebrow.visible::after { width: 36px; }
 
+/* ─── DASHBOARD DEMO ───────────────────────────────────────────── */
+.wc-badge-claude {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--navy); color: var(--yellow);
+  padding: 3px 8px; border-radius: 3px;
+  vertical-align: middle; margin-left: 8px;
+}
+.work-card-dashboard { grid-column: 1 / -1; }
+.work-card-demo-wrap { max-height: none !important; overflow: visible !important; }
+.work-card.open .work-card-demo-wrap { max-height: none !important; }
+.demo-note {
+  font-size: 11px; color: var(--muted); font-style: italic;
+  margin-bottom: 12px;
+}
+.dash-demo { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: #f8f7f4; }
+.dash-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid var(--border);
+  background: white;
+}
+.dash-tab {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 10px 16px; border: none; background: none;
+  color: var(--muted); cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.dash-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+.dash-tab:hover { color: var(--navy); }
+.dash-kpis {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 0; padding: 16px; background: white;
+  border-bottom: 1px solid var(--border);
+}
+.dash-kpi { text-align: center; padding: 8px; }
+.dash-kpi + .dash-kpi { border-left: 1px solid var(--border); }
+.dash-kpi-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 4px;
+}
+.dash-kpi-val {
+  font-family: 'Fraunces', serif;
+  font-size: 18px; font-weight: 900;
+  color: var(--navy); line-height: 1;
+}
+.dash-kpi-change {
+  font-size: 10px; margin-top: 3px;
+  font-family: 'DM Mono', monospace;
+}
+.dash-kpi-change.up { color: #16a34a; }
+.dash-kpi-change.down { color: #dc2626; }
+.dash-kpi-change.neutral { color: var(--muted); }
+.dash-insights { padding: 14px 16px; }
+.dash-insights-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.dash-insights-list {
+  margin: 0; padding-left: 18px;
+  font-size: 12px; color: var(--text); line-height: 1.6;
+}
+.dash-insights-list li { margin-bottom: 4px; }
+@media (max-width: 700px) {
+  .dash-kpis { grid-template-columns: repeat(3, 1fr); }
+  .dash-kpi + .dash-kpi:nth-child(4) { border-left: none; }
+}
+
 /* ─── SHOW MORE TOGGLES ─────────────────────────────────────────── */
 .show-more-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1730,10 +1778,6 @@ section.condensed .section-title { margin-bottom: 10px; }
 
 <!-- Floating contact button -->
 <button class="float-contact-btn open-contact-form" aria-label="Open contact form">Get in touch</button>
-
-<!-- Custom cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1964,6 +2008,66 @@ section.condensed .section-title { margin-bottom: 10px; }
     <p class="section-intro reveal">The decisions that shaped strategy, and a few that stopped it.</p>
     <div class="work-cards">
 
+      <div class="work-card work-card-dashboard reveal">
+        <span class="work-card-tag">AI Marketing Dashboard <span class="wc-badge-claude">Built with Claude</span></span>
+        <div class="work-card-desc">Built a single unified marketing analytics dashboard for UrbanChain that pulls live data from Google Ads, LinkedIn Ads, and HubSpot into one view. Weekly insights, trend analysis, and campaign learnings — all in one place.</div>
+        <span class="work-card-result">3 platforms · 1 view · weekly insights</span>
+        <div class="work-card-hint"><span class="hint-open">+ View demo</span><span class="hint-close">− Close</span></div>
+        <div class="work-card-more work-card-demo-wrap">
+          <div class="demo-note">Demo below uses dummy data. The real dashboard connects to live APIs.</div>
+          <div class="dash-demo">
+            <div class="dash-tabs">
+              <button class="dash-tab active" data-tab="all">All Channels</button>
+              <button class="dash-tab" data-tab="google">Google Ads</button>
+              <button class="dash-tab" data-tab="linkedin">LinkedIn Ads</button>
+              <button class="dash-tab" data-tab="hubspot">HubSpot</button>
+            </div>
+            <div class="dash-kpis" id="dash-kpis">
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">Spend</div>
+                <div class="dash-kpi-val">£265</div>
+                <div class="dash-kpi-change down">▼ 2% vs last week</div>
+              </div>
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">Impressions</div>
+                <div class="dash-kpi-val">980</div>
+                <div class="dash-kpi-change down">▼ 20%</div>
+              </div>
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">Clicks</div>
+                <div class="dash-kpi-val">74</div>
+                <div class="dash-kpi-change up">▲ 7%</div>
+              </div>
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">CTR</div>
+                <div class="dash-kpi-val">7.55%</div>
+                <div class="dash-kpi-change up">▲ 34%</div>
+              </div>
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">CPC</div>
+                <div class="dash-kpi-val">£3.58</div>
+                <div class="dash-kpi-change up">▼ 9% (good)</div>
+              </div>
+              <div class="dash-kpi">
+                <div class="dash-kpi-label">Conversions</div>
+                <div class="dash-kpi-val">1</div>
+                <div class="dash-kpi-change neutral">0% change</div>
+              </div>
+            </div>
+            <div class="dash-insights">
+              <div class="dash-insights-title">Insights</div>
+              <ol class="dash-insights-list">
+                <li>CTR rising: 3.50% in first week, 7.55% now. Negative keyword work is paying off.</li>
+                <li>CPC falling: £10.69 week 1, now £3.58 — budget going further.</li>
+                <li><strong>Budget constraint:</strong> 37% of eligible searches missed because daily budget ran out.</li>
+                <li>Competitors outrank on <strong>corporate renewable electricity</strong> — bids or Quality Score need work.</li>
+                <li>£338 spend on 3 keywords with no conversions. Recommend pausing.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="work-card reveal">
         <span class="work-card-tag">Strategic Advisory</span>
         <div class="work-card-desc">Built the unit economics case for Da Milano's tier-2 India expansion, and recommended against it. Saved the client from committing capital to a model that didn't work.</div>
@@ -2032,11 +2136,12 @@ section.condensed .section-title { margin-bottom: 10px; }
           </div>
           <div class="tl-date">Apr 2026 – Present</div>
         </div>
-        <div class="tl-desc">Built the commercial growth function <em>from scratch</em>. Restructured Google and LinkedIn ad campaigns, <em>reducing costs by 70% with no drop in leads generated</em>. Built a full funnel strategy to identify and target the right customers. Also delivered UrbanChain's go-to-market plan as an MBA Consultancy Project. HubSpot CRM setup, PR strategy, and AI automation workflows.</div>
+        <div class="tl-desc">Built the commercial growth function <em>from scratch</em>. Restructured Google and LinkedIn ad campaigns, <em>reducing costs by 70% with no drop in leads generated</em>. Built a full funnel strategy to identify and target the right customers. Redesigned the website and landing pages, resulting in a <em>3-minute increase in average time on page</em>. Built a custom marketing analytics dashboard using Claude, pulling live data from Google Ads, LinkedIn Ads, and HubSpot into one view for weekly insight reporting. Also delivered UrbanChain's go-to-market plan as an MBA Consultancy Project. HubSpot CRM setup, PR strategy, and AI automation workflows.</div>
         <div class="tl-tags">
           <span class="tl-tag">HubSpot</span>
           <span class="tl-tag">Lead Gen</span>
           <span class="tl-tag">CRO</span>
+          <span class="tl-tag">Landing Pages</span>
           <span class="tl-tag">PR Strategy</span>
           <span class="tl-tag">Claude Code</span>
         </div>
@@ -2489,36 +2594,6 @@ if (hamburger && navLinks) {
   });
 }
 
-// Custom cursor
-(function() {
-  const dot  = document.getElementById('cursor-dot');
-  const ring = document.getElementById('cursor-ring');
-  if (!dot || !ring || window.matchMedia('(hover: none)').matches) return;
-
-  let mx = -100, my = -100, rx = -100, ry = -100;
-  let rafId;
-
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
-
-  const interactives = 'a, button, .work-card, .cert-card, .nav-cta, .sticky-cv-btn, .sticky-contact-btn';
-  document.querySelectorAll(interactives).forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('enlarged'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('enlarged'));
-  });
-
-  function loop() {
-    dot.style.left  = mx + 'px';
-    dot.style.top   = my + 'px';
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    rafId = requestAnimationFrame(loop);
-  }
-  loop();
-})();
 
 // Stat counter
 (function() {
@@ -2665,6 +2740,36 @@ document.querySelectorAll('.work-card').forEach(card => {
     card.classList.toggle('open');
   });
 });
+
+// Dashboard demo tabs
+(function() {
+  const tabData = {
+    all:      { spend:'£265', impr:'980',  clicks:'74',  ctr:'7.55%', cpc:'£3.58', conv:'1', changeSpend:'▼ 2%',  changeImpr:'▼ 20%', changeClicks:'▲ 7%',  changeCtr:'▲ 34%', changeCpc:'▼ 9% (good)', changeConv:'0%', dirSpend:'down', dirImpr:'down', dirClicks:'up', dirCtr:'up', dirCpc:'up', dirConv:'neutral' },
+    google:   { spend:'£189', impr:'610',  clicks:'46',  ctr:'7.54%', cpc:'£4.11', conv:'1', changeSpend:'▼ 5%',  changeImpr:'▼ 18%', changeClicks:'▲ 12%', changeCtr:'▲ 38%', changeCpc:'▼ 14%',      changeConv:'0%', dirSpend:'down', dirImpr:'down', dirClicks:'up', dirCtr:'up', dirCpc:'up', dirConv:'neutral' },
+    linkedin: { spend:'£76',  impr:'370',  clicks:'28',  ctr:'7.57%', cpc:'£2.71', conv:'0', changeSpend:'▲ 4%',  changeImpr:'▼ 24%', changeClicks:'▼ 3%',  changeCtr:'▲ 28%', changeCpc:'▼ 6%',       changeConv:'—',  dirSpend:'down', dirImpr:'down', dirClicks:'down', dirCtr:'up', dirCpc:'up', dirConv:'neutral' },
+    hubspot:  { spend:'—',    impr:'—',    clicks:'—',   ctr:'—',     cpc:'—',     conv:'0 pipeline leads', changeSpend:'—', changeImpr:'—', changeClicks:'—', changeCtr:'—', changeCpc:'—', changeConv:'Steady', dirSpend:'neutral', dirImpr:'neutral', dirClicks:'neutral', dirCtr:'neutral', dirCpc:'neutral', dirConv:'neutral' }
+  };
+  document.querySelectorAll('.dash-tab').forEach(tab => {
+    tab.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const key = this.dataset.tab;
+      document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const d = tabData[key];
+      const kpis = document.getElementById('dash-kpis');
+      if (!kpis || !d) return;
+      const vals = [d.spend, d.impr, d.clicks, d.ctr, d.cpc, d.conv];
+      const changes = [d.changeSpend, d.changeImpr, d.changeClicks, d.changeCtr, d.changeCpc, d.changeConv];
+      const dirs = [d.dirSpend, d.dirImpr, d.dirClicks, d.dirCtr, d.dirCpc, d.dirConv];
+      kpis.querySelectorAll('.dash-kpi').forEach((kpi, i) => {
+        kpi.querySelector('.dash-kpi-val').textContent = vals[i];
+        const ch = kpi.querySelector('.dash-kpi-change');
+        ch.textContent = changes[i];
+        ch.className = 'dash-kpi-change ' + dirs[i];
+      });
+    });
+  });
+})();
 
 
 // Contact form modal

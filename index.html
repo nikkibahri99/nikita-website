@@ -1842,6 +1842,24 @@ section.condensed .section-title { margin-bottom: 10px; }
 .dm-insights-ol li { margin-bottom: 8px; }
 .dm-insights-ol li strong { color: var(--navy); }
 .dm-learnings-box { padding: 20px 22px; }
+
+/* Mini area charts below trends table */
+.dm-mini-charts-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid #e5e1d8;
+}
+.dm-mini-chart {
+  background: #fafaf8; border: 1px solid #e5e1d8;
+  border-radius: 6px; padding: 12px 14px 10px;
+}
+.dm-mini-chart-lbl {
+  font-size: 10px; color: #9a8e78; text-transform: uppercase;
+  letter-spacing: 0.07em; margin-bottom: 3px;
+  font-family: 'DM Mono', monospace;
+}
+.dm-mini-chart-val { font-size: 18px; font-weight: 600; color: #1C3A2E; margin-bottom: 8px; }
+.dm-mini-chart svg { display: block; width: 100%; height: 42px; }
 .dm-learning {
   padding: 12px 0; border-top: 1px solid #e5e1d8;
 }
@@ -2190,6 +2208,7 @@ section.condensed .section-title { margin-bottom: 10px; }
                 </thead>
                 <tbody id="dm-tbl-body"></tbody>
               </table>
+              <div class="dm-mini-charts-grid" id="dm-mini-charts"></div>
             </div>
             <div class="dm-right-col">
               <div class="dm-insights-box">
@@ -2943,6 +2962,12 @@ document.querySelectorAll('.work-card').forEach(card => {
         { metric:'HubSpot leads',  spark:'0,12 20,12 40,12 60,12 80,12', color:'#7c3aed', latest:'0',   prev:'0',       chg:'—',     cls:'dm-neut', badge:'dm-badge-steady',  label:'Steady'  },
         { metric:'Cost per lead',  spark:'0,12 20,12 40,12 60,12 80,12', color:'#cbd5e1', latest:'—',   prev:'—',       chg:'—',     cls:'dm-neut', badge:'dm-badge-steady',  label:'—'       },
         { metric:'Impression share', wholeAcct: true, spark:'0,6 20,8 40,4 60,8 80,14', color:'#dc2626', latest:'22%', prev:'26%', chg:'▼ 16%', cls:'dm-down', badge:'dm-badge-falling', label:'Falling' }
+      ],
+      charts: [
+        { lbl:'Weekly Clicks',  fmt:'num',  color:'#1C3A2E', data:[42, 58, 61, 68, 74] },
+        { lbl:'CTR',            fmt:'pct',  color:'#16a34a', data:[3.5, 4.8, 5.7, 6.9, 7.6] },
+        { lbl:'Avg CPC',        fmt:'gbp2', color:'#7c3aed', data:[10.69, 7.43, 5.88, 4.21, 3.58] },
+        { lbl:'Impressions',    fmt:'num',  color:'#C9A035', data:[1200, 1380, 1250, 1190, 980] }
       ]
     },
     google: {
@@ -2965,6 +2990,12 @@ document.querySelectorAll('.work-card').forEach(card => {
         { metric:'Conversions', spark:'0,12 20,8 40,4 60,8 80,8',   color:'#dc2626', latest:'1',    prev:'1',    chg:'0%',   cls:'dm-neut', badge:'dm-badge-steady', label:'Steady'  },
         { metric:'Quality Score avg', spark:'0,14 20,12 40,10 60,10 80,8', color:'#7c3aed', latest:'4.2/10', prev:'3.8/10', chg:'▲ 11%', cls:'dm-up', badge:'dm-badge-rising', label:'Rising' },
         { metric:'Impr. Share', spark:'0,8 20,10 40,6 60,10 80,16', color:'#dc2626', latest:'19%', prev:'22%', chg:'▼ 12%', cls:'dm-down', badge:'dm-badge-falling', label:'Falling' }
+      ],
+      charts: [
+        { lbl:'Weekly Clicks',   fmt:'num',  color:'#1C3A2E', data:[28, 35, 41, 41, 46] },
+        { lbl:'CTR',             fmt:'pct',  color:'#16a34a', data:[2.8, 4.0, 4.9, 5.5, 7.5] },
+        { lbl:'CPC',             fmt:'gbp2', color:'#7c3aed', data:[12.4, 8.9, 6.5, 4.8, 4.1] },
+        { lbl:'Impression Share',fmt:'pct',  color:'#dc2626', data:[25, 24, 22, 22, 19] }
       ]
     },
     linkedin: {
@@ -2987,6 +3018,12 @@ document.querySelectorAll('.work-card').forEach(card => {
         { metric:'Leads (form)',   spark:'0,12 20,12 40,12 60,12 80,12', color:'#7c3aed', latest:'0',   prev:'0',     chg:'—',     cls:'dm-neut', badge:'dm-badge-steady', label:'Steady' },
         { metric:'Reach',          spark:'0,4 20,6 40,8 60,6 80,14',   color:'#dc2626', latest:'312',  prev:'380',   chg:'▼ 18%', cls:'dm-down', badge:'dm-badge-falling', label:'Falling' },
         { metric:'Freq. per user', spark:'0,8 20,10 40,12 60,10 80,8', color:'#7c3aed', latest:'1.19', prev:'1.28',  chg:'▼ 7%',  cls:'dm-up',   badge:'dm-badge-falling', label:'Falling' }
+      ],
+      charts: [
+        { lbl:'Weekly Clicks', fmt:'num',  color:'#0a66c2', data:[8, 12, 15, 29, 28] },
+        { lbl:'CTR',           fmt:'pct',  color:'#16a34a', data:[0.8, 1.2, 3.2, 5.9, 7.6] },
+        { lbl:'Reach',         fmt:'num',  color:'#7c3aed', data:[420, 390, 380, 380, 312] },
+        { lbl:'CPC',           fmt:'gbp2', color:'#C9A035', data:[8.2, 6.4, 4.8, 2.9, 2.7] }
       ]
     },
     hubspot: {
@@ -3011,6 +3048,12 @@ document.querySelectorAll('.work-card').forEach(card => {
         { metric:'Active deals',          spark:'0,14 20,14 40,12 60,10 80,6',  color:'#16a34a', latest:'2',    prev:'1',    chg:'▲ 100%',cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
         { metric:'Pipeline value',        spark:'0,14 20,12 40,10 60,8 80,6',   color:'#16a34a', latest:'£14K', prev:'£9K',  chg:'▲ 56%', cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
         { metric:'CRM contacts total',    spark:'0,10 20,8 40,8 60,8 80,6',     color:'#7c3aed', latest:'127',  prev:'118',  chg:'▲ 8%',  cls:'dm-up',   badge:'dm-badge-rising',  label:'Growing'   }
+      ],
+      charts: [
+        { lbl:'Emails Sent',   fmt:'num',  color:'#7c3aed', data:[31, 38, 42, 42, 47] },
+        { lbl:'Open Rate',     fmt:'pct',  color:'#16a34a', data:[29, 33, 36, 36, 38] },
+        { lbl:'Pipeline',      fmt:'gbp',  color:'#C9A035', data:[0, 3500, 9000, 9000, 14000] },
+        { lbl:'Page Views',    fmt:'num',  color:'#1C3A2E', data:[198, 221, 247, 247, 312] }
       ]
     }
   };
@@ -3076,6 +3119,42 @@ document.querySelectorAll('.work-card').forEach(card => {
     return list.map(i => `<li>${i}</li>`).join('');
   }
 
+  function fmtMiniVal(v, fmt) {
+    if (fmt === 'gbp')  return v >= 1000 ? '£' + (v / 1000).toFixed(1) + 'K' : '£' + v;
+    if (fmt === 'gbp2') return '£' + v.toFixed(2);
+    if (fmt === 'pct')  return v + '%';
+    return String(v);
+  }
+  function buildMiniCharts(charts) {
+    const el = document.getElementById('dm-mini-charts');
+    if (!el) return;
+    if (!charts || !charts.length) { el.innerHTML = ''; return; }
+    const W = 200, H = 42, pad = 3;
+    el.innerHTML = charts.map(function(c) {
+      var vals = c.data, n = vals.length;
+      var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+      var rng = hi - lo || 1;
+      var pts = vals.map(function(v, i) {
+        return [(pad + (i / (n - 1)) * (W - pad * 2)).toFixed(1),
+                (pad + (1 - (v - lo) / rng) * (H - pad * 2)).toFixed(1)];
+      });
+      var ptStr = pts.map(function(p) { return p.join(','); }).join(' ');
+      var last = pts[n - 1], first = pts[0];
+      var areaD = 'M ' + pts.map(function(p) { return p.join(','); }).join(' L ') +
+                  ' L ' + last[0] + ',' + H + ' L ' + first[0] + ',' + H + ' Z';
+      var disp = fmtMiniVal(vals[n - 1], c.fmt);
+      return '<div class="dm-mini-chart">' +
+        '<div class="dm-mini-chart-lbl">' + c.lbl + '</div>' +
+        '<div class="dm-mini-chart-val">' + disp + '</div>' +
+        '<svg viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">' +
+          '<path d="' + areaD + '" fill="' + c.color + '" fill-opacity="0.1"/>' +
+          '<polyline points="' + ptStr + '" fill="none" stroke="' + c.color + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '<circle cx="' + last[0] + '" cy="' + last[1] + '" r="3" fill="' + c.color + '"/>' +
+        '</svg>' +
+      '</div>';
+    }).join('');
+  }
+
   function switchChannel(ch) {
     const d = chData[ch];
     const ins = insights[ch];
@@ -3083,6 +3162,7 @@ document.querySelectorAll('.work-card').forEach(card => {
     document.getElementById('dm-kpi-strip').innerHTML = buildKpis(d.kpis);
     document.getElementById('dm-tbl-body').innerHTML = buildRows(d.rows);
     document.getElementById('dm-insights-list').innerHTML = buildInsights(ins);
+    buildMiniCharts(d.charts);
     document.querySelectorAll('.dm-ch-tab').forEach(t => t.classList.toggle('active', t.dataset.ch === ch));
   }
 

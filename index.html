@@ -1245,21 +1245,37 @@ footer {
   padding: 52px 48px;
 }
 .industries-inner { max-width: 1100px; margin: 0 auto; }
+.industries-groups {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 36px; margin-top: 28px;
+}
+.ind-group-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--yellow);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(201,160,53,0.3);
+  margin-bottom: 14px;
+}
 .industry-tags {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  margin-top: 20px;
+  display: flex; flex-wrap: wrap; gap: 9px;
 }
 .industry-tag {
   display: inline-flex; align-items: center; gap: 7px;
-  padding: 8px 16px; border-radius: 40px;
+  padding: 8px 14px; border-radius: 6px;
   font-family: 'DM Mono', monospace;
   font-size: 10px; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  background: rgba(200,146,58,0.14); color: var(--navy);
-  border: 1.5px solid rgba(200,146,58,0.45);
+  letter-spacing: 0.07em; text-transform: uppercase;
+  background: rgba(28,58,46,0.06); color: var(--navy);
+  border: 1.5px solid rgba(28,58,46,0.18);
   cursor: default;
 }
-.ind-icon { font-size: 12px; line-height: 1; }
+.ind-tag-b2b {
+  background: rgba(28,58,46,0.11); border-color: rgba(28,58,46,0.28);
+}
+.ind-icon { font-size: 13px; line-height: 1; }
+@media (max-width: 700px) { .industries-groups { grid-template-columns: 1fr; gap: 24px; } }
 
 /* ─── CONDENSED SECTIONS ────────────────────────────────────────── */
 section.condensed { padding: 60px 48px; }
@@ -1275,9 +1291,13 @@ section.condensed .section-title { margin-bottom: 10px; }
   border: 1.5px solid rgba(200,146,58,0.45);
   cursor: default;
 }
-.skill-pill:hover { background: rgba(200,146,58,0.14); border-color: rgba(200,146,58,0.45); }
-.skill-pill.hl-green, .skill-pill.hl-amber, .skill-pill.hl-navy {
-  background: rgba(200,146,58,0.14); color: var(--navy); border-color: rgba(200,146,58,0.45);
+.skill-pill:hover { background: rgba(200,146,58,0.22); border-color: rgba(200,146,58,0.6); }
+.skill-pill.hl-navy {
+  background: var(--navy); color: var(--cream); border-color: var(--navy);
+}
+.skill-pill.hl-amber {
+  background: rgba(201,160,53,0.3); color: #5a3e05; border-color: var(--yellow);
+  font-weight: 700;
 }
 
 /* ─── CAPABILITIES TWO-COLUMN ───────────────────────────────────── */
@@ -1290,6 +1310,12 @@ section.condensed .section-title { margin-bottom: 10px; }
 .cap-text-col .section-eyebrow { margin-bottom: 14px; }
 .cap-text-col .section-title   { margin-bottom: 14px; }
 .cap-text-col .section-intro   { margin-bottom: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
+.cap-legend { display: flex; gap: 18px; margin-top: 18px; flex-wrap: wrap; }
+.cap-leg-item { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.cap-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+.leg-core   { background: var(--navy); }
+.leg-strong { background: rgba(201,160,53,0.5); border: 1.5px solid var(--yellow); }
+.leg-prof   { background: rgba(200,146,58,0.14); border: 1.5px solid rgba(200,146,58,0.45); }
 .cap-pills-col { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 6px; }
 .pill-group { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
 .pill-group-label {
@@ -2311,12 +2337,12 @@ section.condensed .section-title { margin-bottom: 10px; }
       <div class="tl-item current-role reveal">
         <div class="tl-header">
           <div>
-            <div class="tl-company">UrbanChain <span class="tl-location">· Renewable Energy · Remote</span></div>
+            <div class="tl-company">UrbanChain <span class="tl-location">· Renewable Energy · Hybrid</span></div>
             <div class="tl-role">Growth Associate</div>
           </div>
           <div class="tl-date">Apr 2026 – Present</div>
         </div>
-        <div class="tl-desc">Built the commercial growth function <em>from scratch</em>. Restructured Google and LinkedIn ad campaigns, <em>reducing costs by 70% with no drop in leads generated</em>. Built a full funnel strategy to identify and target the right customers. Redesigned the website and landing pages, resulting in a <em>3-minute increase in average time on page</em>. Built a custom marketing analytics dashboard using Claude, pulling live data from Google Ads, LinkedIn Ads, and HubSpot into one view for weekly insight reporting. Also delivered UrbanChain's go-to-market plan as an MBA Consultancy Project. HubSpot CRM setup, PR strategy, and AI automation workflows.</div>
+        <div class="tl-desc">First dedicated commercial and marketing hire — <em>built the entire growth function from scratch</em> with no existing playbook, tooling, or established channels.<br><br>Took over Google Ads and LinkedIn Ads accounts that were overspending with minimal return. Rebuilt both from the ground up: restructured campaign architecture, overhauled keyword targeting and match types, added 130+ negative keywords across three optimisation rounds, and <em>cut advertising costs by 70% with no drop in leads generated</em>.<br><br>Built a full B2B funnel strategy from ICP definition through to close: segmented the addressable market, built ZoomInfo prospect lists targeting CFOs and Operations Directors at mid-market energy companies, and enrolled contacts into HubSpot email sequences. Currently running three active sequences with a 38% open rate — double the B2B benchmark.<br><br>Redesigned UrbanChain's website and four campaign-specific landing pages from scratch: restructured the information architecture, rewrote all copy, and rebuilt the visual design — resulting in a <em>3-minute increase in average time on page</em>. Built a custom marketing analytics dashboard in Claude, aggregating Google Ads, LinkedIn Ads, and HubSpot into one weekly view, cutting reporting time from 2 hours to 10 minutes.<br><br>Set up HubSpot CRM, workflows, and email automation. Led PR strategy and AI automation implementation. Also delivered UrbanChain's go-to-market plan as an <em>MBA Consultancy Project</em>.</div>
         <div class="tl-tags">
           <span class="tl-tag">HubSpot</span>
           <span class="tl-tag">Lead Gen</span>
@@ -2401,6 +2427,11 @@ section.condensed .section-title { margin-bottom: 10px; }
         <div class="section-eyebrow reveal">What I work on</div>
         <h2 class="section-title reveal">Skills &amp; <em>Expertise</em></h2>
         <p class="section-intro reveal">Two areas of expertise: commercial strategy and marketing advisory, applied across six years and 16+ global brands.</p>
+        <div class="cap-legend reveal">
+          <span class="cap-leg-item"><span class="cap-leg-dot leg-core"></span>Core</span>
+          <span class="cap-leg-item"><span class="cap-leg-dot leg-strong"></span>Strong</span>
+          <span class="cap-leg-item"><span class="cap-leg-dot leg-prof"></span>Proficient</span>
+        </div>
       </div>
       <div class="cap-pills-col reveal">
         <div class="pill-group">
@@ -2455,19 +2486,29 @@ section.condensed .section-title { margin-bottom: 10px; }
   <div class="industries-inner">
     <div class="section-eyebrow reveal">Sectors</div>
     <h2 class="section-title reveal">Industries <em>I've worked in</em></h2>
-    <div class="industry-tags reveal">
-      <span class="industry-tag"><span class="ind-icon">🛍️</span>Retail</span>
-      <span class="industry-tag"><span class="ind-icon">💎</span>Jewellery</span>
-      <span class="industry-tag"><span class="ind-icon">👟</span>Footwear</span>
-      <span class="industry-tag"><span class="ind-icon">🍽️</span>Food &amp; Beverage</span>
-      <span class="industry-tag"><span class="ind-icon">💄</span>Makeup &amp; Skincare</span>
-      <span class="industry-tag"><span class="ind-icon">🏡</span>Home Decor</span>
-      <span class="industry-tag"><span class="ind-icon">👜</span>Handbags</span>
-      <span class="industry-tag"><span class="ind-icon">🏥</span>Healthcare</span>
-      <span class="industry-tag"><span class="ind-icon">⚡</span>Energy &amp; Climate Tech</span>
-      <span class="industry-tag"><span class="ind-icon">💻</span>Software &amp; Technology</span>
-      <span class="industry-tag"><span class="ind-icon">🎵</span>Concert Bookings</span>
-      <span class="industry-tag"><span class="ind-icon">🏦</span>Banking</span>
+    <div class="industries-groups reveal">
+      <div class="ind-group">
+        <div class="ind-group-label">Consumer &amp; D2C</div>
+        <div class="industry-tags">
+          <span class="industry-tag"><span class="ind-icon">🛍️</span>Retail</span>
+          <span class="industry-tag"><span class="ind-icon">💎</span>Jewellery</span>
+          <span class="industry-tag"><span class="ind-icon">👟</span>Footwear &amp; Sportswear</span>
+          <span class="industry-tag"><span class="ind-icon">💄</span>Beauty &amp; Skincare</span>
+          <span class="industry-tag"><span class="ind-icon">👜</span>Handbags &amp; Accessories</span>
+          <span class="industry-tag"><span class="ind-icon">🏡</span>Home &amp; Lifestyle</span>
+          <span class="industry-tag"><span class="ind-icon">🍽️</span>Food &amp; Beverage</span>
+          <span class="industry-tag"><span class="ind-icon">🎵</span>Entertainment</span>
+        </div>
+      </div>
+      <div class="ind-group">
+        <div class="ind-group-label">B2B &amp; Commercial</div>
+        <div class="industry-tags">
+          <span class="industry-tag ind-tag-b2b"><span class="ind-icon">⚡</span>Energy &amp; Climate Tech</span>
+          <span class="industry-tag ind-tag-b2b"><span class="ind-icon">💻</span>Software &amp; Technology</span>
+          <span class="industry-tag ind-tag-b2b"><span class="ind-icon">🏥</span>Healthcare</span>
+          <span class="industry-tag ind-tag-b2b"><span class="ind-icon">🏦</span>Banking &amp; Finance</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

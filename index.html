@@ -1300,33 +1300,32 @@ section.condensed .section-title { margin-bottom: 10px; }
   font-weight: 700;
 }
 
-/* ─── CAPABILITIES TWO-COLUMN ───────────────────────────────────── */
-.cap-two-col {
-  display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 72px;
+/* ─── CAPABILITIES ROWS ─────────────────────────────────────────── */
+.cap-header { max-width: 600px; margin-bottom: 44px; }
+.cap-header .section-eyebrow { margin-bottom: 12px; }
+.cap-header .section-title   { margin-bottom: 12px; }
+.cap-header .section-intro   { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 0; }
+.cap-rows { border-top: 1px solid var(--border); }
+.cap-row {
+  display: grid; grid-template-columns: 280px 1fr;
+  gap: 52px; padding: 36px 0;
+  border-bottom: 1px solid var(--border);
   align-items: start;
 }
-.cap-text-col .section-eyebrow { margin-bottom: 14px; }
-.cap-text-col .section-title   { margin-bottom: 14px; }
-.cap-text-col .section-intro   { margin-bottom: 0; font-size: 15px; color: var(--muted); line-height: 1.7; }
-.cap-legend { display: flex; gap: 18px; margin-top: 18px; flex-wrap: wrap; }
-.cap-leg-item { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
-.cap-leg-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
-.leg-core   { background: var(--navy); }
-.leg-strong { background: rgba(201,160,53,0.5); border: 1.5px solid var(--yellow); }
-.leg-prof   { background: rgba(200,146,58,0.14); border: 1.5px solid rgba(200,146,58,0.45); }
-.cap-pills-col { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 6px; }
-.pill-group { width: 100%; display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
-.pill-group-label {
-  width: 100%;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.13em; text-transform: uppercase;
-  color: var(--yellow);
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(201,160,53,0.2);
-  margin-bottom: 2px;
+.cap-row-num {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  color: var(--yellow); letter-spacing: 0.14em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.cap-row-name {
+  font-family: 'Fraunces', serif; font-size: 21px;
+  color: var(--navy); font-weight: 600; line-height: 1.2;
+  margin-bottom: 10px;
+}
+.cap-row-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.cap-row-skills { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 2px; }
+@media (max-width: 900px) {
+  .cap-row { grid-template-columns: 1fr; gap: 20px; padding: 28px 0; }
 }
 
 /* ─── WORK MINI-CARDS ───────────────────────────────────────────── */
@@ -1412,7 +1411,6 @@ section.condensed .section-title { margin-bottom: 10px; }
 
 
 @media (max-width: 1100px) {
-  .cap-two-col { grid-template-columns: 1fr; gap: 32px; }
   .work-cards  { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
@@ -2422,20 +2420,20 @@ section.condensed .section-title { margin-bottom: 10px; }
 <!-- CAPABILITIES -->
 <section id="capabilities" class="condensed">
   <div class="section-inner">
-    <div class="cap-two-col">
-      <div class="cap-text-col">
-        <div class="section-eyebrow reveal">What I work on</div>
-        <h2 class="section-title reveal">Skills &amp; <em>Expertise</em></h2>
-        <p class="section-intro reveal">Two areas of expertise: commercial strategy and marketing advisory, applied across six years and 16+ global brands.</p>
-        <div class="cap-legend reveal">
-          <span class="cap-leg-item"><span class="cap-leg-dot leg-core"></span>Core</span>
-          <span class="cap-leg-item"><span class="cap-leg-dot leg-strong"></span>Strong</span>
-          <span class="cap-leg-item"><span class="cap-leg-dot leg-prof"></span>Proficient</span>
+    <div class="cap-header">
+      <div class="section-eyebrow reveal">What I work on</div>
+      <h2 class="section-title reveal">Skills &amp; <em>Expertise</em></h2>
+      <p class="section-intro reveal">Two areas of expertise: commercial strategy and marketing advisory, applied across six years and 16+ global brands.</p>
+    </div>
+    <div class="cap-rows">
+
+      <div class="cap-row reveal">
+        <div class="cap-row-meta">
+          <div class="cap-row-num">01</div>
+          <div class="cap-row-name">Strategy &amp; Advisory</div>
+          <div class="cap-row-desc">Commercial frameworks, market analysis, and revenue architecture — the upstream decisions that determine whether a business model holds up.</div>
         </div>
-      </div>
-      <div class="cap-pills-col reveal">
-        <div class="pill-group">
-          <div class="pill-group-label">Strategy &amp; Advisory</div>
+        <div class="cap-row-skills">
           <span class="skill-pill hl-navy">Financial Modelling</span>
           <span class="skill-pill hl-navy">Market Sizing</span>
           <span class="skill-pill hl-navy">Unit Economics</span>
@@ -2447,12 +2445,19 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">Competitive Analysis</span>
           <span class="skill-pill">D2C Strategy</span>
         </div>
-        <div class="pill-group" style="margin-top:18px;">
-          <div class="pill-group-label">Marketing &amp; Brand Strategy</div>
+      </div>
+
+      <div class="cap-row reveal">
+        <div class="cap-row-meta">
+          <div class="cap-row-num">02</div>
+          <div class="cap-row-name">Marketing &amp; Brand Strategy</div>
+          <div class="cap-row-desc">Full-funnel campaign architecture, brand positioning, and performance marketing across B2B and D2C. Six years and 16+ global brands.</div>
+        </div>
+        <div class="cap-row-skills">
           <span class="skill-pill hl-navy">Brand Strategy</span>
           <span class="skill-pill hl-navy">Brand Launch</span>
           <span class="skill-pill hl-amber">Campaign Strategy</span>
-          <span class="skill-pill hl-amber">Performance Strategy</span>
+          <span class="skill-pill hl-amber">Performance Marketing</span>
           <span class="skill-pill">Audience Segmentation</span>
           <span class="skill-pill">CRO</span>
           <span class="skill-pill">Lead Generation</span>
@@ -2463,8 +2468,15 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">Landing Pages</span>
           <span class="skill-pill">Content Strategy</span>
         </div>
-        <div class="pill-group" style="margin-top:18px;">
-          <div class="pill-group-label">B2B Tools &amp; Platforms</div>
+      </div>
+
+      <div class="cap-row reveal">
+        <div class="cap-row-meta">
+          <div class="cap-row-num">03</div>
+          <div class="cap-row-name">B2B Tools &amp; Platforms</div>
+          <div class="cap-row-desc">The toolstack for building and running B2B growth: CRM, outbound prospecting, email automation, and web content at every stage.</div>
+        </div>
+        <div class="cap-row-skills">
           <span class="skill-pill hl-navy">HubSpot CRM</span>
           <span class="skill-pill hl-navy">HubSpot CMS</span>
           <span class="skill-pill hl-navy">Email Marketing</span>
@@ -2477,6 +2489,7 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">Google Search Console</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>

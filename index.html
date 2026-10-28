@@ -2409,9 +2409,22 @@ section.condensed .section-title { margin-bottom: 10px; }
           <span class="skill-pill">Google Ads</span>
           <span class="skill-pill">Meta Ads</span>
           <span class="skill-pill">LinkedIn Ads</span>
-          <span class="skill-pill">HubSpot CRM</span>
-          <span class="skill-pill">ZoomInfo</span>
           <span class="skill-pill">B2B Marketing</span>
+          <span class="skill-pill">Landing Pages</span>
+          <span class="skill-pill">Content Strategy</span>
+        </div>
+        <div class="pill-group" style="margin-top:18px;">
+          <div class="pill-group-label">B2B Tools &amp; Platforms</div>
+          <span class="skill-pill hl-navy">HubSpot CRM</span>
+          <span class="skill-pill hl-navy">HubSpot CMS</span>
+          <span class="skill-pill hl-navy">Email Marketing</span>
+          <span class="skill-pill hl-amber">ZoomInfo</span>
+          <span class="skill-pill hl-amber">Prospecting &amp; List Building</span>
+          <span class="skill-pill">Sequence Building</span>
+          <span class="skill-pill">Marketing Automation</span>
+          <span class="skill-pill">Website Content Management</span>
+          <span class="skill-pill">Google Analytics</span>
+          <span class="skill-pill">Google Search Console</span>
         </div>
       </div>
     </div>
@@ -2978,24 +2991,26 @@ document.querySelectorAll('.work-card').forEach(card => {
     },
     hubspot: {
       kpis: [
-        { lbl:'New Leads',     val:'0',  chg:'None this period',  cls:'dm-neut' },
-        { lbl:'Open Leads',    val:'0',  chg:'0 dormant',         cls:'dm-neut' },
-        { lbl:'Qualified',     val:'0',  chg:'Rate: —',           cls:'dm-neut' },
-        { lbl:'Emails sent',   val:'24', chg:'▼ 8% vs prev week', cls:'dm-neut' },
-        { lbl:'Open rate',     val:'38%',chg:'▲ 5% vs prev week', cls:'dm-up'   },
-        { lbl:'Reply rate',    val:'4%', chg:'— Steady',          cls:'dm-neut' },
-        { lbl:'Active deals',  val:'2',  chg:'Pipeline: £14K',    cls:'dm-up'   },
-        { lbl:'Contacts added',val:'7',  chg:'ZoomInfo import',   cls:'dm-up'   }
+        { lbl:'Emails sent',      val:'47',  chg:'▲ 12% vs prev week', cls:'dm-up'   },
+        { lbl:'Email open rate',  val:'38%', chg:'▲ 5% vs prev week',  cls:'dm-up'   },
+        { lbl:'Click rate',       val:'8.2%',chg:'▲ 18% vs prev week', cls:'dm-up'   },
+        { lbl:'Sequence replies', val:'3',   chg:'▲ 200% vs prev week',cls:'dm-up'   },
+        { lbl:'Landing pages',    val:'4',   chg:'2 new this week',     cls:'dm-up'   },
+        { lbl:'Page views (CMS)', val:'312', chg:'▲ 26% vs prev week', cls:'dm-up'   },
+        { lbl:'ZoomInfo imports', val:'23',  chg:'ICP-matched contacts',cls:'dm-up'   },
+        { lbl:'Pipeline value',   val:'£14K',chg:'▲ 56% vs prev week', cls:'dm-up'   }
       ],
       rows: [
-        { metric:'New leads created', spark:'0,12 20,12 40,12 60,12 80,12', color:'#7c3aed', latest:'0', prev:'0', chg:'—', cls:'dm-neut', badge:'dm-badge-steady', label:'Steady' },
-        { metric:'Emails sent',       spark:'0,8 20,6 40,10 60,8 80,10', color:'#7c3aed', latest:'24', prev:'26', chg:'▼ 8%', cls:'dm-neut', badge:'dm-badge-falling', label:'Falling' },
-        { metric:'Email open rate',   spark:'0,14 20,16 40,10 60,12 80,8', color:'#16a34a', latest:'38%', prev:'36%', chg:'▲ 5%', cls:'dm-up', badge:'dm-badge-rising', label:'Rising' },
-        { metric:'Meetings booked',   spark:'0,12 20,8 40,12 60,8 80,12', color:'#7c3aed', latest:'0', prev:'1', chg:'▼ 100%', cls:'dm-down', badge:'dm-badge-falling', label:'Falling' },
-        { metric:'Active deals',      spark:'0,14 20,12 40,10 60,8 80,6', color:'#16a34a', latest:'2', prev:'1', chg:'▲ 100%', cls:'dm-up', badge:'dm-badge-rising', label:'Rising' },
-        { metric:'Pipeline value',    spark:'0,14 20,12 40,10 60,8 80,6', color:'#16a34a', latest:'£14K', prev:'£9K', chg:'▲ 56%', cls:'dm-up', badge:'dm-badge-rising', label:'Rising' },
-        { metric:'ZoomInfo contacts', spark:'0,12 20,8 40,6 60,10 80,8', color:'#7c3aed', latest:'7', prev:'0', chg:'New import', cls:'dm-up', badge:'dm-badge-rising', label:'Rising' },
-        { metric:'Avg response time', spark:'0,8 20,10 40,6 60,12 80,10', color:'#7c3aed', latest:'18h', prev:'24h', chg:'▼ 25%', cls:'dm-up', badge:'dm-badge-falling', label:'Improving' }
+        { metric:'Emails sent',           spark:'0,14 20,12 40,16 60,12 80,8',  color:'#7c3aed', latest:'47',   prev:'42',   chg:'▲ 12%', cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Email open rate',       spark:'0,14 20,16 40,10 60,12 80,8',  color:'#16a34a', latest:'38%',  prev:'36%',  chg:'▲ 5%',  cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Email click rate',      spark:'0,16 20,14 40,18 60,14 80,8',  color:'#16a34a', latest:'8.2%', prev:'6.9%', chg:'▲ 18%', cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Sequence replies',      spark:'0,18 20,16 40,14 60,16 80,8',  color:'#16a34a', latest:'3',    prev:'1',    chg:'▲ 200%',cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Website page views',    spark:'0,14 20,12 40,10 60,12 80,6',  color:'#16a34a', latest:'312',  prev:'247',  chg:'▲ 26%', cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Landing page conv.',    spark:'0,8 20,10 40,6 60,10 80,10',   color:'#7c3aed', latest:'2',    prev:'3',    chg:'▼ 33%', cls:'dm-down', badge:'dm-badge-falling', label:'Falling'   },
+        { metric:'ZoomInfo imports',      spark:'0,18 20,12 40,8 60,12 80,6',   color:'#16a34a', latest:'23',   prev:'7',    chg:'▲ 229%',cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Active deals',          spark:'0,14 20,14 40,12 60,10 80,6',  color:'#16a34a', latest:'2',    prev:'1',    chg:'▲ 100%',cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'Pipeline value',        spark:'0,14 20,12 40,10 60,8 80,6',   color:'#16a34a', latest:'£14K', prev:'£9K',  chg:'▲ 56%', cls:'dm-up',   badge:'dm-badge-rising',  label:'Rising'    },
+        { metric:'CRM contacts total',    spark:'0,10 20,8 40,8 60,8 80,6',     color:'#7c3aed', latest:'127',  prev:'118',  chg:'▲ 8%',  cls:'dm-up',   badge:'dm-badge-rising',  label:'Growing'   }
       ]
     }
   };
@@ -3030,12 +3045,13 @@ document.querySelectorAll('.work-card').forEach(card => {
       'LinkedIn CPL (cost per lead) is technically infinite — no leads generated yet from paid.'
     ],
     hubspot: [
-      '2 active deals in pipeline, total value £14K. No new leads from paid this week.',
-      'Email open rate improved to 38% — above the B2B benchmark of 21%.',
-      '<strong>ZoomInfo import:</strong> 7 new target contacts added to sequences this week.',
-      '0 meetings booked this week vs 1 last week — follow up on prospects who opened but didn\'t reply.',
-      'Response time down to 18h from 24h. Target is under 4h for inbound leads.',
-      'Current pipeline insufficient to meet monthly revenue target — need to accelerate top-of-funnel.'
+      '<strong>Email performance:</strong> 38% open rate and 8.2% CTR on this week\'s sequences — well above the B2B benchmarks of 21% and 2.5% respectively.',
+      '<strong>ZoomInfo import:</strong> 23 ICP-matched contacts (CFO/Operations Director at mid-market energy firms) added and enrolled in sequences this week.',
+      '3 active sequences running. Reply rate low at 6.4% (3 replies from 47 emails) — A/B test a shorter, more direct email copy next week.',
+      '<strong>Website (HubSpot CMS):</strong> 312 page views this week, up 26%. 2 new landing pages built and live, supporting Google Ads campaigns.',
+      'Pipeline grew to £14K across 2 active deals. Landing page conversion rate dropped from 3 to 2 — review CTA placement and offer clarity.',
+      'CRM contacts database at 127 total. Response time improved to 18h from 24h — target is under 4h for inbound leads to reduce drop-off.',
+      '<strong>Action:</strong> No inbound form fills this week despite 312 page views. Review blog-post CTAs and test a gated asset (energy cost calculator) to capture email opt-ins.'
     ]
   };
 
